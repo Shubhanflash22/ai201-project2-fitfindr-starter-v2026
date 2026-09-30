@@ -58,25 +58,25 @@ FitFindr is a thrifting agent. A user describes what they want in plain language
 
 ### `search_listings`
 
-- **What it does:** Filters the listings file by keyword, size, and price ceiling and returns every matching listing.
+- **What it does:** Filters the listings file by price ceiling and size, scores what's left by keyword overlap with the query, and returns the matches best first.
 - **Inputs:** `description` (str), `size` (str or None), `max_price` (float or None). `None` means that filter is skipped.
-- **Returns:** A list of listing dicts, each with the full listing fields: `id` (str), `title` (str), `description` (str), `category` (str), `style_tags` (list[str]), `size` (str), `condition` (str), `price` (float), `colors` (list[str]), `brand` (str or None), `platform` (str). Sorted by price, lowest first.
-- **When it has nothing:** An empty list `[]`. Never `None`, and it never raises an exception.
-- **Matching rules:** A listing matches `description` if at least one keyword from the query (lowercased, stopwords like "a", "under", "in" removed) appears in its title, description, or `style_tags`. `size` matches case-insensitively as a whole token, so "M" matches `M` and `S/M` but not `XL (oversized)`. `price` must be less than or equal to `max_price`.
+- **Returns:** A list of listing dicts, best match first (ties go to the cheaper listing), at most `config.SEARCH_RESULT_LIMIT` (10). Each dict has the full listing fields: `id` (str), `title` (str), `description` (str), `category` (str), `style_tags` (list[str]), `size` (str), `condition` (str), `price` (float), `colors` (list[str]), `brand` (str or None), `platform` (str).
+- **When it has nothing:** An empty list `[]`. Never `None`, and it never raises an exception. A query made only of stopwords also returns `[]`.
+- **Matching rules:** Keywords are lowercased with stopwords removed ("a", "under", "in", "size", and so on) and a crude plural strip ("tees" becomes "tee"). A listing's score is the number of query keywords found in its title, description, category, `style_tags`, or `colors`. Listings scoring zero are dropped. `size` matches case-insensitively as a whole token, so "M" matches `M` and `S/M` but not `L` or `XL (oversized)`, and never as a substring. `price` must be less than or equal to `max_price`.
 
 ### `suggest_outfit`
 
-- **What it does:** Asks the model for outfit ideas that pair the new item with pieces from the user's wardrobe.
+- **What it does:** Asks the model for two outfit ideas that pair the new item with pieces from the user's wardrobe.
 - **Inputs:** `new_item` (dict, one listing returned by `search_listings`), `wardrobe` (dict with one key, `items`, a list of dicts each holding `id` (str), `name` (str), `category` (str: tops, bottoms, outerwear, shoes, or accessories), `colors` (list[str]), `style_tags` (list[str]), `notes` (str or None)).
-- **When it has nothing:** If `wardrobe["items"]` is empty (`{"items": []}`), it returns a string of general styling advice for the new item instead of failing. If the model call fails, it raises an error that the loop catches, and the loop shows the user a message saying the model couldn't be reached.
-- **Returns:** A non-empty string of two or three outfit ideas, each naming the new item and the wardrobe pieces it pairs with.
+- **Returns:** A non-empty string of two outfit ideas, each naming the new item and the wardrobe pieces it pairs with.
+- **When it has nothing:** If `wardrobe["items"]` is empty (`{"items": []}`), it returns a string of general styling advice for the new item instead of failing. `notes` being `None` is left out of the prompt. If the model call fails, `generate()` raises `ModelUnavailable`, which the loop catches, and the loop shows the user a message saying the model couldn't be reached.
 
 ### `create_fit_card`
 
-- **What it does:** Asks the model for a short social-media caption for the outfit.
+- **What it does:** Asks the model for a short, postable social-media caption for the find.
 - **Inputs:** `outfit` (str, the output of `suggest_outfit`), `new_item` (dict, the selected listing).
-- **When it has nothing:** If `brand` is `None`, the prompt leaves the brand out and the card is still written. If `outfit` is empty, it writes a caption from `new_item` alone. If the model call fails, it raises an error that the loop catches, same as `suggest_outfit`.
-- **Returns:** A non-empty string of one to three sentences, in a casual voice, that mentions the item and its price. It never depends on `brand` being present.
+- **Returns:** A non-empty string of two or three sentences in a casual voice that mentions the item, its price, and its platform.
+- **When it has nothing:** If `brand` is `None`, the prompt leaves the brand out and the card is still written. If `outfit` is empty or whitespace, it writes a caption from `new_item` alone. If the model call fails, `generate()` raises `ModelUnavailable`, which the loop catches, same as `suggest_outfit`.
 
 ---
 
@@ -133,6 +133,46 @@ $ python -c "from tools import suggest_outfit; ..."
 $ python -c "from tools import create_fit_card; ..."
 
 ```
+
+>> python -c "from tools import search_listings; print(search_listings('graphic tee', max_price=30))"
+>> 
+>> # 2. search_listings: empty case (expect exactly [])
+>> python -c "from tools import search_listings; print(search_listings('designer ballgown', size='XXS', max_price=5))"
+>> 
+>> # 3. search_listings: size matching (expect S/M and M only, no XL or L)
+>> python -c "from tools import search_listings; print([(i['id'], i['size']) for i in search_listings('tee', size='M')])"
+>> 
+>> # 4. suggest_outfit: example wardrobe (should name specific wardrobe pieces)
+>> python -c "from tools import suggest_outfit; from utils.data_loader import get_example_wardrobe, load_listings; print(suggest_outfit(load_listings()[0], get_example_wardrobe()))"
+>> 
+>> # 5. suggest_outfit: empty wardrobe (should give general advice, no crash)
+>> python -c "from tools import suggest_outfit; from utils.data_loader import get_empty_wardrobe, load_listings; print(suggest_outfit(load_listings()[0], get_empty_wardrobe()))"
+>> 
+>> # 6. create_fit_card: cache off so the runs can differ. Runs 1-2 are the same item; run 3 has brand=None.
+>> $env:AI201_CACHE="0"
+>> python -c "from tools import create_fit_card; from utils.data_loader import load_listings; print(create_fit_card('jeans and white sneakers', load_listings()[0]))"
+>> python -c "from tools import create_fit_card; from utils.data_loader import load_listings; print(create_fit_card('jeans and white sneakers', load_listings()[0]))"
+>> python -c "from tools import create_fit_card; from utils.data_loader import load_listings; print(create_fit_card('jeans and white sneakers', load_listings()[1]))"
+>> Remove-Item Env:AI201_CACHE
+[{'id': 'lst_017', 'title': 'Mesh Long-Sleeve Top — Black', 'description': 'Sheer black mesh long-sleeve. Great for layering under a graphic tee or over a bralette. Stretchy material, fits true to size.', 'category': 'tops', 'style_tags': ['y2k', 'grunge', 'goth', 'layering'], 'size': 'S/M', 'condition': 'excellent', 'price': 15.0, 'colors': ['black'], 'brand': None, 'platform': 'depop'}, {'id': 'lst_002', 'title': 'Y2K Baby Tee — Butterfly Print', 'description': 'Super cute early 2000s baby tee with butterfly graphic. Fitted crop length. Tag says medium but fits like a small.', 'category': 'tops', 'style_tags': ['y2k', 'vintage', 'graphic tee', 'cottagecore'], 'size': 'S/M', 'condition': 'excellent', 'price': 18.0, 'colors': ['white', 'pink', 'purple'], 'brand': None, 'platform': 'depop'}, {'id': 'lst_033', 'title': 'Vintage Band Tee — Faded Grey', 'description': 'Faded grey band-styletee with distressed graphic. Crew neck. Fits boxy. Well-loved but no holes or major damage.', 'category': 'tops', 'style_tags': ['vintage', 'grunge','band tee', 'graphic tee', 'streetwear'], 'size': 'L', 'condition': 'fair', 'price': 19.0, 'colors': ['grey', 'charcoal'], 'brand': None, 'platform':'depop'}, {'id': 'lst_006', 'title': 'Graphic Tee — 2003 Tour Bootleg Style', 'description': 'Vintage-style bootleg tee with faded graphic. Slightly boxy fit. 100% cotton, soft and worn-in.', 'category': 'tops', 'style_tags': ['graphic tee', 'vintage', 'grunge', 'streetwear', 'band tee'], 'size': 'L', 'condition': 'good', 'price': 24.0, 'colors': ['black'], 'brand': None, 'platform': 'depop'}, {'id': 'lst_012', 'title': 'Oversized Crewneck Sweatshirt — Vintage Navy', 'description': 'Perfectly faded navy crewneck. Genuinely vintage — not manufactured distressed. Ribbed cuffs and hem. No graphics, clean.', 'category': 'tops', 'style_tags': ['vintage', 'basics', 'oversized', 'classic'], 'size': 'XL (fits oversized)', 'condition': 'good', 'price': 20.0, 'colors': ['navy'], 'brand': None, 'platform': 'thredUp'}, {'id': 'lst_015', 'title': 'Vintage Graphic Hoodie — Faded Black', 'description': 'Faded black pullover hoodie with barely-visible vintage graphic on the chest. Cozy interior. Some pilling but adds to the worn-in look.', 'category': 'tops', 'style_tags': ['vintage', 'grunge', 'graphic', 'streetwear'], 'size': 'L', 'condition': 'fair', 'price': 26.0, 'colors': ['black', 'charcoal'], 'brand': None, 'platform': 'depop'}, {'id': 'lst_011', 'title': 'Low-Rise Cargo Pants — Khaki', 'description': 'Y2K era low-rise cargo pants. Lots of pockets. Khaki color, slightly distressed at the hems. Great for layering with a long tee.', 'category': 'bottoms', 'style_tags': ['y2k', 'cargo', '2000s', 'streetwear'], 'size': 'W29', 'condition': 'fair', 'price': 27.0, 'colors': ['khaki', 'tan'], 'brand': None, 'platform': 'poshmark'}]
+[]
+[('lst_017', 'S/M'), ('lst_002', 'S/M')]
+Outfit 1: Casual Streetwear
+Pair the Vintage Levi's 501 Jeans with the White ribbed tank top, the Black cropped zip hoodie worn open, and the Chunky white sneakers. Add the Black crossbody bag to finish the look.
+
+Outfit 2: Relaxed Vintage
+Style the Vintage Levi's 501 Jeans with the Oversized grey crewneck sweatshirt, cinched at the waist with the Brown leather belt, and the Black combat boots. Throw on the Vintage black denim jacket over top.
+Casual Streetwear Look
+
+Pair the vintage Levi's with a classic white boxy crewneck t-shirt tucked in casually. Layer an oversized black vintage leather bomber jacket or a denim jacket over top for a textured double-denim moment. Finish the outfit with well-worn white canvas low-top sneakers like Converse or Vans, a black canvas belt, and a minimalist silver pendant necklace for an effortless, everyday vibe.
+
+Elevated Casual Look
+
+Tuck a fitted black ribbed turtleneck bodysuit into the high-waisted medium wash denim to define your shape. Throw on an oversized houndstooth or camel wool trench coat for a sharp, contrasting silhouette. Complete the look with pointed-toe black leather boots, a structured black leather shoulder bag, and simple gold hoop earrings to easily transition the classic jeans from day to night.
+Finally scored these vintage Levi's 501 jeans in a dreamy medium wash on depop for just 38 dollars. They give off such an effortless 90s off-duty model vibe. I am definitely living in these with my favorite white sneakers from now on.
+Just scored these vintage medium wash Levi's 501 jeans on depop for $38 and I am never taking them off. They have that perfectly broken-in 90s slouchthat is impossible to fake. Throwing them on with some crisp white sneakers and I am officially set for the weekend.
+Scored this cute little Y2K butterfly baby tee on depop for just eighteen dollars and I am obsessed. It has that ultimate early 2000s mallrat vibe that I can not get enough of. I am definitely throwing it on with my favorite jeans and white sneakers for my coffee run tomorrow.
+(.venv) (base) PS C:\Users\shubh\Desktop\Hard disk\College(PG)\Academics at UCSD\Y2Q1\Codepath\AI201 Applications of AI Engineering\Projects\ai201-project2-fitfindr-starter-v2026> 
 
 ---
 
