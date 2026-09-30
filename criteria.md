@@ -24,7 +24,7 @@ data earns credit; *"80% seemed reasonable"* does not.
 Given a query that matches at least one listing, the agent completes all three
 tool calls and returns a fit card — in at least 4 of 5 tries.
 
-**Why this target:**
+**Why this target:** I picked 4 of 5 rather than 5 of 5 because two of the three tools call a model, which can fail or return unusable output on a given try. My search is also a plain keyword match, so some phrasings will miss even when a listing exists
 <!-- Why 4 of 5 and not 5 of 5? Something about your search, probably —
      "my search is a plain keyword match and some phrasings will miss" is a
      real answer. -->
@@ -36,7 +36,7 @@ tool calls and returns a fit card — in at least 4 of 5 tries.
 Given a query that matches no listings, the agent stops before calling
 `suggest_outfit` and returns a message naming what to change — 5 of 5 tries.
 
-**Why this target:**
+**Why this target:** I picked 5 of 5 because this path never reaches a model. It's a plain check on an empty list in `run_agent`, so the outcome is the same every time, and anything less than 5 of 5 would mean a bug in the branch.
 <!-- Why is 5 of 5 reasonable here when criterion 1 isn't? What's different
      about this path? -->
 
@@ -53,12 +53,9 @@ Given a query that matches no listings, the agent stops before calling
      look like state failure — it looks like a tool problem. Something that
      compares session["selected_item"] against what actually reached
      suggest_outfit is the shape you're after. -->
+In a happy-path run, the `id` in `session["selected_item"]` equals the `id` of the item passed into `suggest_outfit`, in 5 of 5 tries.
 
-
-
-**Why this target:**
-
-
+**Why this target:** Search and session handling are plain code with no model involved, so this should never vary. Anything below 5 of 5 would mean a bug in how I read values back out of the session.
 
 ---
 
@@ -75,11 +72,9 @@ Given a query that matches no listings, the agent stops before calling
      sentence? A card longer than a caption anyone would post? Any of those can
      be turned into a number. -->
 
+Across 5 runs on the same item, every fit card is 1 to 3 sentences and includes the price, in 4 of 5 tries.
 
-
-**Why this target:**
-
-
+**Why this target:** The model gives different words each run, so 5 of 5 is too strict and one bad sample shouldn't fail the whole criterion. A card without a price, or longer than 3 sentences, counts as a FAIL.
 
 ---
 
@@ -91,12 +86,9 @@ Given a query that matches no listings, the agent stops before calling
      wardrobe path, what happens when the model can't be reached, whether the
      search respects a price ceiling — anything, as long as it names a number
      or an observable outcome. -->
+For a query with `max_price=30`, every listing returned by `search_listings` has `price <= 30`, in 5 of 5 tries.
 
-
-
-**Why this target:**
-
-
+**Why this target:** The price filter is a plain numeric comparison with no model involved, so anything below 5 of 5 would mean a bug.
 
 ---
 
