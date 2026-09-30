@@ -58,24 +58,25 @@ FitFindr is a thrifting agent. A user describes what they want in plain language
 
 ### `search_listings`
 
-- **What it does:**
-- **Inputs:** <!-- name and type each: `max_price` (float), not "a price" -->
-- **Returns:**
-- **When it has nothing:**
+- **What it does:** Filters the listings file by keyword, size, and price ceiling and returns every matching listing.
+- **Inputs:** `description` (str), `size` (str or None), `max_price` (float or None). `None` means that filter is skipped.
+- **Returns:** A list of listing dicts, each with the full listing fields: `id` (str), `title` (str), `description` (str), `category` (str), `style_tags` (list[str]), `size` (str), `condition` (str), `price` (float), `colors` (list[str]), `brand` (str or None), `platform` (str). Sorted by price, lowest first.
+- **When it has nothing:** An empty list `[]`. Never `None`, and it never raises an exception.
+- **Matching rules:** A listing matches `description` if at least one keyword from the query (lowercased, stopwords like "a", "under", "in" removed) appears in its title, description, or `style_tags`. `size` matches case-insensitively as a whole token, so "M" matches `M` and `S/M` but not `XL (oversized)`. `price` must be less than or equal to `max_price`.
 
 ### `suggest_outfit`
 
-- **What it does:**
-- **Inputs:**
-- **Returns:**
-- **When it has nothing:**
+- **What it does:** Asks the model for outfit ideas that pair the new item with pieces from the user's wardrobe.
+- **Inputs:** `new_item` (dict, one listing returned by `search_listings`), `wardrobe` (dict with one key, `items`, a list of dicts each holding `id` (str), `name` (str), `category` (str: tops, bottoms, outerwear, shoes, or accessories), `colors` (list[str]), `style_tags` (list[str]), `notes` (str or None)).
+- **When it has nothing:** If `wardrobe["items"]` is empty (`{"items": []}`), it returns a string of general styling advice for the new item instead of failing. If the model call fails, it raises an error that the loop catches, and the loop shows the user a message saying the model couldn't be reached.
+- **Returns:** A non-empty string of two or three outfit ideas, each naming the new item and the wardrobe pieces it pairs with.
 
 ### `create_fit_card`
 
-- **What it does:**
-- **Inputs:**
-- **Returns:**
-- **When it has nothing:**
+- **What it does:** Asks the model for a short social-media caption for the outfit.
+- **Inputs:** `outfit` (str, the output of `suggest_outfit`), `new_item` (dict, the selected listing).
+- **When it has nothing:** If `brand` is `None`, the prompt leaves the brand out and the card is still written. If `outfit` is empty, it writes a caption from `new_item` alone. If the model call fails, it raises an error that the loop catches, same as `suggest_outfit`.
+- **Returns:** A non-empty string of one to three sentences, in a casual voice, that mentions the item and its price. It never depends on `brand` being present.
 
 ---
 
@@ -92,7 +93,7 @@ FitFindr is a thrifting agent. A user describes what they want in plain language
      The grader checks your code against what you claim here, so the file and
      function have to be real. -->
 
-**Branch rule:**
+**Branch rule:** If `search_listings` returns an empty list, put a message in `session["message"]` that names what to change (loosen the size, raise the price ceiling, or try different keywords), leave `session["fit_card"]` as `None`, and stop without calling `suggest_outfit`. Otherwise, store the first result in `session["selected_item"]` and continue to `suggest_outfit`, then `create_fit_card`.
 
 **Where it lives:** `agent.py::run_agent`
 
