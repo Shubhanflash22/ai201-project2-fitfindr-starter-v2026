@@ -42,6 +42,8 @@
 <!-- Three or four sentences: what a user asks for, and what they get back. -->
 FitFindr is a thrifting agent. A user describes what they want in plain language, like "a vintage graphic tee under $30, size M," and the agent searches a file of secondhand listings for matches. It then takes the top match, works out outfit ideas to go with it from the user's wardrobe (or gives general styling advice if the wardrobe is empty), and writes a short caption the user could post. If nothing matches, the agent stops and tells the user what to change, such as the size or the price ceiling, instead of continuing with nothing.
 
+**Stretch feature:** a fourth tool, `compare_prices`, that compares the selected item's price with the average of other listings in the same category.
+
 ---
 
 ## Tool Inventory
@@ -78,6 +80,12 @@ FitFindr is a thrifting agent. A user describes what they want in plain language
 - **Returns:** A non-empty string of two or three sentences in a casual voice that mentions the item, its price, and its platform.
 - **When it has nothing:** If `brand` is `None`, the prompt leaves the brand out and the card is still written. If `outfit` is empty or whitespace, it writes a caption from `new_item` alone. If the model call fails, `generate()` raises `ModelUnavailable`, which the loop catches, same as `suggest_outfit`.
 
+### `compare_prices` (stretch)
+
+- **What it does:** Compares the selected item's price with the average price of the other listings in the same category.
+- **Inputs:** `item` (dict, the selected listing).
+- **Returns:** A dict with `category` (str), `average` (float or None), `count` (int), `difference` (float or None, item price minus average), and `verdict` (str, one of cheaper than, pricier than, or about the category average).
+- **When it has nothing:** If no other listing shares the category, `average` and `difference` are `None`, `count` is `0`, and `verdict` says there is nothing to compare against.
 ---
 
 ## Planning Loop
@@ -133,6 +141,52 @@ $ python -c "from tools import suggest_outfit; ..."
 $ python -c "from tools import create_fit_card; ..."
 
 ```
+
+(base) PS C:\Users\shubh\Desktop\Hard disk\College(PG)\Academics at UCSD\Y2Q1\Codepath\AI201 Applications of AI Engineering\Projects\ai201-project2-fitfindr-starter-v2026> (Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned) ; (& "c:\Users\shubh\Desktop\Hard disk\College(PG)\Academics at UCSD\Y2Q1\Codepath\AI201 Applications of AI Engineering\Projects\ai201-project2-fitfindr-starter-v2026\.venv\Scripts\Activate.ps1")
+(.venv) (base) PS C:\Users\shubh\Desktop\Hard disk\College(PG)\Academics at UCSD\Y2Q1\Codepath\AI201 Applications of AI Engineering\Projects\ai201-project2-fitfindr-starter-v2026> # One full query                                                                                    
+>> python app.py ask 'vintage graphic tee under $30, size M'                                                                                
+>> python app.py ask 'designer ballgown size XXS under $5'
+>> 
+>> # Tool 1
+>> python -c "from tools import search_listings; print(search_listings('graphic tee', max_price=30))"
+>> 
+>> # Tool 2
+>> python -c "from tools import suggest_outfit; from utils.data_loader import get_example_wardrobe, load_listings; print(suggest_outfit(load_listings()[0], get_example_wardrobe()))"
+>> 
+>> # Tool 3 (cache off so it can vary)
+>> $env:AI201_CACHE="0"
+>> python -c "from tools import create_fit_card; from utils.data_loader import load_listings; print(create_fit_card('jeans and white sneakers', load_listings()[0]))"
+>> Remove-Item Env:AI201_CACHE
+>> 
+>> # Tool 4 (stretch)
+>> python -c "from tools import compare_prices; from utils.data_loader import load_listings; print(compare_prices(load_listings()[1]))"
+
+  Found:    Y2K Baby Tee — Butterfly Print — $18.0 on depop
+
+  Outfit:   Outfit 1 (Streetwear Edge):
+Pair the Y2K Baby Tee with your baggy straight-leg jeans (dark wash, indigo) and your vintage black denim jacket. Complete the look with your chunky white sneakers and black crossbody bag.
+
+Outfit 2 (Casual Contrast):
+Layer the Y2K Baby Tee under your oversized grey crewneck sweatshirt, matched with your wide-leg khaki trousers. Finish with your black combat boots and brown leather belt.
+
+  Fit card: Just scored this little butterfly baby tee on depop for eighteen dollars and the nostalgic early two thousands mall punk energyis immaculate. I am definitely styling it with my baggy dark wash jeans and chunky sneakers for that effortless streetwear look.
+
+0 model calls this session, 2 served from cache
+
+  Nothing in the listings matched description 'designer ballgown', size XXS, under $5.
+Things to change: try broader words — 'jacket' finds more than 'cropped corduroy jacket'; drop the size, or try a neighbouring one; raise the price ceiling above $5.
+
+0 model calls this session
+[{'id': 'lst_017', 'title': 'Mesh Long-Sleeve Top — Black', 'description': 'Sheer black mesh long-sleeve. Great for layering under a graphic tee or over a bralette. Stretchy material, fits true to size.', 'category': 'tops', 'style_tags': ['y2k', 'grunge', 'goth', 'layering'], 'size': 'S/M', 'condition': 'excellent', 'price': 15.0, 'colors': ['black'], 'brand': None, 'platform': 'depop'}, {'id': 'lst_002', 'title': 'Y2K Baby Tee — Butterfly Print', 'description': 'Super cute early 2000s baby tee with butterfly graphic. Fitted crop length. Tag says medium but fits like a small.', 'category': 'tops', 'style_tags': ['y2k', 'vintage', 'graphic tee', 'cottagecore'], 'size': 'S/M', 'condition': 'excellent', 'price': 18.0, 'colors': ['white', 'pink', 'purple'], 'brand': None, 'platform': 'depop'}, {'id': 'lst_033', 'title': 'Vintage Band Tee — Faded Grey', 'description': 'Faded grey band-style tee with distressed graphic. Crew neck. Fits boxy. Well-loved but no holes or major damage.', 'category': 'tops', 'style_tags': ['vintage', 'grunge', 'band tee', 'graphic tee', 'streetwear'], 'size': 'L', 'condition': 'fair', 'price': 19.0, 'colors': ['grey', 'charcoal'], 'brand': None, 'platform': 'depop'}, {'id': 'lst_006', 'title': 'Graphic Tee — 2003 Tour Bootleg Style', 'description': 'Vintage-style bootleg tee with faded graphic. Slightly boxy fit. 100% cotton, soft and worn-in.', 'category': 'tops', 'style_tags': ['graphic tee', 'vintage', 'grunge', 'streetwear', 'band tee'], 'size': 'L', 'condition': 'good', 'price': 24.0, 'colors': ['black'], 'brand': None, 'platform': 'depop'}, {'id': 'lst_012', 'title': 'Oversized Crewneck Sweatshirt — Vintage Navy', 'description': 'Perfectly faded navy crewneck. Genuinely vintage — not manufactured distressed. Ribbed cuffs and hem. No graphics, clean.', 'category': 'tops', 'style_tags': ['vintage', 'basics', 'oversized', 'classic'], 'size': 'XL (fits oversized)', 'condition': 'good', 'price': 20.0,'colors': ['navy'], 'brand': None, 'platform': 'thredUp'}, {'id': 'lst_015', 'title': 'Vintage Graphic Hoodie — Faded Black', 'description': 'Faded black pullover hoodie with barely-visible vintage graphic on the chest. Cozy interior. Some pilling but adds to the worn-in look.','category': 'tops', 'style_tags': ['vintage', 'grunge', 'graphic', 'streetwear'], 'size': 'L', 'condition': 'fair', 'price': 26.0, 'colors': ['black', 'charcoal'], 'brand': None, 'platform': 'depop'}, {'id': 'lst_011', 'title': 'Low-Rise Cargo Pants — Khaki', 'description': 'Y2Kera low-rise cargo pants. Lots of pockets. Khaki color, slightly distressed at the hems. Great for layering with a long tee.', 'category': 'bottoms', 'style_tags': ['y2k', 'cargo', '2000s', 'streetwear'], 'size': 'W29', 'condition': 'fair', 'price': 27.0, 'colors': ['khaki', 'tan'], 'brand': None, 'platform': 'poshmark'}]
+Outfit 1: Casual Streetwear
+Pair the Vintage Levi's 501 Jeans with the White ribbed tank top, the Black cropped zip hoodie worn open, and the Chunky white sneakers. Add the Black crossbody bag to finish the look.
+
+Outfit 2: Relaxed Vintage
+Style the Vintage Levi's 501 Jeans with the Oversized grey crewneck sweatshirt, cinched at the waist with the Brown leather belt, and the Black combat boots. Throw on the Vintage black denim jacket over top.
+Just scored these vintage medium wash Levi's 501 jeans on depop for thirty eight dollars and they have the absolute best lived-in 90s grunge vibe. I am definitely styling them with my beat-up white sneakers for the easiest everyday uniform. Finding denim that actually fits this well on the first try feels like winning the lottery.
+{'category': 'tops', 'average': 22.0, 'count': 14, 'difference': -4.0, 'verdict': 'cheaper than the tops average'}
+(.venv) (base) PS C:\Users\shubh\Desktop\Hard disk\College(PG)\Academics at UCSD\Y2Q1\Codepath\AI201 Applications of AI Engineering\Projects\ai201-project2-fitfindr-starter-v2026> 
+
 
 >> python -c "from tools import search_listings; print(search_listings('graphic tee', max_price=30))"
 >> 

@@ -277,3 +277,45 @@ def create_fit_card(outfit: str, new_item: dict) -> str:
         + f"\n\nOutfit idea:\n{outfit_text}"
     )
     return generate(prompt).strip()
+
+# ── Tool 4 (stretch): compare_prices ──────────────────────────────────────────
+
+def compare_prices(item: dict) -> dict:
+    """
+    Compare an item's price with the average of the other listings in the same
+    category. No model call.
+
+    Returns a dict with: category (str), average (float or None), count (int),
+    difference (float or None, item price minus average), verdict (str).
+    With nothing to compare against, average and difference are None, count is
+    0, and verdict says so.
+    """
+    others = [
+        l for l in load_listings()
+        if l["category"] == item["category"] and l["id"] != item["id"]
+    ]
+    if not others:
+        return {
+            "category": item["category"],
+            "average": None,
+            "count": 0,
+            "difference": None,
+            "verdict": "no other listings in this category to compare against",
+        }
+
+    average = sum(l["price"] for l in others) / len(others)
+    difference = item["price"] - average
+    if difference < -1:
+        verdict = f"cheaper than the {item['category']} average"
+    elif difference > 1:
+        verdict = f"pricier than the {item['category']} average"
+    else:
+        verdict = f"about the {item['category']} average"
+
+    return {
+        "category": item["category"],
+        "average": round(average, 2),
+        "count": len(others),
+        "difference": round(difference, 2),
+        "verdict": verdict,
+    }

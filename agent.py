@@ -14,8 +14,9 @@ Build and test your three tools in `tools.py` first. Then come here.
 """
 
 import config
+import re
 import trace
-from tools import search_listings, suggest_outfit, create_fit_card
+from tools import search_listings, suggest_outfit, create_fit_card, compare_prices
 from generate import ModelUnavailable
 
 
@@ -40,12 +41,40 @@ def new_session(query: str, wardrobe: dict) -> dict:
         "parsed": {},                # description / size / max_price you pulled out of it
         "search_results": [],        # everything search_listings returned
         "selected_item": None,       # the one you chose — goes into suggest_outfit
+        "price_check": None,         # what compare_prices returned
         "wardrobe": wardrobe,        # the user's wardrobe
         "outfit_suggestion": None,   # what suggest_outfit returned
         "fit_card": None,            # what create_fit_card returned
         "error": None,               # set when the run ended early
     }
 
+# ── parsing the query ─────────────────────────────────────────────────────────
+
+_SIZE_WORDS = r"XXS|XS|S|M|L|XL|XXL"
+
+_PRICE_RE = re.compile(r"(?:under|below|less than|max|up to)?\s*\$\s*(\d+(?:\.\d+)?)", re.I)
+_SIZE_RE = re.compile(rf"\bsize\s+({_SIZE_WORDS}|US\s*\d+(?:\.\d+)?|W\d+)\b", re.I)
+_BARE_SIZE_RE = re.compile(rf",\s*({_SIZE_WORDS})\s*$", re.I)
+
+
+def parse_query(query: str) -> dict:
+    """Regex, no model call. Returns description (str), size (str or None), max_price (float or None)."""
+    text = query or ""
+
+    max_price = None
+    price_match = _PRICE_RE.search(text)
+    if price_match:
+        max_price = float(price_match.group(1))
+        text = text[: price_match.start()] + " " + text[price_match.end() :]
+
+    size = None
+    size_match = _SIZE_RE.search(text) or _BARE_SIZE_RE.search(text)
+    if size_match:
+        size = re.sub(r"\s+", " ", size_match.group(1)).strip().upper()
+        text = text[: size_match.start()] + " " + text[size_match.end() :]
+
+    description = re.sub(r"[,\s]+", " ", text).strip(" ,")
+    return {"description": description, "size": size, "max_price": max_price}
 
 # ── planning loop ─────────────────────────────────────────────────────────────
 
@@ -108,10 +137,74 @@ def run_agent(query: str, wardrobe: dict) -> dict:
     session = new_session(query, wardrobe)
 
     # TODO: delete these two lines and build the loop.
-    session["error"] = "The planning loop isn't built yet — see the TODO in agent.py."
+    # session["error"] = "The planning loop isn't built yet — see the TODO in agent.py."
+    # return session
+
+    steps = 0
+
+    try:
+        steps += 1
+        trace.check_iterations(steps)
+        session["parsed"] = parse_query(query)
+
+        steps += 1
+        trace.check_iterations(steps)
+        session["search_results"] = search_listings(
+            session["parsed"]["description"],
+            session["parsed"]["size"],
+            session["parsed"]["max_price"],
+        )
+
+        # THE BRANCH: nothing found -> set a message, stop, never call suggest_outfit
+        if not session["search_results"]:
+            session["error"] = _nothing_found_message(session["parsed"])
+            return session
+
+        steps += 1
+        trace.check_iterations(steps)
+        session["selected_item"] = session["search_results"][0]
+        session["price_check"] = compare_prices(session["selected_item"])
+
+        steps += 1
+        trace.check_iterations(steps)
+        session["outfit_suggestion"] = suggest_outfit(
+            session["selected_item"], session["wardrobe"]
+        )
+
+        steps += 1
+        trace.check_iterations(steps)
+        session["fit_card"] = create_fit_card(
+            session["outfit_suggestion"], session["selected_item"]
+        )
+
+    except ModelUnavailable as exc:
+        session["error"] = (
+            f"The model couldn't be reached, so the outfit and caption steps "
+            f"didn't run. The search worked: {len(session['search_results'])} "
+            f"listing(s) were found. Check GEMINI_API_KEY in your .env, then "
+            f"run the same query again.\nWhat the service said: {exc}"
+        )
+
     return session
 
+def _nothing_found_message(parsed: dict) -> str:
+    """Names what the user could change, and only the filters that were in play."""
+    tried = [f"description {parsed['description']!r}"]
+    if parsed["size"]:
+        tried.append(f"size {parsed['size']}")
+    if parsed["max_price"] is not None:
+        tried.append(f"under ${parsed['max_price']:g}")
 
+    suggestions = ["try broader words — 'jacket' finds more than 'cropped corduroy jacket'"]
+    if parsed["size"]:
+        suggestions.append("drop the size, or try a neighbouring one")
+    if parsed["max_price"] is not None:
+        suggestions.append(f"raise the price ceiling above ${parsed['max_price']:g}")
+
+    return (
+        "Nothing in the listings matched " + ", ".join(tried) + ".\n"
+        "Things to change: " + "; ".join(suggestions) + "."
+    )
 # ── running it directly ───────────────────────────────────────────────────────
 
 def _show(session: dict) -> None:
