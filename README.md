@@ -86,6 +86,7 @@ FitFindr is a thrifting agent. A user describes what they want in plain language
 - **Inputs:** `item` (dict, the selected listing).
 - **Returns:** A dict with `category` (str), `average` (float or None), `count` (int), `difference` (float or None, item price minus average), and `verdict` (str, one of cheaper than, pricier than, or about the category average).
 - **When it has nothing:** If no other listing shares the category, `average` and `difference` are `None`, `count` is `0`, and `verdict` says there is nothing to compare against.
+
 ---
 
 ## Planning Loop
@@ -107,7 +108,15 @@ FitFindr is a thrifting agent. A user describes what they want in plain language
 
 **How the query is parsed:** <!-- regex, string splitting, or asking the model — say which -->
 
-**What moves through the session:** <!-- which fields, in what order -->
+**What moves through the session:** which fields, in what order
+
+**Branch rule:** If `search_listings` returns an empty list, put a message in `session["error"]` that names what to change (broader keywords, drop or change the size, raise the price ceiling), leave `session["fit_card"]` as `None`, and return the session without calling `suggest_outfit`. Otherwise, store the first result in `session["selected_item"]` and continue to `suggest_outfit`, then `create_fit_card`.
+
+**Where it lives:** `agent.py::run_agent`
+
+**How the query is parsed:** Regex, with no model call (`agent.py::parse_query`). A price such as "under $30" becomes `max_price` (float), a size such as "size M" or a trailing ", M" becomes `size` (str), and the leftover words become `description`. Phrasing it hasn't seen, like "under thirty dollars" or "size 8", parses to no price or size, so that filter is silently skipped.
+
+**What moves through the session:** In order: `session["parsed"]` (description, size, max_price), then `session["search_results"]` (the list from `search_listings`). If that list is empty, `session["error"]` is set and the run stops. Otherwise `session["selected_item"]` (the first result) is set, `compare_prices` fills `session["price_check"]`, and `selected_item` is read back out for `suggest_outfit`, which sets `session["outfit_suggestion"]`. That is read back out for `create_fit_card`, which sets `session["fit_card"]`.
 
 ---
 
@@ -250,6 +259,19 @@ Scored this cute little Y2K butterfly baby tee on depop for just eighteen dollar
 - *What I asked for:*
 - *What came back:*
 - *What I changed:*
+
+**Moment 1**
+
+- *What I asked for:* I asked Claude to draft the text for my Tool Inventory spec for my three tools, and help me decide a few things including the inputs and what each returns when it has nothing.
+- *What came back:* It specified `wardrobe` as a plain list of dicts, so the empty case was `[]`.
+- *What I changed:* `data/wardrobe_schema.json` shows the wardrobe is a dict with an `items` key, so the empty case is `{"items": []}`. I corrected the spec, and `suggest_outfit` checks `wardrobe.get("items")`, because `if not wardrobe` would treat `{"items": []}` as non-empty and skip the fallback.
+
+**Moment 2**
+
+- *What I asked for:* I asked Claude to edit the `run_agent` loop from my branch rule when it gave syntax errors.
+- *What came back:* A version with no syntax errors and clean run along with good documentation.
+- *What I changed:* I used only the parts I needed: the parser, the loop, and the empty-search message.
+
 
 <!-- ═══════════════════════ UNIT 4 — THE TEST ═══════════════════════
 
