@@ -466,24 +466,33 @@ I registered `search_listings` in `mcp_server.py` with a description written for
      `python run_eval.py --label after` -->
 
 **What I changed:**
+In `tools.py::create_fit_card`, I added one sentence to the end of the prompt: "Write the price with a dollar sign and digits, like $18, never in words." Nothing else changed in the code. The "after" run used the same scenarios, the same agent, and caching off.
 
 **Which failure it was meant to fix:**
+Criterion 4. My criterion said the fit card "includes the price", and it passed 5 of 5 before the change, but every card wrote the price in words ("eighteen dollars", "18 dollars") and none used a `$` sign. That is a model-output problem: the `create_fit_card` prompt never said how to write the price, so the model chose words. A stricter check for a dollar sign would have failed 5 of 5, so this was the weakest point in my results.
 
 ### Run Log — After
 
 | Criterion | Target | Try 1 | Try 2 | Try 3 | Try 4 | Try 5 | Verdict |
 |---|---|---|---|---|---|---|---|
-| 1.  |  |  |  |  |  |  |  |
+<!-- | 1.  |  |  |  |  |  |  |  |
 | 2.  |  |  |  |  |  |  |  |
 | 3.  |  |  |  |  |  |  |  |
 | 4.  |  |  |  |  |  |  |  |
-| 5.  |  |  |  |  |  |  |  |
+| 5.  |  |  |  |  |  |  |  | -->
+| 1. A matching query completes all three tools | 4 of 5 | PASS | PASS | PASS | PASS | PASS | MET (5/5) |
+| 2. An impossible query stops before the second tool | 5 of 5 | PASS | PASS | PASS | PASS | PASS | MET (5/5) |
+| 3. Item in session matches item passed on | 5 of 5 | PASS | PASS | PASS | PASS | PASS | MET (5/5) |
+| 4. Fit card is 1 to 3 sentences and includes the price | 4 of 5 | PASS | PASS | PASS | PASS | PASS | MET (5/5) |
+| 5. Price ceiling respected | 5 of 5 | PASS | PASS | PASS | PASS | PASS | MET (5/5) |
 
 **Did it help, and how do I know:**
 
 <!-- If it made things worse, say that. Honestly reported, that earns full
      credit and is more interesting than one that worked. -->
+Yes, but the table doesn't show it. Every criterion was MET 5 of 5 before and after, because criterion 4 as I wrote it ("includes the price") was already passing with the price in words. The change shows up in a stricter check on the same fit cards: before, 0 of 5 cards contained a `$` sign and 5 of 5 spelled the price out; after, 5 of 5 contain a `$` sign and 0 of 5 use words. I counted this with `check_compare.py` on the saved results files (`results/run_2026-10-10_1249_before.md` and `results/run_2026-10-10_1305_after.md`). Sentence counts stayed at 2 or 3 per card, so the change didn't break the length limit. The sample is small (5 cards from one item), and the model's output varies, so I can't promise 5 of 5 on every item. What the run does show is that adding one sentence to the prompt moved the price format from 0 of 5 to 5 of 5.
 
+This also means criterion 4 was worded too loosely. If I revised it, the new version would say "includes the price written with a $ sign", because that is something I can score.
 
 
 ---
