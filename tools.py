@@ -272,7 +272,9 @@ def create_fit_card(outfit: str, new_item: dict) -> str:
         "person posting, not a product description. Exactly two or three "
         "sentences. Mention the item, its price, and the platform once each, "
         "and be specific about the vibe. No hashtags, no emojis, no quotation "
-        "marks around the caption.\n\n"
+        # "marks around the caption.\n\n"
+        "marks around the caption. Write the price with a dollar sign and "
+        "digits, like $18, never in words.\n\n"
         + "\n".join(details)
         + f"\n\nOutfit idea:\n{outfit_text}"
     )
