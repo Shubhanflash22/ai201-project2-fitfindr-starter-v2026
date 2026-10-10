@@ -293,16 +293,58 @@ Scored this cute little Y2K butterfly baby tee on depop for just eighteen dollar
 
 | Criterion | Target | Try 1 | Try 2 | Try 3 | Try 4 | Try 5 | Verdict |
 |---|---|---|---|---|---|---|---|
-| 1.  |  |  |  |  |  |  |  |
+<!-- | 1.  |  |  |  |  |  |  |  |
 | 2.  |  |  |  |  |  |  |  |
 | 3.  |  |  |  |  |  |  |  |
 | 4.  |  |  |  |  |  |  |  |
-| 5.  |  |  |  |  |  |  |  |
+| 5.  |  |  |  |  |  |  |  | -->
+| 1. A matching query completes all three tools | 4 of 5 | PASS | PASS | PASS | PASS | PASS | MET (5/5) |
+| 2. An impossible query stops before the second tool | 5 of 5 | PASS | PASS | PASS | PASS | PASS | MET (5/5) |
+| 3. Item in session matches item passed on | 5 of 5 | PASS | PASS | PASS | PASS | PASS | MET (5/5) |
+| 4. Fit card is 1 to 3 sentences and includes the price | 4 of 5 | PASS | PASS | PASS | PASS | PASS | MET (5/5) |
+| 5. Price ceiling respected | 5 of 5 | PASS | PASS | PASS | PASS | PASS | MET (5/5) |
 
 **Real output from one try**, pasted as text, naming the file and function
 that produced it:
 
 ```
+Criterion 1: matching query completes (try 1)
+Produced by: agent.py::run_agent, using tools.py::search_listings (via mcp_server.py), suggest_outfit and create_fit_card
+$ python run_eval.py --label before
+[2] search_listings (via MCP)
+      →    10 match(es)
+[3] select_item
+      out: Y2K Baby Tee — Butterfly Print ($18.0, depop)
+[5] suggest_outfit
+      →    10 wardrobe item(s)
+[6] create_fit_card
+      out: Found this butterfly print Y2K baby tee on depop for eighteen dollars and the total bratz doll energy is unrea…
+  try 1: completed — fit card 227 chars
+
+Criterion 2: impossible query stops early (try 1)
+Produced by: agent.py::run_agent (the branch) and agent.py::_nothing_found_message
+[2] search_listings (via MCP)
+      out: [] (empty)
+      →    0 match(es)
+[3] branch
+      →    search returned []: stopping before suggest_outfit
+  try 1: stopped early — Nothing in the listings matched description 'designer ballgo
+
+Criterion 3: selected item matches item passed on (try 1)
+Produced by: agent.py::run_agent
+[3] select_item
+      out: Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+[5] suggest_outfit
+      in:  Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+
+Criterion 4: fit card length and price (try 1)
+Produced by: tools.py::create_fit_card, read with check_cards.py
+TRY 1 | sentence marks: 3 | $ sign: False | price in words: True
+Scored this little butterfly print Y2K baby tee on depop for just 18 dollars and I am obsessed. The nostalgic street style vibe is immaculate with baggy jeans and a cropped hoodie. It also looks so cute with wide-leg trousers and combat boots for that sweet-yet-edgy contrast.
+
+Criterion 5: price ceiling respected (try 1)
+Produced by: tools.py::search_listings, checked with check_price.py
+TRY 1 | results: 3 | prices: [24.0, 27.0, 30.0] | over $30: []
 
 ```
 
