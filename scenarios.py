@@ -47,6 +47,28 @@ SCENARIOS = [
     # For a fit-card criterion, you probably want the SAME query listed more
     # than once, or several different items, depending on what your criterion
     # actually says.
+    {
+        # Criterion 3: the item in the session is the item that reached suggest_outfit.
+        "name": "selected item matches item passed on",
+        "query": "denim jacket under $50",
+        "wardrobe": "example",
+        "criterion": 3,
+    },
+    {
+        # Criterion 4: fit card is 1-3 sentences and includes the price.
+        # run_eval.py runs this 5 times, so one scenario gives 5 fit cards.
+        "name": "fit card length and price",
+        "query": "vintage graphic tee under $30",
+        "wardrobe": "example",
+        "criterion": 4,
+    },
+    {
+        # Criterion 5: nothing returned costs more than the price ceiling.
+        "name": "price ceiling respected",
+        "query": "denim jacket under $30",
+        "wardrobe": "example",
+        "criterion": 5,
+    },
 ]
 
 WARDROBES = ("example", "empty")
