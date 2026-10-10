@@ -99,6 +99,22 @@ mcp = FastMCP("fitfindr", log_level="WARNING")
 # `max_price: float | None = None` becomes an optional number. Getting these
 # wrong is the most common reason a call is rejected.
 
+@mcp.tool()
+def search_listings(
+    description: str,
+    size: str | None = None,
+    max_price: float | None = None,
+) -> list[dict]:
+    """
+    Search secondhand clothing listings by keywords, with an optional size and
+    price ceiling. `description` is free-text keywords like "vintage graphic
+    tee"; `size` is a size such as "M" (matched as a whole token, so "M" also
+    matches "S/M"); `max_price` is the highest price in US dollars, inclusive.
+    Returns a list of listing objects (id, title, description, category,
+    style_tags, size, condition, price, colors, brand, platform), best match
+    first, at most 10. Returns an empty list when nothing matches.
+    """
+    return _search_listings_impl(description, size, max_price)
 
 if __name__ == "__main__":
     mcp.run()

@@ -18,6 +18,7 @@ import re
 import trace
 from tools import search_listings, suggest_outfit, create_fit_card, compare_prices
 from generate import ModelUnavailable
+from mcp_client import call_tool, MCPError
 
 
 # ── session state ─────────────────────────────────────────────────────────────
@@ -140,41 +141,109 @@ def run_agent(query: str, wardrobe: dict) -> dict:
     # session["error"] = "The planning loop isn't built yet — see the TODO in agent.py."
     # return session
 
+    # steps = 0
+
+    # try:
+    #     steps += 1
+    #     trace.check_iterations(steps)
+    #     session["parsed"] = parse_query(query)
+
+    #     steps += 1
+    #     trace.check_iterations(steps)
+    #     session["search_results"] = search_listings(
+    #         session["parsed"]["description"],
+    #         session["parsed"]["size"],
+    #         session["parsed"]["max_price"],
+    #     )
+
+    #     # THE BRANCH: nothing found -> set a message, stop, never call suggest_outfit
+    #     if not session["search_results"]:
+    #         session["error"] = _nothing_found_message(session["parsed"])
+    #         return session
+
+    #     steps += 1
+    #     trace.check_iterations(steps)
+    #     session["selected_item"] = session["search_results"][0]
+    #     session["price_check"] = compare_prices(session["selected_item"])
+
+    #     steps += 1
+    #     trace.check_iterations(steps)
+    #     session["outfit_suggestion"] = suggest_outfit(
+    #         session["selected_item"], session["wardrobe"]
+    #     )
+
+    #     steps += 1
+    #     trace.check_iterations(steps)
+    #     session["fit_card"] = create_fit_card(
+    #         session["outfit_suggestion"], session["selected_item"]
+    #     )
+
+    # except ModelUnavailable as exc:
+    #     session["error"] = (
+    #         f"The model couldn't be reached, so the outfit and caption steps "
+    #         f"didn't run. The search worked: {len(session['search_results'])} "
+    #         f"listing(s) were found. Check GEMINI_API_KEY in your .env, then "
+    #         f"run the same query again.\nWhat the service said: {exc}"
+    #     )
     steps = 0
 
     try:
         steps += 1
         trace.check_iterations(steps)
         session["parsed"] = parse_query(query)
+        trace.step("parse_query", inputs=query, returned=session["parsed"])
 
         steps += 1
         trace.check_iterations(steps)
-        session["search_results"] = search_listings(
-            session["parsed"]["description"],
-            session["parsed"]["size"],
-            session["parsed"]["max_price"],
+        session["search_results"] = call_tool(
+            "search_listings",
+            {
+                "description": session["parsed"]["description"],
+                "size": session["parsed"]["size"],
+                "max_price": session["parsed"]["max_price"],
+            },
+        ) or []
+        trace.step(
+            "search_listings (via MCP)",
+            inputs=session["parsed"],
+            returned=session["search_results"],
+            note=f"{len(session['search_results'])} match(es)",
         )
 
         # THE BRANCH: nothing found -> set a message, stop, never call suggest_outfit
         if not session["search_results"]:
             session["error"] = _nothing_found_message(session["parsed"])
+            trace.step("branch", note="search returned []: stopping before suggest_outfit")
             return session
 
         steps += 1
         trace.check_iterations(steps)
         session["selected_item"] = session["search_results"][0]
+        trace.step("select_item", returned=session["selected_item"])
         session["price_check"] = compare_prices(session["selected_item"])
+        trace.step("compare_prices", inputs=session["selected_item"], returned=session["price_check"])
 
         steps += 1
         trace.check_iterations(steps)
         session["outfit_suggestion"] = suggest_outfit(
             session["selected_item"], session["wardrobe"]
         )
+        trace.step(
+            "suggest_outfit",
+            inputs=session["selected_item"],
+            returned=session["outfit_suggestion"],
+            note=f"{len(session['wardrobe'].get('items') or [])} wardrobe item(s)",
+        )
 
         steps += 1
         trace.check_iterations(steps)
         session["fit_card"] = create_fit_card(
             session["outfit_suggestion"], session["selected_item"]
+        )
+        trace.step(
+            "create_fit_card",
+            inputs=session["selected_item"],
+            returned=session["fit_card"],
         )
 
     except ModelUnavailable as exc:
@@ -184,6 +253,15 @@ def run_agent(query: str, wardrobe: dict) -> dict:
             f"listing(s) were found. Check GEMINI_API_KEY in your .env, then "
             f"run the same query again.\nWhat the service said: {exc}"
         )
+        trace.step("model unavailable", note="stopping, search results kept")
+
+    except MCPError as exc:
+        session["error"] = (
+            "The search tool couldn't be reached over MCP, so nothing was "
+            "searched. Run `python mcp_client.py` to check the server starts, "
+            f"then try again.\nWhat went wrong: {exc}"
+        )
+        trace.step("MCP unavailable", note="stopping before any search")
 
     return session
 
