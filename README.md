@@ -367,16 +367,29 @@ TRY 1 | results: 3 | prices: [24.0, 27.0, 30.0] | over $30: []
 
      Look for a pattern. Three misses on the same tool is one problem, not
      three. -->
-
+<!-- 
 | # | Criterion | Target | Verdict | How I decided |
 |---|---|---|---|---|
 | 1 |  |  |  |  |
 | 2 |  |  |  |  |
 | 3 |  |  |  |  |
 | 4 |  |  |  |  |
-| 5 |  |  |  |  |
+| 5 |  |  |  |  | -->
+
+| # | Criterion | Target | Verdict | How I decided |
+|---|---|---|---|---|
+| 1 | A matching query completes all three tools | 4 of 5 | MET (5/5) | All five tries of 'vintage graphic tee under $30' ran search, outfit and fit card and returned a fit card. |
+| 2 | An impossible query stops before the second tool | 5 of 5 | MET (5/5) | All five tries of the ballgown query ended at the branch, never reached suggest_outfit, and returned a message naming what to change. |
+| 3 | Item in session matches item passed on | 5 of 5 | MET (5/5) | In all five tries the item at select_item and the item shown going into suggest_outfit were the same listing. The trace shows title, price and platform, not the literal id. |
+| 4 | Fit card is 1 to 3 sentences and includes the price | 4 of 5 | MET (5/5) | I counted sentence marks (2 or 3 in every card) and checked each card for the price. Every card had it, written in words. |
+| 5 | Price ceiling respected | 5 of 5 | MET (5/5) | In all five tries of 'denim jacket under $30', every returned price was 30 or less (24, 27, 30). |
 
 **Diagnoses**
+No criterion was missed, so there is no miss to diagnose. Reading the runs plainly, I think my targets were low in places, and the evidence shows two weaknesses my criteria did not catch:
+
+- **Criterion 4 is the one I'd tighten.** It says the card "includes the price", and every card did, but always in words ("eighteen dollars", "18 dollars") and never as "$18". A check for a dollar sign would have failed 5 of 5. The criterion was too loose, and the model's output (the fit card prompt in `create_fit_card` does not ask for a `$`) is where the gap is.
+- **Search relevance is looser than my criteria measure.** For 'denim jacket under $30' the search returned shorts, a vest and jeans, because the keyword "denim" matches on its own. Criterion 5 only checks price, so it passed. Earlier, 'graphic tee' ranked a mesh top above real graphic tees, because every match tied on score and the cheaper one won. Tool: `search_listings`. Mechanism: ranking by plain keyword overlap with ties broken by price.
+- **Criterion 3 is solid but its evidence is indirect.** The trace prints title, price and platform, not the id, so the check compares those, not the literal `id`.
 
 
 
