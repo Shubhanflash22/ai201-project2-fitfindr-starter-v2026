@@ -20,7 +20,7 @@ import shutil
 import sys
 from pathlib import Path
 
-# --- Course-wide pins -------------------------------------------------------
+# --- Pins -------------------------------------------------------------------
 # The model lives here, in one place, so a provider change is one edit.
 # Override locally by setting AI201_MODEL in .env.
 MODEL = os.getenv("AI201_MODEL", "gemini-3.5-flash-lite")
@@ -105,7 +105,7 @@ def check_packages():
         return report(
             "FAIL",
             "requirements.txt",
-            f"Not found next to test.py. Run this from inside the starter repo folder.",
+            f"Not found next to test.py. Run this from inside the repo folder.",
         )
 
     missing, wrong = [], []
@@ -272,7 +272,7 @@ def check_api_call(key):
         elif "API key" in msg or "401" in msg or "403" in msg or "PERMISSION" in msg:
             hint = "\n         The key was rejected. Create a new one and paste it into .env again."
         elif "404" in msg or "NOT_FOUND" in msg:
-            hint = f"\n         The model string '{MODEL}' did not resolve. Post in the help channel."
+            hint = f"\n         The model string '{MODEL}' did not resolve. Check the model name in .env."
         report("FAIL", "Model call", f"{type(e).__name__}: {msg[:160]}{hint}")
 
 

@@ -1,6 +1,6 @@
 # Acceptance criteria: FitFindr
 
-Five criteria that say what "working" means for this agent, written in unit 3
+Five criteria that say what "working" means for this agent, written
 **before** any results existed.
 
 ---
@@ -37,7 +37,7 @@ Across 5 runs on the same item, every fit card is 1 to 3 sentences and includes 
 
 **Why this target:** The model gives different words each run, so 5 of 5 is too strict and one bad sample shouldn't fail the whole criterion. A card without a price, or longer than 3 sentences, counts as a FAIL.
 
-> **Note from unit 4 (not a revision):** I left this criterion as written. It
+> **Note (not a revision):** I left this criterion as written. It
 > passed 5 of 5 before and after my change, but "includes the price" let a card
 > through that spelled the price out in words ("eighteen dollars") with no `$`.
 > The gap was in the model output, so I fixed the `create_fit_card` prompt
