@@ -1,11 +1,8 @@
 """
-Calling an MCP tool from your agent. ← UNIT 4
+Calling an MCP tool from the agent.
 
-This is the plumbing, and it's given to you. Connecting over stdio and turning
-the protocol's response back into a Python value is fiddly and it isn't the
-lesson. What *is* the lesson is on the other side, in `mcp_server.py`: writing
-a tool description and typed inputs that something other than your own code can
-read.
+This is the plumbing: connecting over stdio and turning the protocol's response
+back into a Python value. The tool itself is defined in `mcp_server.py`.
 
 Use it like this, in `run_agent()`:
 
@@ -16,14 +13,11 @@ Use it like this, in `run_agent()`:
         "max_price": 30,
     })
 
-`results` comes back as the same list of dicts `search_listings` returned when
-you called it directly. **That's the promise: the call changes shape, the
-return value does not.** If it does change, that difference is information —
-usually it means your tool was returning something you hadn't noticed.
+`results` comes back as the same list of dicts `search_listings` returns when
+called directly. The call changes shape; the return value does not.
 
-Every call starts the server, asks, and stops it again. That's slower than
-holding a connection open and it is much easier to reason about, which is the
-right trade for one unit.
+Every call starts the server, asks, and stops it again. That is slower than
+holding a connection open and much easier to reason about.
 """
 
 import asyncio
@@ -40,26 +34,25 @@ class MCPError(RuntimeError):
 
 def call_tool(name: str, arguments: dict):
     """
-    Call one tool on your MCP server and return what it returns.
+    Call one tool on the MCP server and return what it returns.
 
-    Args:
-        name:      the tool name, exactly as registered in mcp_server.py.
-        arguments: a dict of the tool's inputs. The names and types have to
-                   match the registration — that's your Tool Inventory, now
-                   being enforced by something other than you.
+        Args:
+            name:      the tool name, exactly as registered in mcp_server.py.
+            arguments: a dict of the tool's inputs. The names and types have to
+                       match the registration.
 
-    Returns:
-        Whatever the tool returns, unwrapped back to its native Python shape.
-        A tool returning a list of dicts gives you a list of dicts.
+        Returns:
+            Whatever the tool returns, unwrapped back to its native Python shape.
+            A tool returning a list of dicts gives a list of dicts.
 
-    Raises:
-        MCPError, with something readable in it.
+        Raises:
+            MCPError, with something readable in it.
     """
     try:
         return asyncio.run(_call(name, arguments))
     except MCPError:
         raise
-    except Exception as exc:  # noqa: BLE001 — re-raised readably below
+    except Exception as exc:  # noqa: BLE001 - re-raised readably below
         raise MCPError(
             f"Couldn't call '{name}' over MCP: {exc}\n"
             f"Check that mcp_server.py runs on its own first:\n"
@@ -86,7 +79,7 @@ async def _call(name: str, arguments: dict):
                 raise MCPError(
                     f"The server doesn't offer a tool called '{name}'.\n"
                     f"It offers: {', '.join(sorted(available)) or '(nothing yet)'}\n"
-                    f"Register your tool in mcp_server.py — that's Milestone 1."
+                    f"Register the tool in mcp_server.py."
                 )
 
             result = await session.call_tool(name, arguments)
@@ -101,10 +94,10 @@ def _unwrap(result):
     """
     Turn an MCP response back into the value the tool actually returned.
 
-    MCP hands back content blocks rather than Python objects, so a tool that
-    returned a list of dicts arrives as text containing JSON. This puts it
-    back. Without this step your agent would start seeing strings where it used
-    to see lists, and every downstream branch would quietly stop working.
+        MCP hands back content blocks rather than Python objects, so a tool that
+        returned a list of dicts arrives as text containing JSON. This puts it
+        back. Without this step the agent would see strings where it used to see
+        lists, and every downstream branch would quietly stop working.
     """
     structured = getattr(result, "structuredContent", None)
     if isinstance(structured, dict):
@@ -163,7 +156,7 @@ if __name__ == "__main__":
 
     if not tools:
         print("The server is running but offers no tools yet.")
-        print("Register one in mcp_server.py — that's Milestone 1.")
+        print("Register one in mcp_server.py.")
         sys.exit(0)
 
     for tool in tools:

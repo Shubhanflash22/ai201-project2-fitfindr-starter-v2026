@@ -1,16 +1,16 @@
 """
-The runs your test needs. ← UNIT 4, MILESTONE 3
+The runs the tests need.
 
-Each of your five criteria needs something run against it. A criterion about
-the empty-search branch needs an impossible query. One about the fit card needs
-the same item run more than once. Working that out is Milestone 3's first step,
-and this file is where you write it down.
+Each criterion needs something run against it. A criterion about the
+empty-search branch needs an impossible query. One about the fit card needs the
+same item run more than once.
 
-`run_eval.py` runs everything here five times and writes the run log — five
-because your criteria are written out of five.
+`run_eval.py` runs everything here five times and writes the run log, five
+because the criteria are written out of five.
 
-Three scenarios are filled in to show the shape. Add or change whatever your
-own criteria need — these are a starting point, not a fixed set.
+Set "criterion" to the number in criteria.md that the scenario tests. A
+"criterion" of None marks a diagnostic run, which `run_eval.py` flags in the
+table.
 """
 
 SCENARIOS = [
@@ -29,24 +29,12 @@ SCENARIOS = [
         "criterion": 2,
     },
     {
-        # A user with nothing saved. One of unit 4's three failure modes.
+        # A user with nothing saved.
         "name": "empty wardrobe",
         "query": "denim jacket under $50",
         "wardrobe": "empty",
         "criterion": None,
     },
-    # TODO: add what your criteria 3, 4 and 5 need.
-    #
-    # Set "criterion" to the number in criteria.md that the scenario tests.
-    # "criterion": None means a diagnostic run — useful to have, but it isn't
-    # one of your five, and run_eval.py marks it as such in the table.
-    #
-    # For a state criterion, any normal query works — what you're checking is
-    # what ends up in the session, not what the user typed.
-    #
-    # For a fit-card criterion, you probably want the SAME query listed more
-    # than once, or several different items, depending on what your criterion
-    # actually says.
     {
         # Criterion 3: the item in the session is the item that reached suggest_outfit.
         "name": "selected item matches item passed on",

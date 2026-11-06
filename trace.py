@@ -1,14 +1,7 @@
 """
-A trace: a printed record of what your agent did, step by step, in order.
+A trace: a printed record of what the agent did, step by step, in order.
 
-Right now, when your agent does something strange, your only evidence is the
-final output. A trace turns that into a sequence you can point at.
-
-You'll add trace calls to your loop in unit 4, Milestone 2. The formatting is
-done for you here so you're not fighting alignment — what's yours is deciding
-*where* the calls go, which is the part that makes the trace worth reading.
-
-Use it like this, inside `run_agent()`:
+Use it inside `run_agent()`:
 
     from trace import step, start_trace, get_trace
 
@@ -17,12 +10,8 @@ Use it like this, inside `run_agent()`:
     step("search_listings", inputs={"description": desc, "max_price": 30},
          returned=results)
 
-At the end, `get_trace()` gives you the whole thing as text, ready to paste
-into your README under **Loop Trace**.
-
-Two things the rubric wants to see in it: every tool call in order, and the
-MCP call visible among them. If you moved `search_listings` onto MCP, say so
-in the step name — `search_listings (via MCP)` is enough.
+`get_trace()` returns the whole thing as text. The MCP call shows up in the
+trace by name: `search_listings (via MCP)`.
 """
 
 import config
@@ -65,7 +54,7 @@ def step(name: str, inputs=None, returned=None, note: str = "") -> None:
 
 
 def get_trace() -> str:
-    """The whole trace as text, ready to paste into your README."""
+    """The whole trace as text."""
     return "\n".join(_lines)
 
 
@@ -95,14 +84,14 @@ def check_iterations(count: int) -> None:
     """
     Stop condition. Raise if the loop has gone round too many times.
 
-    Your loop this unit is short enough that you may never hit this. Keep the
-    call anyway — a missing stop condition is the most common architectural
-    failure in production agents, and the habit is the point.
+        The loop is short enough that this may never fire. A missing stop
+        condition is the most common architectural failure in production agents,
+        so the call stays.
     """
     if count > config.MAX_ITERATIONS:
         raise RuntimeError(
             f"The loop ran {count} times, past MAX_ITERATIONS "
             f"({config.MAX_ITERATIONS}) in config.py.\n"
             f"That almost always means a branch isn't ending. Print the value "
-            f"your branch checks, on the line before the `if`."
+            f"the branch checks, on the line before the `if`."
         )

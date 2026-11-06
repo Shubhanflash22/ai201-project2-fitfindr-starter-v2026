@@ -1,20 +1,20 @@
 #!/usr/bin/env python3
 """
-FitFindr — command line.
+FitFindr: command line.
 
     python app.py ask 'vintage graphic tee under $30, size M'
     python app.py ask                     keep asking until you quit
     python app.py ask --empty-wardrobe    run as a user with nothing saved
-    python app.py listings                browse the data  (Milestone 1)
+    python app.py listings                browse the data
     python app.py fields                  what fields a listing has
     python app.py examples                queries worth trying, including a dud
 
 Add --trace to any `ask` to print the loop step by step.
 
-⚠️ Quote your query with SINGLE quotes. In PowerShell, "under $30" in double
-quotes silently becomes "under " — PowerShell reads $30 as a variable and
-substitutes nothing, so you search with no price ceiling and get no error
-telling you why. Single quotes are literal in PowerShell, bash and zsh alike.
+Quote the query with SINGLE quotes. In PowerShell, "under $30" in double quotes
+silently becomes "under ": PowerShell reads $30 as a variable and substitutes
+nothing, so the search runs with no price ceiling and no error. Single quotes
+are literal in PowerShell, bash and zsh alike.
 """
 
 import argparse
@@ -23,9 +23,8 @@ import sys
 import config
 
 # Every query here except the last one has something real to find in
-# data/listings.json. If you add your own, check it against the data first — a
-# query that finds nothing because the item doesn't exist looks exactly like a
-# search tool that's broken.
+# data/listings.json. A query that finds nothing because the item doesn't exist
+# looks exactly like a broken search tool, so check new ones against the data.
 EXAMPLE_QUERIES = [
     "vintage graphic tee under $30",
     "90s track jacket in size M",
@@ -37,7 +36,7 @@ EXAMPLE_QUERIES = [
 
 
 def cmd_fields(args):
-    """Milestone 1 — you can't filter on a field that isn't there."""
+    """Print the fields a listing has."""
     from utils.data_loader import load_listings, get_example_wardrobe
 
     listing = load_listings()[0]
@@ -63,7 +62,7 @@ def cmd_fields(args):
 
 
 def cmd_listings(args):
-    """Milestone 1 — read the data before you write tools against it."""
+    """Browse the listings data."""
     from utils.data_loader import load_listings
 
     listings = load_listings()
@@ -129,8 +128,7 @@ def _ask_one(query, wardrobe, use_trace):
         text = trace_module.get_trace()
         if not text:
             print(
-                "  (--trace printed nothing. You haven't added trace.step() calls to\n"
-                "   run_agent() yet — that's unit 4, Milestone 2.)\n"
+                "  (--trace printed nothing. run_agent() has no trace.step() calls.)\n"
             )
     return session
 
@@ -187,7 +185,7 @@ def build_parser():
     p_ask.add_argument(
         "--empty-wardrobe",
         action="store_true",
-        help="run as a user with nothing saved — one of unit 4's failure modes",
+        help="run as a user with nothing saved",
     )
     p_ask.set_defaults(func=cmd_ask)
 
@@ -201,7 +199,7 @@ def main():
     except KeyboardInterrupt:
         print("\nStopped.")
         sys.exit(130)
-    except Exception as exc:  # noqa: BLE001 — students read this, not a traceback
+    except Exception as exc:  # noqa: BLE001 - a reader gets this, not a traceback
         print(f"\n{type(exc).__name__}: {exc}\n", file=sys.stderr)
         sys.exit(1)
 

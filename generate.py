@@ -1,28 +1,25 @@
 """
 The one place FitFindr talks to the model.
 
-Two of your three tools call out to a service. Everything that does goes
-through `generate()` below.
+Two of the three tools call out to a service, and everything that does goes
+through `generate()` below. An agent run is several requests rather than one,
+so iterating on the loop will cross the per-minute limit within a few minutes.
+The pacing lives here, once.
 
-That matters more in unit 3 than it did in unit 1, because an agent run is
-several requests rather than one. A student iterating on a loop will cross the
-per-minute limit within a few minutes. Rather than three hundred people each
-writing their own pacing code, the pacing lives here, once.
+What this module does:
 
-What this does for you:
-
-  • Paces requests so you stay under the per-minute limit, and says when it's
+  - Paces requests to stay under the per-minute limit, and says when it is
     waiting. A pause is the limiter doing its job, not a hang.
-  • Reuses answers to prompts already sent, while you're building. Turned off
-    for evaluation runs.
-  • Stops if a session makes an unreasonable number of calls, rather than
-    silently draining your day's allowance. A runaway agent loop is the
-    classic way to do that.
-  • Retries when the service says you're going too fast.
-  • Returns a readable message when the model can't be reached, instead of a
-    stack trace. Unit 4 Milestone 2 has you trigger exactly that on purpose.
-  • Counts your calls and the tokens they used, so quota — and cost — are
-    numbers you can see rather than numbers you multiply off a pricing page.
+  - Reuses answers to prompts already sent, while building. Turned off for
+    evaluation runs.
+  - Stops if a session makes an unreasonable number of calls, rather than
+    silently draining the daily allowance. A runaway agent loop is the classic
+    way to do that.
+  - Retries when the service says requests are coming too fast.
+  - Returns a readable message when the model can't be reached, instead of a
+    stack trace.
+  - Counts calls and the tokens they used, so quota and cost are numbers that
+    can be read rather than multiplied off a pricing page.
 
 The model name and the temperature live in config.py, not here.
 """
@@ -51,12 +48,11 @@ class QuotaGuard(Exception):
 
 class ModelUnavailable(Exception):
     """
-    Raised when the model can't be reached at all — a bad key, no network, a
-    model name that doesn't resolve.
+    Raised when the model can't be reached at all: a bad key, no network, a
+        model name that doesn't resolve.
 
-    This exists so your agent can catch one specific thing and say something
-    useful, instead of showing a user a stack trace. Unit 4 Milestone 2 has you
-    trigger it deliberately by changing one character of your key.
+        The agent catches this one specific thing and says something useful instead
+        of showing a stack trace.
     """
 
 
@@ -160,12 +156,9 @@ def token_counts() -> dict:
     """
     What this session actually spent, in tokens, as reported by the service.
 
-    Here's why this exists: a number off the pricing page is an estimate of
-    what a run like yours might cost. This is what your run did cost. When you
-    write down the cost of one agent run, take it from here.
-
-    Cached answers cost nothing and so add nothing — if you want the real
-    per-run numbers, run with the cache off.
+        A number off the pricing page is an estimate of what a run might cost; this
+        is what the run did cost. Cached answers cost nothing and so add nothing,
+        so per-run numbers need the cache off.
     """
     return {
         "prompt": _prompt_tokens,
@@ -178,10 +171,10 @@ def _record_tokens(response) -> None:
     """
     Add one response's token counts to the session total.
 
-    The service reports them on `response.usage_metadata`. It is allowed to
-    report nothing, or half of it — and a missing count is never a good enough
-    reason to kill a run that already succeeded, so anything unexpected here is
-    dropped rather than raised.
+        The service reports them on `response.usage_metadata`. It is allowed to
+        report nothing, or half of it, and a missing count is never a good enough
+        reason to kill a run that already succeeded, so anything unexpected here is
+        dropped rather than raised.
     """
     global _prompt_tokens, _output_tokens
     try:
@@ -194,7 +187,7 @@ def _record_tokens(response) -> None:
             _prompt_tokens += prompt
         if isinstance(output, int):
             _output_tokens += output
-    except Exception:  # noqa: BLE001 — counting must never break a working call
+    except Exception:  # noqa: BLE001 - counting must never break a working call
         pass
 
 
@@ -224,13 +217,12 @@ def _retry_delay(exc: Exception, attempt: int) -> float:
     """
     How long to wait before retrying a call the service pushed back on.
 
-    When you cross the per-minute limit, the service usually says how long it
-    wants you to wait — "Please retry in 29.7s", or a retryDelay field. Honour
-    that, because the limit is per *minute* and a 1-2-4-8 backoff gives up
-    about fifteen seconds in, well before the minute is over. That's the
-    difference between a run that pauses and a run that dies.
+        When the per-minute limit is crossed, the service usually says how long to
+        wait ("Please retry in 29.7s", or a retryDelay field). That is honoured,
+        because the limit is per minute and a 1-2-4-8 backoff gives up about
+        fifteen seconds in, well before the minute is over.
 
-    Falls back to exponential backoff when the service doesn't say.
+        Falls back to exponential backoff when the service doesn't say.
     """
     text = str(exc)
     match = (
@@ -266,20 +258,19 @@ def generate(
     """
     Send a prompt and get text back.
 
-    Args:
-        prompt: what you're asking.
-        system: an optional instruction about how to behave. This is the
-                agent's control surface — when to do what, and what to do with
-                nothing. Not a personality setting.
-        cache:  reuse an identical earlier answer if there is one. Leave this
-                True while building. Pass False when you're evaluating — five
-                tries of the same input have to be five real answers.
-        temperature: how much the model varies between runs. Defaults to
-                config.TEMPERATURE. Pass 0.0 when you want the same answer
-                every time.
+        Args:
+            prompt: what to ask.
+            system: an optional instruction about how to behave. This is the
+                    agent's control surface: when to do what, and what to do with
+                    nothing. Not a personality setting.
+            cache:  reuse an identical earlier answer if there is one. True while
+                    building. Pass False when evaluating, since five tries of the
+                    same input have to be five real answers.
+            temperature: how much the model varies between runs. Defaults to
+                    config.TEMPERATURE. Pass 0.0 for the same answer every time.
 
-    Every call in this course goes through here. If you need to change how the
-    model is called, change it in this one place.
+        Every call goes through here, so changes to how the model is called belong
+        in this one place.
     """
     global _session_calls, _cache_hits
 
@@ -320,7 +311,7 @@ def generate(
                 _cache_write(key, text)
             return text
 
-        except Exception as exc:  # noqa: BLE001 — surfaced below
+        except Exception as exc:  # noqa: BLE001 - surfaced below
             last_error = exc
             message = str(exc).lower()
             rate_limited = (

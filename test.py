@@ -2,16 +2,13 @@
 """
 AI201 environment check.
 
-Run this before every class:
-
     python test.py
 
-It checks the things that actually break: your Python version, your virtual
-environment, your pinned packages, your API key, and one real call to the
-model. It is the same file in every unit's starter repo — the checks adapt
-to whatever that unit's requirements.txt pins.
+It checks the things that actually break: the Python version, the virtual
+environment, the pinned packages, the API key, and one real call to the model.
+The checks adapt to whatever this repo's requirements.txt pins.
 
-Nothing here touches your project code, and nothing here is graded.
+Nothing here touches the project code, and nothing here is graded.
 """
 
 import importlib
@@ -25,7 +22,7 @@ from pathlib import Path
 
 # --- Course-wide pins -------------------------------------------------------
 # The model lives here, in one place, so a provider change is one edit.
-# Override locally by setting AI201_MODEL in your .env.
+# Override locally by setting AI201_MODEL in .env.
 MODEL = os.getenv("AI201_MODEL", "gemini-3.5-flash-lite")
 
 MIN_PYTHON = (3, 11)
@@ -33,7 +30,7 @@ MAX_PYTHON = (3, 14)  # exclusive — 3.14 breaks the pinned stack
 MIN_DISK_GB = 2
 MIN_RAM_GB = 4
 
-# Distribution name on PyPI -> module name you actually import.
+# Distribution name on PyPI -> module name actually imported.
 IMPORT_NAMES = {
     "python-dotenv": "dotenv",
     "google-genai": "google.genai",
@@ -223,7 +220,7 @@ def check_key_present(key):
 # --- 5. The slow ones -------------------------------------------------------
 
 def check_mcp():
-    """Unit 4's one new install. Present from unit 3 so nobody discovers it late."""
+    """Check that the MCP package is installed."""
     try:
         from mcp.server.fastmcp import FastMCP  # noqa: F401
         from mcp import ClientSession  # noqa: F401
@@ -302,14 +299,13 @@ def main():
           f"{len(warned)} to look at, {len(skipped)} skipped\n")
     if failed:
         print("Not ready yet. Fix the FAIL lines above, then run test.py again.")
-        print("Still stuck after one honest attempt? Post the whole output in the")
-        print("help channel — the day before class, not the morning of.\n")
+        print("Still stuck? Post the whole output in the help channel.\n")
         return 1
     if skipped:
         print("You're set for what's installed. The skipped checks are packages")
-        print("this unit's requirements.txt doesn't pin yet — that's expected.\n")
+        print("this repo's requirements.txt doesn't pin yet — that's expected.\n")
         return 0
-    print("You're set. See you in class.\n")
+    print("You're set.\n")
     return 0
 
 
