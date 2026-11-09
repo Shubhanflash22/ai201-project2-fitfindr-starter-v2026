@@ -341,3 +341,50 @@ Out of scope, decided before building:
 - No replacement of the per-call MCP process spawn.
 - No new tools and no changes to `generate.py`; it is only read.
 - No hosting (this is Path B, local with logs) and no UI.
+
+## Running It
+
+Path B, local with logs. The start command is `python serve.py`, with the environment steps in `RUNNING.md`. I tested those instructions from a fresh clone of the Capstone branch in a separate folder: it started, answered `/health` and one `/ask`, and wrote a log record on the first attempt with nothing missing. I then deleted that folder.
+
+## Instrumentation
+
+Every `/ask` request, on every path, appends one JSON line to `logs/requests.jsonl` (written by `request_log.py`, called from `serve.py`). `/health` is not logged. Fields:
+
+- `timestamp`: UTC, when the record was written, so the end of the request
+- `request_id`: random 12-character id
+- `route`: `/ask`
+- `http_status`: the status returned to the caller
+- `query`: the query text as received (empty string for a missing one)
+- `outcome`: `ok`, `nothing_found`, `model_unavailable`, `mcp_unavailable`, `bad_request` or `server_error`
+- `error`: error text, or null
+- `duration_s`: seconds from the start of the handler to just before the response is returned, including any wait for the lock
+- `queued`: whether the request found the lock already held
+- `prompt_tokens`, `output_tokens`: the difference in `generate.token_counts()` before and after `run_agent()`, taken inside the lock. Valid only with `AI201_CACHE=0`, which these runs used. Null when no run happened.
+- `selected_item_id`: the listing id the agent picked, or null
+
+A failure to write the log is printed to stderr and never changes the response.
+
+These are 10 entries from a real session: five matching queries, twice, one at a time, cache off.
+
+```
+{"timestamp": "2026-11-09T23:01:23.761+00:00", "request_id": "9d84bf0f7cee", "route": "/ask", "http_status": 200, "query": "vintage graphic tee under $30", "outcome": "ok", "error": null, "duration_s": 4.302, "queued": false, "prompt_tokens": 445, "output_tokens": 139, "selected_item_id": "lst_002"}
+{"timestamp": "2026-11-09T23:01:26.293+00:00", "request_id": "eb59833b7f5b", "route": "/ask", "http_status": 200, "query": "90s track jacket in size M", "outcome": "ok", "error": null, "duration_s": 2.488, "queued": false, "prompt_tokens": 487, "output_tokens": 175, "selected_item_id": "lst_004"}
+{"timestamp": "2026-11-09T23:01:28.975+00:00", "request_id": "bfeb8c1f2cf2", "route": "/ask", "http_status": 200, "query": "silk slip dress in midi length under $40", "outcome": "ok", "error": null, "duration_s": 2.678, "queued": false, "prompt_tokens": 485, "output_tokens": 177, "selected_item_id": "lst_013"}
+{"timestamp": "2026-11-09T23:01:31.500+00:00", "request_id": "ba4bbf2b0418", "route": "/ask", "http_status": 200, "query": "platform sneakers size 8", "outcome": "ok", "error": null, "duration_s": 2.52, "queued": false, "prompt_tokens": 442, "output_tokens": 134, "selected_item_id": "lst_019"}
+{"timestamp": "2026-11-09T23:01:34.334+00:00", "request_id": "a43a960d7aee", "route": "/ask", "http_status": 200, "query": "denim jacket under $50", "outcome": "ok", "error": null, "duration_s": 2.83, "queued": false, "prompt_tokens": 479, "output_tokens": 180, "selected_item_id": "lst_007"}
+{"timestamp": "2026-11-09T23:01:37.001+00:00", "request_id": "3fde5dc84bba", "route": "/ask", "http_status": 200, "query": "vintage graphic tee under $30", "outcome": "ok", "error": null, "duration_s": 2.662, "queued": false, "prompt_tokens": 439, "output_tokens": 142, "selected_item_id": "lst_002"}
+{"timestamp": "2026-11-09T23:01:39.766+00:00", "request_id": "7fc7df4796cf", "route": "/ask", "http_status": 200, "query": "90s track jacket in size M", "outcome": "ok", "error": null, "duration_s": 2.76, "queued": false, "prompt_tokens": 464, "output_tokens": 163, "selected_item_id": "lst_004"}
+{"timestamp": "2026-11-09T23:02:22.890+00:00", "request_id": "a4239a028e86", "route": "/ask", "http_status": 200, "query": "silk slip dress in midi length under $40", "outcome": "ok", "error": null, "duration_s": 43.12, "queued": false, "prompt_tokens": 473, "output_tokens": 150, "selected_item_id": "lst_013"}
+{"timestamp": "2026-11-09T23:02:25.542+00:00", "request_id": "50428c0c4b8c", "route": "/ask", "http_status": 200, "query": "platform sneakers size 8", "outcome": "ok", "error": null, "duration_s": 2.649, "queued": false, "prompt_tokens": 455, "output_tokens": 161, "selected_item_id": "lst_019"}
+{"timestamp": "2026-11-09T23:02:27.971+00:00", "request_id": "0714c34a3cb1", "route": "/ask", "http_status": 200, "query": "denim jacket under $50", "outcome": "ok", "error": null, "duration_s": 2.425, "queued": false, "prompt_tokens": 440, "output_tokens": 136, "selected_item_id": "lst_007"}
+```
+
+One run stands out: the 8th took 43.12 s against 2.4 to 4.3 s for the others. It was the 16th model call inside the first minute, which fits the 15-requests-a-minute pacing in `generate.py`. The log has no field for pacing waits, so this is a hypothesis, not yet a diagnosis.
+
+## What It Costs
+
+Measured over those 10 runs (all `ok`, cache off): a mean of 460.9 prompt tokens and 155.7 output tokens per run, 616.6 in total. I took the token counts from the `prompt_tokens` and `output_tokens` fields in the log, which come from the usage the service reports, and averaged them. Time per run: mean 6.84 s, median 2.67 s. The mean is inflated by the one 43.12 s paced run; without it the mean is 2.81 s.
+
+For a hundred runs a day: 100 x 616.6 = 61,660 tokens (46,090 prompt, 15,570 output), and about 100 x 2.67 s = 267 s of serving time.
+
+In dollars, at the published rate for gemini-3.5-flash-lite ($0.30 per 1M input tokens, $2.50 per 1M output tokens): 460.9 x 0.30 / 1,000,000 + 155.7 x 2.50 / 1,000,000 = $0.000138 + $0.000389 = about $0.00053 per run. A hundred a day is about $0.053 a day, or about $1.58 over 30 days. The token counts are measured; the rate is the list price, so the dollar figure is that price times my measurement. On the free tier I am on, my actual spend is $0. The counter reads `candidates_token_count`, so any thinking tokens the service bills separately may not be included.
