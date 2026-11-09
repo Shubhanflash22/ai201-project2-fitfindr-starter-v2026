@@ -23,7 +23,8 @@ first.
 It runs one request at a time; see the note above `_one_at_a_time`, which also
 decides which gunicorn worker can be used.
 
-There is deliberately no logging, timing or request counting in this file.
+Every /ask request, on every path, writes one JSON line to logs/requests.jsonl
+(see request_log.py). A failed log write never changes the response.
 """
 
 import os
