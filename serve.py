@@ -29,6 +29,7 @@ There is deliberately no logging, timing or request counting in this file.
 import os
 import sys
 import threading
+import time
 
 # config first, and before anything that talks to the model: it loads .env and
 # fixes the Windows console encoding for every module that imports it.
@@ -36,6 +37,8 @@ import config  # noqa: F401
 
 from flask import Flask, jsonify, request
 
+import generate
+import request_log
 from agent import run_agent
 from utils.data_loader import get_example_wardrobe
 
@@ -82,6 +85,21 @@ def health():
 
 @app.post("/ask")
 def ask():
+    """One logged request: _handle_ask does the work, this writes the record."""
+    started = time.perf_counter()
+    rec = {}
+    try:
+        body, status = _handle_ask(rec)
+    except Exception as exc:  # noqa: BLE001 - anything unexpected is still a 500, and still logged
+        rec["outcome"] = "server_error"
+        rec["error"] = f"{type(exc).__name__}: {exc}"
+        body, status = jsonify({"error": rec["error"]}), 500
+    request_log.write(rec, route="/ask", http_status=status,
+                      duration_s=time.perf_counter() - started)
+    return body, status
+
+
+def _handle_ask(rec):
     """
     Run the agent on one query.
 
@@ -92,7 +110,10 @@ def ask():
     """
     payload = request.get_json(silent=True) or {}
     query = (payload.get("query") or "").strip()
+    rec["query"] = query
     if not query:
+        rec["outcome"] = "bad_request"
+        rec["error"] = "missing or empty 'query' field"
         # 400 rather than a stack trace: the caller can act on this one.
         return jsonify({"error": "Send JSON with a 'query' field, e.g. "
                                  '{"query": "vintage graphic tee under $30"}'}), 400
@@ -109,7 +130,8 @@ def ask():
     # and counts nothing; it only notes that this request had to wait. `locked()`
     # can be a moment out of date, so the note is occasionally missed, which
     # nothing depends on.
-    if _one_at_a_time.locked():
+    rec["queued"] = _one_at_a_time.locked()
+    if rec["queued"]:
         print(
             "  [serve] another request is still running. This one is waiting "
             "its turn — serve.py handles one at a time, on purpose.",
@@ -120,17 +142,26 @@ def ask():
     failure = None
     session = None
     with _one_at_a_time:
+        before = generate.token_counts()
         try:
             session = run_agent(query, wardrobe)
         except Exception as exc:  # noqa: BLE001 - a 500 with a sentence beats a hang
             failure = f"{type(exc).__name__}: {exc}"
+        after = generate.token_counts()
+    rec["prompt_tokens"] = after["prompt"] - before["prompt"]
+    rec["output_tokens"] = after["output"] - before["output"]
 
     # Outside the lock: building a response is not work the next caller should
     # be waiting on.
     if failure is not None:
+        rec["outcome"] = "server_error"
+        rec["error"] = failure
         return jsonify({"error": failure}), 500
 
-    return jsonify(session)
+    rec["outcome"] = request_log.classify(session)
+    rec["error"] = session.get("error")
+    rec["selected_item_id"] = (session.get("selected_item") or {}).get("id")
+    return jsonify(session), 200
 
 
 if __name__ == "__main__":
