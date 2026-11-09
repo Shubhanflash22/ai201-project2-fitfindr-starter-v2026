@@ -324,3 +324,20 @@ I'd also add a criterion that checks whether the search results are relevant, no
 - *What I asked for:* I asked Claude to fix the syntax errors in my `run_agent` loop, which I wrote from my branch rule.
 - *What came back:* A version with no syntax errors that ran cleanly, with good documentation.
 - *What I changed:* I used only the parts I needed: the parser, the loop, and the empty-search message.
+
+# Capstone (Project 9)
+
+## What This Extends
+
+This extends FitFindr, my Project 2 thrifting agent (`run_agent()` in `agent.py`, three tools, search over MCP, two tools calling Gemini through `generate.py`). The new work is an operational layer around `serve.py`: a request log that writes one structured JSON line for every request to `logs/requests.jsonl`, a run path that works from a clean checkout of the Capstone branch (`RUNNING.md`), and latency and token cost measured from that log. The agent, the tools and the search ranking are unchanged.
+
+## The Shape
+
+Shape A, deploy and instrument. `serve.py` was written with no logging, timing or request counting, so the extension is exactly that missing layer. A small helper (`request_log.py`) and a few lines in `serve.py` record, for every request on every path: timestamp, request id, route, HTTP status, query, outcome, error text, duration, whether it queued behind the lock, prompt and output tokens, and the selected item id. Tokens are the difference in `generate.token_counts()` before and after `run_agent()`, taken inside the lock, so they are only valid with `AI201_CACHE=0`. A failure to write the log must never break the request.
+
+Out of scope, decided before building:
+
+- No changes to search ranking or `parse_query`. If the measurements later point there, the one improvement in Milestone 6 may touch it, and only then.
+- No replacement of the per-call MCP process spawn.
+- No new tools and no changes to `generate.py`; it is only read.
+- No hosting (this is Path B, local with logs) and no UI.
