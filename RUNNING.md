@@ -149,6 +149,29 @@ On a host, the start command is `gunicorn serve:app`.
 | `gunicorn serve:app`, exactly | Not `-k gevent`, `-k eventlet`, or uvicorn. `mcp_client.call_tool` uses `asyncio.run()`, which won't start inside a running event loop, so an async worker breaks every MCP call |
 | The first request is slow | The free tier sleeps after about fifteen minutes of no traffic, and waking it takes around a minute |
 
-`serve.py` has no logging or timing in it.
+Every `/ask` request writes one JSON line to `logs/requests.jsonl` (see
+`request_log.py`): timestamp, request id, route, HTTP status, query, outcome,
+error, duration, whether it queued, token counts and the selected item id.
+`logs/` is not in `.gitignore`, so the log is committed with the project.
+
+### Path B: local with logs
+
+Start command, from a checkout of the `Capstone` branch, after the Setup steps
+above:
+
+```bash
+python serve.py
+```
+
+| Needs | Value |
+|---|---|
+| Python | 3.11 to 3.13 (run on 3.13.9, Windows) |
+| Dependencies | the pinned `requirements.txt`, installed with `pip install -r requirements.txt` |
+| Key | `GEMINI_API_KEY` in `.env` (copy `.env.example`) |
+| Model files | none, the model is called over the API |
+| Cache | set `AI201_CACHE=0` before starting, or token counts will miss any cached answer |
+
+Stop it with Ctrl-C. Restart it between big batches of requests, because
+`QuotaGuard` stops a server process at 300 model requests.
 
 `results/` is not in `.gitignore`, so run logs are committed with the project.
