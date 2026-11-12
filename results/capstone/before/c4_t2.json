@@ -1,0 +1,326 @@
+{
+  "criterion": 4,
+  "type": null,
+  "trial": 2,
+  "score": 22,
+  "of": 100,
+  "target_met_this_trial": false,
+  "note": "log lines 46 (expected 101); outcome not ok: 0; request 46 hung (no reply after 120 s); trial stopped, remaining requests count as not on time; duration_s min 3.457, median 4.716, max 13.344",
+  "details": [
+    {
+      "i": 1,
+      "status": 200,
+      "client_s": 5.753,
+      "duration_s": 5.731,
+      "outcome": "ok"
+    },
+    {
+      "i": 2,
+      "status": 200,
+      "client_s": 4.989,
+      "duration_s": 4.965,
+      "outcome": "ok"
+    },
+    {
+      "i": 3,
+      "status": 200,
+      "client_s": 4.581,
+      "duration_s": 4.562,
+      "outcome": "ok"
+    },
+    {
+      "i": 4,
+      "status": 200,
+      "client_s": 4.535,
+      "duration_s": 4.532,
+      "outcome": "ok"
+    },
+    {
+      "i": 5,
+      "status": 200,
+      "client_s": 4.75,
+      "duration_s": 4.734,
+      "outcome": "ok"
+    },
+    {
+      "i": 6,
+      "status": 200,
+      "client_s": 5.596,
+      "duration_s": 5.579,
+      "outcome": "ok"
+    },
+    {
+      "i": 7,
+      "status": 200,
+      "client_s": 4.481,
+      "duration_s": 4.478,
+      "outcome": "ok"
+    },
+    {
+      "i": 8,
+      "status": 200,
+      "client_s": 5.043,
+      "duration_s": 5.027,
+      "outcome": "ok"
+    },
+    {
+      "i": 9,
+      "status": 200,
+      "client_s": 4.583,
+      "duration_s": 4.567,
+      "outcome": "ok"
+    },
+    {
+      "i": 10,
+      "status": 200,
+      "client_s": 5.311,
+      "duration_s": 5.309,
+      "outcome": "ok"
+    },
+    {
+      "i": 11,
+      "status": 200,
+      "client_s": 5.43,
+      "duration_s": 5.408,
+      "outcome": "ok"
+    },
+    {
+      "i": 12,
+      "status": 200,
+      "client_s": 4.64,
+      "duration_s": 4.619,
+      "outcome": "ok"
+    },
+    {
+      "i": 13,
+      "status": 200,
+      "client_s": 4.676,
+      "duration_s": 4.652,
+      "outcome": "ok"
+    },
+    {
+      "i": 14,
+      "status": 200,
+      "client_s": 6.074,
+      "duration_s": 6.056,
+      "outcome": "ok"
+    },
+    {
+      "i": 15,
+      "status": 200,
+      "client_s": 4.6,
+      "duration_s": 4.577,
+      "outcome": "ok"
+    },
+    {
+      "i": 16,
+      "status": 200,
+      "client_s": 4.773,
+      "duration_s": 4.751,
+      "outcome": "ok"
+    },
+    {
+      "i": 17,
+      "status": 200,
+      "client_s": 4.183,
+      "duration_s": 4.179,
+      "outcome": "ok"
+    },
+    {
+      "i": 18,
+      "status": 200,
+      "client_s": 4.585,
+      "duration_s": 4.56,
+      "outcome": "ok"
+    },
+    {
+      "i": 19,
+      "status": 200,
+      "client_s": 4.353,
+      "duration_s": 4.327,
+      "outcome": "ok"
+    },
+    {
+      "i": 20,
+      "status": 200,
+      "client_s": 3.7,
+      "duration_s": 3.676,
+      "outcome": "ok"
+    },
+    {
+      "i": 21,
+      "status": 200,
+      "client_s": 4.426,
+      "duration_s": 4.406,
+      "outcome": "ok"
+    },
+    {
+      "i": 22,
+      "status": 200,
+      "client_s": 4.224,
+      "duration_s": 4.198,
+      "outcome": "ok"
+    },
+    {
+      "i": 23,
+      "status": 200,
+      "client_s": 5.35,
+      "duration_s": 5.326,
+      "outcome": "ok"
+    },
+    {
+      "i": 24,
+      "status": 200,
+      "client_s": 4.636,
+      "duration_s": 4.617,
+      "outcome": "ok"
+    },
+    {
+      "i": 25,
+      "status": 200,
+      "client_s": 4.894,
+      "duration_s": 4.881,
+      "outcome": "ok"
+    },
+    {
+      "i": 26,
+      "status": 200,
+      "client_s": 5.519,
+      "duration_s": 5.503,
+      "outcome": "ok"
+    },
+    {
+      "i": 27,
+      "status": 200,
+      "client_s": 4.84,
+      "duration_s": 4.819,
+      "outcome": "ok"
+    },
+    {
+      "i": 28,
+      "status": 200,
+      "client_s": 4.525,
+      "duration_s": 4.504,
+      "outcome": "ok"
+    },
+    {
+      "i": 29,
+      "status": 200,
+      "client_s": 5.548,
+      "duration_s": 5.526,
+      "outcome": "ok"
+    },
+    {
+      "i": 30,
+      "status": 200,
+      "client_s": 13.372,
+      "duration_s": 13.344,
+      "outcome": "ok"
+    },
+    {
+      "i": 31,
+      "status": 200,
+      "client_s": 5.542,
+      "duration_s": 5.516,
+      "outcome": "ok"
+    },
+    {
+      "i": 32,
+      "status": 200,
+      "client_s": 3.664,
+      "duration_s": 3.643,
+      "outcome": "ok"
+    },
+    {
+      "i": 33,
+      "status": 200,
+      "client_s": 4.367,
+      "duration_s": 4.342,
+      "outcome": "ok"
+    },
+    {
+      "i": 34,
+      "status": 200,
+      "client_s": 5.281,
+      "duration_s": 5.258,
+      "outcome": "ok"
+    },
+    {
+      "i": 35,
+      "status": 200,
+      "client_s": 3.477,
+      "duration_s": 3.457,
+      "outcome": "ok"
+    },
+    {
+      "i": 36,
+      "status": 200,
+      "client_s": 4.738,
+      "duration_s": 4.716,
+      "outcome": "ok"
+    },
+    {
+      "i": 37,
+      "status": 200,
+      "client_s": 5.355,
+      "duration_s": 5.341,
+      "outcome": "ok"
+    },
+    {
+      "i": 38,
+      "status": 200,
+      "client_s": 12.415,
+      "duration_s": 12.394,
+      "outcome": "ok"
+    },
+    {
+      "i": 39,
+      "status": 200,
+      "client_s": 4.385,
+      "duration_s": 4.365,
+      "outcome": "ok"
+    },
+    {
+      "i": 40,
+      "status": 200,
+      "client_s": 5.506,
+      "duration_s": 5.493,
+      "outcome": "ok"
+    },
+    {
+      "i": 41,
+      "status": 200,
+      "client_s": 3.511,
+      "duration_s": 3.508,
+      "outcome": "ok"
+    },
+    {
+      "i": 42,
+      "status": 200,
+      "client_s": 4.608,
+      "duration_s": 4.588,
+      "outcome": "ok"
+    },
+    {
+      "i": 43,
+      "status": 200,
+      "client_s": 6.471,
+      "duration_s": 6.446,
+      "outcome": "ok"
+    },
+    {
+      "i": 44,
+      "status": 200,
+      "client_s": 4.019,
+      "duration_s": 3.999,
+      "outcome": "ok"
+    },
+    {
+      "i": 45,
+      "status": 200,
+      "client_s": 4.921,
+      "duration_s": 4.9,
+      "outcome": "ok"
+    }
+  ]
+}

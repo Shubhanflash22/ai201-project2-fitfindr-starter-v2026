@@ -1,0 +1,193 @@
+{
+  "criterion": 4,
+  "type": null,
+  "trial": 3,
+  "score": 9,
+  "of": 100,
+  "target_met_this_trial": false,
+  "note": "log lines 27 (expected 101); outcome not ok: 0; request 27 hung (no reply after 120 s); trial stopped, remaining requests count as not on time; duration_s min 3.589, median 5.17, max 8.765",
+  "details": [
+    {
+      "i": 1,
+      "status": 200,
+      "client_s": 3.631,
+      "duration_s": 3.609,
+      "outcome": "ok"
+    },
+    {
+      "i": 2,
+      "status": 200,
+      "client_s": 8.79,
+      "duration_s": 8.765,
+      "outcome": "ok"
+    },
+    {
+      "i": 3,
+      "status": 200,
+      "client_s": 5.946,
+      "duration_s": 5.93,
+      "outcome": "ok"
+    },
+    {
+      "i": 4,
+      "status": 200,
+      "client_s": 4.21,
+      "duration_s": 4.206,
+      "outcome": "ok"
+    },
+    {
+      "i": 5,
+      "status": 200,
+      "client_s": 4.944,
+      "duration_s": 4.917,
+      "outcome": "ok"
+    },
+    {
+      "i": 6,
+      "status": 200,
+      "client_s": 3.806,
+      "duration_s": 3.803,
+      "outcome": "ok"
+    },
+    {
+      "i": 7,
+      "status": 200,
+      "client_s": 3.804,
+      "duration_s": 3.786,
+      "outcome": "ok"
+    },
+    {
+      "i": 8,
+      "status": 200,
+      "client_s": 7.255,
+      "duration_s": 7.252,
+      "outcome": "ok"
+    },
+    {
+      "i": 9,
+      "status": 200,
+      "client_s": 5.18,
+      "duration_s": 5.156,
+      "outcome": "ok"
+    },
+    {
+      "i": 10,
+      "status": 200,
+      "client_s": 3.948,
+      "duration_s": 3.925,
+      "outcome": "ok"
+    },
+    {
+      "i": 11,
+      "status": 200,
+      "client_s": 7.296,
+      "duration_s": 7.293,
+      "outcome": "ok"
+    },
+    {
+      "i": 12,
+      "status": 200,
+      "client_s": 5.512,
+      "duration_s": 5.488,
+      "outcome": "ok"
+    },
+    {
+      "i": 13,
+      "status": 200,
+      "client_s": 5.151,
+      "duration_s": 5.138,
+      "outcome": "ok"
+    },
+    {
+      "i": 14,
+      "status": 200,
+      "client_s": 6.799,
+      "duration_s": 6.773,
+      "outcome": "ok"
+    },
+    {
+      "i": 15,
+      "status": 200,
+      "client_s": 5.199,
+      "duration_s": 5.184,
+      "outcome": "ok"
+    },
+    {
+      "i": 16,
+      "status": 200,
+      "client_s": 3.985,
+      "duration_s": 3.981,
+      "outcome": "ok"
+    },
+    {
+      "i": 17,
+      "status": 200,
+      "client_s": 7.411,
+      "duration_s": 7.393,
+      "outcome": "ok"
+    },
+    {
+      "i": 18,
+      "status": 200,
+      "client_s": 5.571,
+      "duration_s": 5.55,
+      "outcome": "ok"
+    },
+    {
+      "i": 19,
+      "status": 200,
+      "client_s": 3.619,
+      "duration_s": 3.589,
+      "outcome": "ok"
+    },
+    {
+      "i": 20,
+      "status": 200,
+      "client_s": 6.895,
+      "duration_s": 6.892,
+      "outcome": "ok"
+    },
+    {
+      "i": 21,
+      "status": 200,
+      "client_s": 5.474,
+      "duration_s": 5.456,
+      "outcome": "ok"
+    },
+    {
+      "i": 22,
+      "status": 200,
+      "client_s": 4.174,
+      "duration_s": 4.153,
+      "outcome": "ok"
+    },
+    {
+      "i": 23,
+      "status": 200,
+      "client_s": 6.774,
+      "duration_s": 6.77,
+      "outcome": "ok"
+    },
+    {
+      "i": 24,
+      "status": 200,
+      "client_s": 4.98,
+      "duration_s": 4.959,
+      "outcome": "ok"
+    },
+    {
+      "i": 25,
+      "status": 200,
+      "client_s": 4.148,
+      "duration_s": 4.122,
+      "outcome": "ok"
+    },
+    {
+      "i": 26,
+      "status": 200,
+      "client_s": 7.287,
+      "duration_s": 7.263,
+      "outcome": "ok"
+    }
+  ]
+}

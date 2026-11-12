@@ -1,0 +1,29 @@
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.89:5000
+Press CTRL+C to quit
+127.0.0.1 - - [11/Nov/2026 17:59:37] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [11/Nov/2026 17:59:39] "GET /health HTTP/1.1" 200 -
+  [request_log] could not write the log: [Errno 13] Permission denied: 'C:\\Users\\shubh\\Desktop\\Hard disk\\College(PG)\\Academics at UCSD\\Y2Q1\\Codepath\\AI201 Applications of AI Engineering\\Projects\\ai201-project2-fitfindr-starter-v2026\\results\\capstone\\before'
+127.0.0.1 - - [11/Nov/2026 17:59:50] "POST /ask HTTP/1.1" 200 -
+  [request_log] could not write the log: [Errno 13] Permission denied: 'C:\\Users\\shubh\\Desktop\\Hard disk\\College(PG)\\Academics at UCSD\\Y2Q1\\Codepath\\AI201 Applications of AI Engineering\\Projects\\ai201-project2-fitfindr-starter-v2026\\results\\capstone\\before'
+127.0.0.1 - - [11/Nov/2026 17:59:56] "POST /ask HTTP/1.1" 200 -
+  [request_log] could not write the log: [Errno 13] Permission denied: 'C:\\Users\\shubh\\Desktop\\Hard disk\\College(PG)\\Academics at UCSD\\Y2Q1\\Codepath\\AI201 Applications of AI Engineering\\Projects\\ai201-project2-fitfindr-starter-v2026\\results\\capstone\\before'
+127.0.0.1 - - [11/Nov/2026 17:59:59] "POST /ask HTTP/1.1" 200 -
+  [request_log] could not write the log: [Errno 13] Permission denied: 'C:\\Users\\shubh\\Desktop\\Hard disk\\College(PG)\\Academics at UCSD\\Y2Q1\\Codepath\\AI201 Applications of AI Engineering\\Projects\\ai201-project2-fitfindr-starter-v2026\\results\\capstone\\before'
+127.0.0.1 - - [11/Nov/2026 18:00:03] "POST /ask HTTP/1.1" 200 -
+  [request_log] could not write the log: [Errno 13] Permission denied: 'C:\\Users\\shubh\\Desktop\\Hard disk\\College(PG)\\Academics at UCSD\\Y2Q1\\Codepath\\AI201 Applications of AI Engineering\\Projects\\ai201-project2-fitfindr-starter-v2026\\results\\capstone\\before'
+127.0.0.1 - - [11/Nov/2026 18:00:08] "POST /ask HTTP/1.1" 200 -
+  [request_log] could not write the log: [Errno 13] Permission denied: 'C:\\Users\\shubh\\Desktop\\Hard disk\\College(PG)\\Academics at UCSD\\Y2Q1\\Codepath\\AI201 Applications of AI Engineering\\Projects\\ai201-project2-fitfindr-starter-v2026\\results\\capstone\\before'
+127.0.0.1 - - [11/Nov/2026 18:00:11] "POST /ask HTTP/1.1" 200 -
+  [request_log] could not write the log: [Errno 13] Permission denied: 'C:\\Users\\shubh\\Desktop\\Hard disk\\College(PG)\\Academics at UCSD\\Y2Q1\\Codepath\\AI201 Applications of AI Engineering\\Projects\\ai201-project2-fitfindr-starter-v2026\\results\\capstone\\before'
+127.0.0.1 - - [11/Nov/2026 18:00:16] "POST /ask HTTP/1.1" 200 -
+  [rate limit] 15 requests used this minute. Waiting 29s. This is normal.
+  [request_log] could not write the log: [Errno 13] Permission denied: 'C:\\Users\\shubh\\Desktop\\Hard disk\\College(PG)\\Academics at UCSD\\Y2Q1\\Codepath\\AI201 Applications of AI Engineering\\Projects\\ai201-project2-fitfindr-starter-v2026\\results\\capstone\\before'
+127.0.0.1 - - [11/Nov/2026 18:00:49] "POST /ask HTTP/1.1" 200 -
+  [rate limit] 15 requests used this minute. Waiting 2s. This is normal.
+  [request_log] could not write the log: [Errno 13] Permission denied: 'C:\\Users\\shubh\\Desktop\\Hard disk\\College(PG)\\Academics at UCSD\\Y2Q1\\Codepath\\AI201 Applications of AI Engineering\\Projects\\ai201-project2-fitfindr-starter-v2026\\results\\capstone\\before'
+127.0.0.1 - - [11/Nov/2026 18:00:56] "POST /ask HTTP/1.1" 200 -
+  [request_log] could not write the log: [Errno 13] Permission denied: 'C:\\Users\\shubh\\Desktop\\Hard disk\\College(PG)\\Academics at UCSD\\Y2Q1\\Codepath\\AI201 Applications of AI Engineering\\Projects\\ai201-project2-fitfindr-starter-v2026\\results\\capstone\\before'
+127.0.0.1 - - [11/Nov/2026 18:00:59] "POST /ask HTTP/1.1" 200 -

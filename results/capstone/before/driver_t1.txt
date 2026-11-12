@@ -1,0 +1,6 @@
+> 4 1 --log C:\Users\shubh\Desktop\Hard disk\College(PG)\Academics at UCSD\Y2Q1\Codepath\AI201 Applications of AI Engineering\Projects\ai201-project2-fitfindr-starter-v2026\results\capstone\before\log_T_t1.jsonl --phase before
+  10/100 sent
+  20/100 sent
+criterion 4 trial 1: 16/100  target met this trial: no
+log lines 28 (expected 101); outcome not ok: 0; request 28 hung (no reply after 120 s); trial stopped, remaining requests count as not on time; duration_s min 3.563, median 4.096, max 8.243
+saved results\capstone\before\c4_t1.json

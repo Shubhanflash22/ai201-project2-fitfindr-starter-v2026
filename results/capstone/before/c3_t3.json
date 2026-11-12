@@ -1,0 +1,10 @@
+{
+  "criterion": 3,
+  "type": null,
+  "trial": 3,
+  "score": 0,
+  "of": 10,
+  "target_met_this_trial": false,
+  "note": "ABORTED: the server hung (no reply after 120 s); the trial stopped here",
+  "details": []
+}

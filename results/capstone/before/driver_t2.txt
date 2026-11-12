@@ -1,0 +1,276 @@
+> 1 2 --log C:\Users\shubh\Desktop\Hard disk\College(PG)\Academics at UCSD\Y2Q1\Codepath\AI201 Applications of AI Engineering\Projects\ai201-project2-fitfindr-starter-v2026\results\capstone\before\log_N_t2.jsonl --phase before
+Traceback (most recent call last):
+  File "C:\Users\shubh\Desktop\Hard disk\College(PG)\Academics at UCSD\Y2Q1\Codepath\AI201 Applications of AI Engineering\Projects\ai201-project2-fitfindr-starter-v2026\capstone_run.py", line 249, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\shubh\Desktop\Hard disk\College(PG)\Academics at UCSD\Y2Q1\Codepath\AI201 Applications of AI Engineering\Projects\ai201-project2-fitfindr-starter-v2026\capstone_run.py", line 224, in main
+    score, total, met, rows, note = run_c1(a.log)
+                                    ~~~~~~^^^^^^^
+  File "C:\Users\shubh\Desktop\Hard disk\College(PG)\Academics at UCSD\Y2Q1\Codepath\AI201 Applications of AI Engineering\Projects\ai201-project2-fitfindr-starter-v2026\capstone_run.py", line 113, in run_c1
+    rows = [one(query_body(q) if q else b"{}", log) for q in plan]
+            ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shubh\Desktop\Hard disk\College(PG)\Academics at UCSD\Y2Q1\Codepath\AI201 Applications of AI Engineering\Projects\ai201-project2-fitfindr-starter-v2026\capstone_run.py", line 100, in one
+    status, body, secs = post(raw)
+                         ~~~~^^^^^
+  File "C:\Users\shubh\Desktop\Hard disk\College(PG)\Academics at UCSD\Y2Q1\Codepath\AI201 Applications of AI Engineering\Projects\ai201-project2-fitfindr-starter-v2026\capstone_run.py", line 58, in post
+    with urllib.request.urlopen(req, timeout=120) as resp:
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shubh\anaconda3\Lib\urllib\request.py", line 189, in urlopen
+    return opener.open(url, data, timeout)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shubh\anaconda3\Lib\urllib\request.py", line 489, in open
+    response = self._open(req, data)
+  File "C:\Users\shubh\anaconda3\Lib\urllib\request.py", line 506, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+                              '_open', req)
+  File "C:\Users\shubh\anaconda3\Lib\urllib\request.py", line 466, in _call_chain
+    result = func(*args)
+  File "C:\Users\shubh\anaconda3\Lib\urllib\request.py", line 1348, in http_open
+    return self.do_open(http.client.HTTPConnection, req)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shubh\anaconda3\Lib\urllib\request.py", line 1323, in do_open
+    r = h.getresponse()
+  File "C:\Users\shubh\anaconda3\Lib\http\client.py", line 1430, in getresponse
+    response.begin()
+    ~~~~~~~~~~~~~~^^
+  File "C:\Users\shubh\anaconda3\Lib\http\client.py", line 331, in begin
+    version, status, reason = self._read_status()
+                              ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\shubh\anaconda3\Lib\http\client.py", line 292, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\shubh\anaconda3\Lib\socket.py", line 719, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+TimeoutError: timed out
+> 2 2 --log C:\Users\shubh\Desktop\Hard disk\College(PG)\Academics at UCSD\Y2Q1\Codepath\AI201 Applications of AI Engineering\Projects\ai201-project2-fitfindr-starter-v2026\results\capstone\before\log_N_t2.jsonl --type a --phase before
+  {} -> 400 in 0.005s
+  {} -> 400 in 0.028s
+  {} -> 400 in 0.003s
+  {} -> 400 in 0.026s
+  {} -> 400 in 0.003s
+  {} -> 400 in 0.003s
+  {} -> 400 in 0.003s
+  {} -> 400 in 0.004s
+  {} -> 400 in 0.021s
+  {} -> 400 in 0.023s
+criterion 2 type a trial 2: 10/10  target met this trial: yes
+type a: expected outcome=bad_request, status=400
+saved results\capstone\before\c2a_t2.json
+> 2 2 --log C:\Users\shubh\Desktop\Hard disk\College(PG)\Academics at UCSD\Y2Q1\Codepath\AI201 Applications of AI Engineering\Projects\ai201-project2-fitfindr-starter-v2026\results\capstone\before\log_N_t2.jsonl --type b --phase before
+Traceback (most recent call last):
+  File "C:\Users\shubh\Desktop\Hard disk\College(PG)\Academics at UCSD\Y2Q1\Codepath\AI201 Applications of AI Engineering\Projects\ai201-project2-fitfindr-starter-v2026\capstone_run.py", line 249, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\shubh\Desktop\Hard disk\College(PG)\Academics at UCSD\Y2Q1\Codepath\AI201 Applications of AI Engineering\Projects\ai201-project2-fitfindr-starter-v2026\capstone_run.py", line 226, in main
+    score, total, met, rows, note = run_c2(a.log, a.type)
+                                    ~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\shubh\Desktop\Hard disk\College(PG)\Academics at UCSD\Y2Q1\Codepath\AI201 Applications of AI Engineering\Projects\ai201-project2-fitfindr-starter-v2026\capstone_run.py", line 131, in run_c2
+    rows = [one(raw_for(t, i), log) for i in range(10)]
+            ~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shubh\Desktop\Hard disk\College(PG)\Academics at UCSD\Y2Q1\Codepath\AI201 Applications of AI Engineering\Projects\ai201-project2-fitfindr-starter-v2026\capstone_run.py", line 100, in one
+    status, body, secs = post(raw)
+                         ~~~~^^^^^
+  File "C:\Users\shubh\Desktop\Hard disk\College(PG)\Academics at UCSD\Y2Q1\Codepath\AI201 Applications of AI Engineering\Projects\ai201-project2-fitfindr-starter-v2026\capstone_run.py", line 58, in post
+    with urllib.request.urlopen(req, timeout=120) as resp:
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shubh\anaconda3\Lib\urllib\request.py", line 189, in urlopen
+    return opener.open(url, data, timeout)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shubh\anaconda3\Lib\urllib\request.py", line 489, in open
+    response = self._open(req, data)
+  File "C:\Users\shubh\anaconda3\Lib\urllib\request.py", line 506, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+                              '_open', req)
+  File "C:\Users\shubh\anaconda3\Lib\urllib\request.py", line 466, in _call_chain
+    result = func(*args)
+  File "C:\Users\shubh\anaconda3\Lib\urllib\request.py", line 1348, in http_open
+    return self.do_open(http.client.HTTPConnection, req)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shubh\anaconda3\Lib\urllib\request.py", line 1323, in do_open
+    r = h.getresponse()
+  File "C:\Users\shubh\anaconda3\Lib\http\client.py", line 1430, in getresponse
+    response.begin()
+    ~~~~~~~~~~~~~~^^
+  File "C:\Users\shubh\anaconda3\Lib\http\client.py", line 331, in begin
+    version, status, reason = self._read_status()
+                              ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\shubh\anaconda3\Lib\http\client.py", line 292, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\shubh\anaconda3\Lib\socket.py", line 719, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+TimeoutError: timed out
+> 2 2 --log C:\Users\shubh\Desktop\Hard disk\College(PG)\Academics at UCSD\Y2Q1\Codepath\AI201 Applications of AI Engineering\Projects\ai201-project2-fitfindr-starter-v2026\results\capstone\before\log_N_t2.jsonl --type e --phase before
+  [1] -> 500 in 0.016s
+  [1] -> 500 in 0.02s
+  [1] -> 500 in 0.024s
+  [1] -> 500 in 0.024s
+  [1] -> 500 in 0.021s
+  [1] -> 500 in 0.025s
+  [1] -> 500 in 0.003s
+  [1] -> 500 in 0.027s
+  [1] -> 500 in 0.022s
+  [1] -> 500 in 0.021s
+criterion 2 type e trial 2: 10/10  target met this trial: yes
+type e: expected outcome=server_error, status=500
+saved results\capstone\before\c2e_t2.json
+> 5 2 --log C:\Users\shubh\Desktop\Hard disk\College(PG)\Academics at UCSD\Y2Q1\Codepath\AI201 Applications of AI Engineering\Projects\ai201-project2-fitfindr-starter-v2026\results\capstone\before\log_N_t2.jsonl --phase before
+Traceback (most recent call last):
+  File "C:\Users\shubh\Desktop\Hard disk\College(PG)\Academics at UCSD\Y2Q1\Codepath\AI201 Applications of AI Engineering\Projects\ai201-project2-fitfindr-starter-v2026\capstone_run.py", line 249, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\shubh\Desktop\Hard disk\College(PG)\Academics at UCSD\Y2Q1\Codepath\AI201 Applications of AI Engineering\Projects\ai201-project2-fitfindr-starter-v2026\capstone_run.py", line 232, in main
+    score, total, met, rows, note = run_c5(a.log)
+                                    ~~~~~~^^^^^^^
+  File "C:\Users\shubh\Desktop\Hard disk\College(PG)\Academics at UCSD\Y2Q1\Codepath\AI201 Applications of AI Engineering\Projects\ai201-project2-fitfindr-starter-v2026\capstone_run.py", line 191, in run_c5
+    rows = [one(query_body(q), log) for q in NO_MATCH]
+            ~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shubh\Desktop\Hard disk\College(PG)\Academics at UCSD\Y2Q1\Codepath\AI201 Applications of AI Engineering\Projects\ai201-project2-fitfindr-starter-v2026\capstone_run.py", line 100, in one
+    status, body, secs = post(raw)
+                         ~~~~^^^^^
+  File "C:\Users\shubh\Desktop\Hard disk\College(PG)\Academics at UCSD\Y2Q1\Codepath\AI201 Applications of AI Engineering\Projects\ai201-project2-fitfindr-starter-v2026\capstone_run.py", line 58, in post
+    with urllib.request.urlopen(req, timeout=120) as resp:
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shubh\anaconda3\Lib\urllib\request.py", line 189, in urlopen
+    return opener.open(url, data, timeout)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shubh\anaconda3\Lib\urllib\request.py", line 489, in open
+    response = self._open(req, data)
+  File "C:\Users\shubh\anaconda3\Lib\urllib\request.py", line 506, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+                              '_open', req)
+  File "C:\Users\shubh\anaconda3\Lib\urllib\request.py", line 466, in _call_chain
+    result = func(*args)
+  File "C:\Users\shubh\anaconda3\Lib\urllib\request.py", line 1348, in http_open
+    return self.do_open(http.client.HTTPConnection, req)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shubh\anaconda3\Lib\urllib\request.py", line 1323, in do_open
+    r = h.getresponse()
+  File "C:\Users\shubh\anaconda3\Lib\http\client.py", line 1430, in getresponse
+    response.begin()
+    ~~~~~~~~~~~~~~^^
+  File "C:\Users\shubh\anaconda3\Lib\http\client.py", line 331, in begin
+    version, status, reason = self._read_status()
+                              ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\shubh\anaconda3\Lib\http\client.py", line 292, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\shubh\anaconda3\Lib\socket.py", line 719, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+TimeoutError: timed out
+> 2 2 --log C:\Users\shubh\Desktop\Hard disk\College(PG)\Academics at UCSD\Y2Q1\Codepath\AI201 Applications of AI Engineering\Projects\ai201-project2-fitfindr-starter-v2026\results\capstone\before\log_N_t2.jsonl --type d --phase before
+Traceback (most recent call last):
+  File "C:\Users\shubh\Desktop\Hard disk\College(PG)\Academics at UCSD\Y2Q1\Codepath\AI201 Applications of AI Engineering\Projects\ai201-project2-fitfindr-starter-v2026\capstone_run.py", line 249, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\shubh\Desktop\Hard disk\College(PG)\Academics at UCSD\Y2Q1\Codepath\AI201 Applications of AI Engineering\Projects\ai201-project2-fitfindr-starter-v2026\capstone_run.py", line 226, in main
+    score, total, met, rows, note = run_c2(a.log, a.type)
+                                    ~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\shubh\Desktop\Hard disk\College(PG)\Academics at UCSD\Y2Q1\Codepath\AI201 Applications of AI Engineering\Projects\ai201-project2-fitfindr-starter-v2026\capstone_run.py", line 131, in run_c2
+    rows = [one(raw_for(t, i), log) for i in range(10)]
+            ~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shubh\Desktop\Hard disk\College(PG)\Academics at UCSD\Y2Q1\Codepath\AI201 Applications of AI Engineering\Projects\ai201-project2-fitfindr-starter-v2026\capstone_run.py", line 100, in one
+    status, body, secs = post(raw)
+                         ~~~~^^^^^
+  File "C:\Users\shubh\Desktop\Hard disk\College(PG)\Academics at UCSD\Y2Q1\Codepath\AI201 Applications of AI Engineering\Projects\ai201-project2-fitfindr-starter-v2026\capstone_run.py", line 58, in post
+    with urllib.request.urlopen(req, timeout=120) as resp:
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shubh\anaconda3\Lib\urllib\request.py", line 189, in urlopen
+    return opener.open(url, data, timeout)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shubh\anaconda3\Lib\urllib\request.py", line 489, in open
+    response = self._open(req, data)
+  File "C:\Users\shubh\anaconda3\Lib\urllib\request.py", line 506, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+                              '_open', req)
+  File "C:\Users\shubh\anaconda3\Lib\urllib\request.py", line 466, in _call_chain
+    result = func(*args)
+  File "C:\Users\shubh\anaconda3\Lib\urllib\request.py", line 1348, in http_open
+    return self.do_open(http.client.HTTPConnection, req)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shubh\anaconda3\Lib\urllib\request.py", line 1323, in do_open
+    r = h.getresponse()
+  File "C:\Users\shubh\anaconda3\Lib\http\client.py", line 1430, in getresponse
+    response.begin()
+    ~~~~~~~~~~~~~~^^
+  File "C:\Users\shubh\anaconda3\Lib\http\client.py", line 331, in begin
+    version, status, reason = self._read_status()
+                              ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\shubh\anaconda3\Lib\http\client.py", line 292, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\shubh\anaconda3\Lib\socket.py", line 719, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+TimeoutError: timed out
+> 2 2 --log C:\Users\shubh\Desktop\Hard disk\College(PG)\Academics at UCSD\Y2Q1\Codepath\AI201 Applications of AI Engineering\Projects\ai201-project2-fitfindr-starter-v2026\results\capstone\before\log_B_t2.jsonl --type c --phase before
+  {"query": "vintage graphic tee under $30"} -> 200 in 8.013s
+  {"query": "90s track jacket in size M"} -> 200 in 2.383s
+  {"query": "silk slip dress in midi length under $4 -> 200 in 3.021s
+  {"query": "platform sneakers size 8"} -> 200 in 1.032s
+  {"query": "denim jacket under $50"} -> 200 in 2.268s
+  {"query": "vintage graphic tee under $30"} -> 200 in 3.167s
+  {"query": "90s track jacket in size M"} -> 200 in 5.698s
+  {"query": "silk slip dress in midi length under $4 -> 200 in 1.05s
+  {"query": "platform sneakers size 8"} -> 200 in 0.992s
+  {"query": "denim jacket under $50"} -> 200 in 1.961s
+criterion 2 type c trial 2: 10/10  target met this trial: yes
+type c: expected outcome=model_unavailable, status=200
+saved results\capstone\before\c2c_t2.json
+> 3 2 --stderr C:\Users\shubh\Desktop\Hard disk\College(PG)\Academics at UCSD\Y2Q1\Codepath\AI201 Applications of AI Engineering\Projects\ai201-project2-fitfindr-starter-v2026\results\capstone\before\stderr_L_t2.txt --phase before
+criterion 3 trial 2: 10/10  target met this trial: yes
+stderr lines saying the log could not be written: 10 (must be 10)
+saved results\capstone\before\c3_t2.json
+> 2 2 --log C:\Users\shubh\Desktop\Hard disk\College(PG)\Academics at UCSD\Y2Q1\Codepath\AI201 Applications of AI Engineering\Projects\ai201-project2-fitfindr-starter-v2026\results\capstone\before\log_R_t2.jsonl --type b --phase before
+  {"query": "designer ballgown under $5"} -> 200 in 2.882s
+  {"query": "leather jacket under $5"} -> 200 in 0.997s
+  {"query": "silk scarf under $5"} -> 200 in 1.103s
+  {"query": "platform boots under $5"} -> 200 in 0.999s
+  {"query": "denim shorts under $5"} -> 200 in 1.119s
+  {"query": "wool coat under $5"} -> 200 in 1.486s
+  {"query": "graphic tee under $5"} -> 200 in 2.034s
+  {"query": "pleated skirt under $5"} -> 200 in 0.951s
+  {"query": "cargo pants under $5"} -> 200 in 0.971s
+  {"query": "knit sweater under $5"} -> 200 in 0.997s
+criterion 2 type b trial 2: 10/10  target met this trial: yes
+type b: expected outcome=nothing_found, status=200
+saved results\capstone\before\c2b_t2.json
+> 5 2 --log C:\Users\shubh\Desktop\Hard disk\College(PG)\Academics at UCSD\Y2Q1\Codepath\AI201 Applications of AI Engineering\Projects\ai201-project2-fitfindr-starter-v2026\results\capstone\before\log_R_t2.jsonl --phase before
+  {"query": "designer ballgown under $5"} -> 200 in 0.966s
+  {"query": "leather jacket under $5"} -> 200 in 0.915s
+  {"query": "silk scarf under $5"} -> 200 in 1.44s
+  {"query": "platform boots under $5"} -> 200 in 1.934s
+  {"query": "denim shorts under $5"} -> 200 in 0.937s
+  {"query": "wool coat under $5"} -> 200 in 0.926s
+  {"query": "graphic tee under $5"} -> 200 in 1.045s
+  {"query": "pleated skirt under $5"} -> 200 in 1.253s
+  {"query": "cargo pants under $5"} -> 200 in 1.092s
+  {"query": "knit sweater under $5"} -> 200 in 1.489s
+criterion 5 trial 2: 10/10  target met this trial: yes
+no-match queries, price ceiling $5
+saved results\capstone\before\c5_t2.json
+> 2 2 --log C:\Users\shubh\Desktop\Hard disk\College(PG)\Academics at UCSD\Y2Q1\Codepath\AI201 Applications of AI Engineering\Projects\ai201-project2-fitfindr-starter-v2026\results\capstone\before\log_R_t2.jsonl --type d --phase before
+  {"query": "vintage graphic tee under $30"} -> 200 in 0.09s
+  {"query": "90s track jacket in size M"} -> 200 in 0.08s
+  {"query": "silk slip dress in midi length under $4 -> 200 in 0.071s
+  {"query": "platform sneakers size 8"} -> 200 in 0.072s
+  {"query": "denim jacket under $50"} -> 200 in 0.081s
+  {"query": "vintage graphic tee under $30"} -> 200 in 0.094s
+  {"query": "90s track jacket in size M"} -> 200 in 0.067s
+  {"query": "silk slip dress in midi length under $4 -> 200 in 0.094s
+  {"query": "platform sneakers size 8"} -> 200 in 0.085s
+  {"query": "denim jacket under $50"} -> 200 in 0.082s
+criterion 2 type d trial 2: 10/10  target met this trial: yes
+type d: expected outcome=mcp_unavailable, status=200
+saved results\capstone\before\c2d_t2.json
+> 4 2 --log C:\Users\shubh\Desktop\Hard disk\College(PG)\Academics at UCSD\Y2Q1\Codepath\AI201 Applications of AI Engineering\Projects\ai201-project2-fitfindr-starter-v2026\results\capstone\before\log_T_t2.jsonl --phase before
+  10/100 sent
+  20/100 sent
+  30/100 sent
+  40/100 sent
+criterion 4 trial 2: 22/100  target met this trial: no
+log lines 46 (expected 101); outcome not ok: 0; request 46 hung (no reply after 120 s); trial stopped, remaining requests count as not on time; duration_s min 3.457, median 4.716, max 13.344
+saved results\capstone\before\c4_t2.json

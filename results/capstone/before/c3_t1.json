@@ -1,0 +1,121 @@
+{
+  "criterion": 3,
+  "type": null,
+  "trial": 1,
+  "score": 10,
+  "of": 10,
+  "target_met_this_trial": true,
+  "note": "stderr lines saying the log could not be written: 10 (must be 10)",
+  "details": [
+    {
+      "i": 1,
+      "status": 200,
+      "client_s": 4.313,
+      "response": {
+        "error": null,
+        "fit_card": "Found this gorgeous butterfly print baby tee scrolling on depop last week. It only cost $18 and has the exact nostalgic indie sleaze vibe I have been hunting for. Seriously obsessed with how tiny and ",
+        "outfit_suggestion": "Outfit 1: Casual Day Look\nPair the Y2K Baby Tee with the baggy straight-leg jeans, dark wash. Layer the black cropped zip hoodie over top, and finish the fit with the chunky white sneakers and the bla"
+      },
+      "response_ok": true
+    },
+    {
+      "i": 2,
+      "status": 200,
+      "client_s": 3.907,
+      "response": {
+        "error": null,
+        "fit_card": "Scored this vintage Champion 90s track jacket on Poshmark for $45 and the sporty streetwear vibe is unreal. It is totally giving off-duty model running errands in 1999. I cannot wait to layer it over ",
+        "outfit_suggestion": "Outfit 1: Streetwear Sporty\nPair the 90s track jacket with the white ribbed tank top, baggy straight-leg jeans, and chunky white sneakers. Layer the jacket unzipped over the tank, and accessorize with"
+      },
+      "response_ok": true
+    },
+    {
+      "i": 3,
+      "status": 200,
+      "client_s": 3.433,
+      "response": {
+        "error": null,
+        "fit_card": "Scored this moody floral silk midi on depop for $30 and I am already obsessed with the dark romance vibe. Going to layer it over a white ribbed tank with combat boots for that ultimate 90s grunge look",
+        "outfit_suggestion": "Outfit 1: Grunge Romantic\nLayer the 90s Silk Slip Dress over the white ribbed tank top, and pair it with the black combat boots and the vintage black denim jacket.\n\nOutfit 2: 90s Contrast\nLayer the ov"
+      },
+      "response_ok": true
+    },
+    {
+      "i": 4,
+      "status": 200,
+      "client_s": 3.59,
+      "response": {
+        "error": null,
+        "fit_card": "Scored these white chunky sole platform sneakers on poshmark for only $48 and they give off the ultimate 90s model-off-duty energy. I am picturing them with baggy dark wash jeans and a cropped hoodie ",
+        "outfit_suggestion": "Outfit 1\nPair the white platform sneakers with the baggy straight-leg jeans (dark wash), the white ribbed tank top, and the vintage black denim jacket. Complete the look with the black crossbody bag.\n"
+      },
+      "response_ok": true
+    },
+    {
+      "i": 5,
+      "status": 200,
+      "client_s": 3.198,
+      "response": {
+        "error": null,
+        "fit_card": "Scored this cropped Wrangler light wash denim jacket on Poshmark for $42 and the 90s indie sleaze vibe is immaculate. Can't wait to style it with baggy dark wash jeans for that ultimate double-denim l",
+        "outfit_suggestion": "Outfit 1:\nPair the light wash cropped denim jacket with the white ribbed tank top, baggy straight-leg dark wash jeans, brown leather belt, and chunky white sneakers. This creates a balanced, high-cont"
+      },
+      "response_ok": true
+    },
+    {
+      "i": 6,
+      "status": 200,
+      "client_s": 3.503,
+      "response": {
+        "error": null,
+        "fit_card": "Just scored this absolute holy grail Y2K butterfly baby tee on Depop for $18 and I am obsessed with the nostalgic early-2000s mall rat energy. It looks so good tucked into baggy dark-wash jeans with a",
+        "outfit_suggestion": "Outfit 1\nPair the Y2K Baby Tee with your baggy straight-leg jeans, dark wash, layered under the vintage black denim jacket, and finish with your chunky white sneakers and black crossbody bag.\n\nOutfit "
+      },
+      "response_ok": true
+    },
+    {
+      "i": 7,
+      "status": 200,
+      "client_s": 3.205,
+      "response": {
+        "error": null,
+        "fit_card": "Scored this Champion 90s track jacket on poshmark for $45 and it has the ultimate high-low contrast vibe when you pair it with tailored trousers and heavy boots. Honestly feels like I just raided a co",
+        "outfit_suggestion": "Outfit 1: Streetwear Sporty\nPair the 90s track jacket with the white ribbed tank top as an inner layer, worn open or half-zipped. Combine this with the baggy straight-leg jeans in dark wash, the chunk"
+      },
+      "response_ok": true
+    },
+    {
+      "i": 8,
+      "status": 200,
+      "client_s": 38.35,
+      "response": {
+        "error": null,
+        "fit_card": "Scored this floral midi silk slip dress on depop for $30 and I am obsessed with the grunge romantic vibe. Throwing it over a white ribbed tank with heavy boots feels so effortless. It is definitely go",
+        "outfit_suggestion": "Outfit 1: Grunge Romantic\nLayer the 90s Silk Slip Dress over the white ribbed tank top and pair it with the black combat boots and the vintage black denim jacket for contrast.\n\nOutfit 2: Casual 90s St"
+      },
+      "response_ok": true
+    },
+    {
+      "i": 9,
+      "status": 200,
+      "client_s": 3.786,
+      "response": {
+        "error": null,
+        "fit_card": "Scored these chunky white platform sneakers on poshmark for $48 and they are about to live on my feet. The Y2K streetwear vibe is so real, and I cannot wait to style them with baggy trousers and a cro",
+        "outfit_suggestion": "Outfit 1\nPair the platform sneakers with the wide-leg khaki trousers, the white ribbed tank top, and the black cropped zip hoodie layered on top. Add the black crossbody bag to finish the casual, Y2K-"
+      },
+      "response_ok": true
+    },
+    {
+      "i": 10,
+      "status": 200,
+      "client_s": 3.697,
+      "response": {
+        "error": null,
+        "fit_card": "Just scored this cropped light wash Wrangler denim jacket on poshmark for $42 and I am obsessed with the 90s streetwear vibe. It hits right at the waist so it looks so good with baggy pants. Can not w",
+        "outfit_suggestion": "Outfit 1:\nPair the light wash cropped denim jacket with your white ribbed tank top, baggy straight-leg dark wash jeans, chunky white sneakers, and the brown leather belt. This creates a balanced, high"
+      },
+      "response_ok": true
+    }
+  ]
+}
