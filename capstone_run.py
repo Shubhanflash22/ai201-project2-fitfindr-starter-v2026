@@ -50,6 +50,10 @@ WARM_N = 100
 WARM_MIN_ON_TIME = 95
 
 
+class ServerHung(Exception):
+    """A request got no reply within the timeout, so the server is stuck."""
+
+
 def post(raw):
     req = urllib.request.Request(BASE + "/ask", data=raw,
                                  headers={"Content-Type": "application/json"})
@@ -59,6 +63,8 @@ def post(raw):
             status, text = resp.status, resp.read().decode("utf-8")
     except urllib.error.HTTPError as exc:
         status, text = exc.code, exc.read().decode("utf-8")
+    except TimeoutError:
+        raise ServerHung(f"no reply after {round(time.perf_counter() - started)} s")
     try:
         body = json.loads(text)
     except ValueError:
@@ -162,12 +168,17 @@ def run_c4(log):
     post(query_body(MATCHING[0]))          # cold start, discarded
     prev = cold_sent
     rows = []
+    hung = None
     for i in range(WARM_N):
         wait = prev + GAP_S - time.monotonic()
         if wait > 0:
             time.sleep(wait)
         prev = time.monotonic()
-        status, body, secs = post(query_body(MATCHING[i % len(MATCHING)]))
+        try:
+            status, body, secs = post(query_body(MATCHING[i % len(MATCHING)]))
+        except ServerHung as exc:
+            hung = f"request {i + 1} hung ({exc}); trial stopped, remaining requests count as not on time"
+            break
         rows.append({"i": i + 1, "status": status, "client_s": secs})
         if (i + 1) % 10 == 0:
             print(f"  {i + 1}/{WARM_N} sent", flush=True)
@@ -181,6 +192,8 @@ def run_c4(log):
     on_time = sum(1 for d in durations if d <= ON_TIME_S)
     not_ok = sum(1 for r in rows if r.get("outcome") != "ok")
     note = f"log lines {len(lines)} (expected {WARM_N + 1}); outcome not ok: {not_ok}"
+    if hung:
+        note += "; " + hung
     if durations:
         note += (f"; duration_s min {min(durations)}, median {statistics.median(durations)}, "
                  f"max {max(durations)}")
@@ -220,16 +233,20 @@ def main():
     except Exception:
         sys.exit("serve.py is not answering on localhost:5000")
 
-    if c == 1:
-        score, total, met, rows, note = run_c1(a.log)
-    elif c == 2:
-        score, total, met, rows, note = run_c2(a.log, a.type)
-    elif c == 3:
-        score, total, met, rows, note = run_c3(a.stderr)
-    elif c == 4:
-        score, total, met, rows, note = run_c4(a.log)
-    else:
-        score, total, met, rows, note = run_c5(a.log)
+    try:
+        if c == 1:
+            score, total, met, rows, note = run_c1(a.log)
+        elif c == 2:
+            score, total, met, rows, note = run_c2(a.log, a.type)
+        elif c == 3:
+            score, total, met, rows, note = run_c3(a.stderr)
+        elif c == 4:
+            score, total, met, rows, note = run_c4(a.log)
+        else:
+            score, total, met, rows, note = run_c5(a.log)
+    except ServerHung as exc:
+        score, total, met, rows = 0, (WARM_N if c == 4 else 10), False, []
+        note = f"ABORTED: the server hung ({exc}); the trial stopped here"
 
     typ = a.type or ""
     out = Path("results") / "capstone" / a.phase
