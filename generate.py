@@ -237,6 +237,7 @@ def _get_client():
     global _client
     if _client is None:
         from google import genai
+        from google.genai import types
 
         key = os.getenv("GEMINI_API_KEY", "").strip()
         if not key:
@@ -245,7 +246,10 @@ def _get_client():
                 "Copy .env.example to .env and paste your key in, then try "
                 "again. `python test.py` will confirm it's working."
             )
-        _client = genai.Client(api_key=key)
+        _client = genai.Client(
+            api_key=key,
+            http_options=types.HttpOptions(timeout=int(config.MODEL_TIMEOUT_S * 1000)),
+        )
     return _client
 
 

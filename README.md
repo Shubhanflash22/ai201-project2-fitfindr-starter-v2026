@@ -388,3 +388,13 @@ Measured over those 10 runs (all `ok`, cache off): a mean of 460.9 prompt tokens
 For a hundred runs a day: 100 x 616.6 = 61,660 tokens (46,090 prompt, 15,570 output), and about 100 x 2.67 s = 267 s of serving time.
 
 In dollars, at the published rate for gemini-3.5-flash-lite ($0.30 per 1M input tokens, $2.50 per 1M output tokens): 460.9 x 0.30 / 1,000,000 + 155.7 x 2.50 / 1,000,000 = $0.000138 + $0.000389 = about $0.00053 per run. A hundred a day is about $0.053 a day, or about $1.58 over 30 days. The token counts are measured; the rate is the list price, so the dollar figure is that price times my measurement. On the free tier I am on, my actual spend is $0. The counter reads `candidates_token_count`, so any thinking tokens the service bills separately may not be included.
+
+## The Improvement
+
+**Change:** a 20 s timeout on every model call (`config.MODEL_TIMEOUT_S`, applied in `generate.py`). Diagnosis: the model call had no upper bound, so one stalled call held the server's lock forever (criteria 1, 3 and 4).
+
+**Predictions, written before the re-run:**
+- Criterion 1: a stalled request now ends within about 20 s with outcome model_unavailable and leaves a record, so I expect 10/10.
+- Criterion 3: a stalled request now returns an error and no fit_card, so a trial that hits a stall will still miss. The timeout stops the hang, it doesn't stop the stall.
+- Criterion 4: all 100 requests now finish, so I get a real distribution. I expect it to still miss: the timeout does nothing about requests that are slow without stalling, and a stalled one costs about 20 s.
+- Criteria 2 and 5: no change, 10/10. These are my regression check.

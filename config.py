@@ -76,6 +76,11 @@ REQUESTS_PER_MINUTE = 15
 SESSION_REQUEST_BUDGET = 300
 MAX_RETRIES = 5
 
+# A model call that hasn't answered after this many seconds is cancelled and
+# reported as the model being unavailable. Without it, one stalled call holds
+# serve.py's lock forever. AI201_MODEL_TIMEOUT_S exists so a test can shrink it.
+MODEL_TIMEOUT_S = float(os.getenv("AI201_MODEL_TIMEOUT_S", "20"))
+
 CACHE_DIR = ROOT / ".cache"
 
 
