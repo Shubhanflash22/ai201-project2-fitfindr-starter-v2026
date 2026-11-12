@@ -20,7 +20,7 @@ import urllib.error
 import urllib.request
 from pathlib import Path
 
-BASE = "http://localhost:5000"
+BASE = "http://127.0.0.1:5000"
 FIELDS = ["timestamp", "request_id", "route", "http_status", "query", "outcome",
           "error", "duration_s", "queued", "prompt_tokens", "output_tokens",
           "selected_item_id"]
@@ -55,7 +55,7 @@ def post(raw):
                                  headers={"Content-Type": "application/json"})
     started = time.perf_counter()
     try:
-        with urllib.request.urlopen(req, timeout=300) as resp:
+        with urllib.request.urlopen(req, timeout=120) as resp:
             status, text = resp.status, resp.read().decode("utf-8")
     except urllib.error.HTTPError as exc:
         status, text = exc.code, exc.read().decode("utf-8")
@@ -98,6 +98,7 @@ def query_body(q):
 def one(raw, log):
     before = len(read_lines(log))
     status, body, secs = post(raw)
+    print(f"  {raw.decode('utf-8')[:50]} -> {status} in {secs}s", flush=True)
     lines = read_lines(log)
     added = len(lines) - before
     rec = parse(lines[-1]) if added == 1 else None
