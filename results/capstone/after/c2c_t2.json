@@ -1,0 +1,261 @@
+{
+  "criterion": 2,
+  "type": "c",
+  "trial": 2,
+  "score": 10,
+  "of": 10,
+  "target_met_this_trial": true,
+  "note": "type c: expected outcome=model_unavailable, status=200",
+  "details": [
+    {
+      "sent": "{\"query\": \"vintage graphic tee under $30\"}",
+      "status": 200,
+      "client_s": 5.375,
+      "response": {
+        "error": "The model couldn't be reached, so the outfit and caption steps didn't run. The search worked: 10 listing(s) were found. Check GEMINI_API_KEY in your .env, then run the same query again.\nWhat the servi",
+        "fit_card": null,
+        "outfit_suggestion": null
+      },
+      "lines_added": 1,
+      "record": {
+        "timestamp": "2026-11-12T20:20:27.767+00:00",
+        "request_id": "8462cc9e3e70",
+        "route": "/ask",
+        "http_status": 200,
+        "query": "vintage graphic tee under $30",
+        "outcome": "model_unavailable",
+        "error": "The model couldn't be reached, so the outfit and caption steps didn't run. The search worked: 10 listing(s) were found. Check GEMINI_API_KEY in your .env, then run the same query again.\nWhat the service said: The model rejected your API key. Check GEMINI_API_KEY in your .env file, or create a fresh key at aistudio.google.com.",
+        "duration_s": 5.361,
+        "queued": false,
+        "prompt_tokens": 0,
+        "output_tokens": 0,
+        "selected_item_id": "lst_002"
+      }
+    },
+    {
+      "sent": "{\"query\": \"90s track jacket in size M\"}",
+      "status": 200,
+      "client_s": 2.468,
+      "response": {
+        "error": "The model couldn't be reached, so the outfit and caption steps didn't run. The search worked: 4 listing(s) were found. Check GEMINI_API_KEY in your .env, then run the same query again.\nWhat the servic",
+        "fit_card": null,
+        "outfit_suggestion": null
+      },
+      "lines_added": 1,
+      "record": {
+        "timestamp": "2026-11-12T20:20:30.242+00:00",
+        "request_id": "04a598c01f10",
+        "route": "/ask",
+        "http_status": 200,
+        "query": "90s track jacket in size M",
+        "outcome": "model_unavailable",
+        "error": "The model couldn't be reached, so the outfit and caption steps didn't run. The search worked: 4 listing(s) were found. Check GEMINI_API_KEY in your .env, then run the same query again.\nWhat the service said: The model rejected your API key. Check GEMINI_API_KEY in your .env file, or create a fresh key at aistudio.google.com.",
+        "duration_s": 2.452,
+        "queued": false,
+        "prompt_tokens": 0,
+        "output_tokens": 0,
+        "selected_item_id": "lst_004"
+      }
+    },
+    {
+      "sent": "{\"query\": \"silk slip dress in midi length under $40\"}",
+      "status": 200,
+      "client_s": 2.969,
+      "response": {
+        "error": "The model couldn't be reached, so the outfit and caption steps didn't run. The search worked: 5 listing(s) were found. Check GEMINI_API_KEY in your .env, then run the same query again.\nWhat the servic",
+        "fit_card": null,
+        "outfit_suggestion": null
+      },
+      "lines_added": 1,
+      "record": {
+        "timestamp": "2026-11-12T20:20:33.217+00:00",
+        "request_id": "b1a7e4dd36e4",
+        "route": "/ask",
+        "http_status": 200,
+        "query": "silk slip dress in midi length under $40",
+        "outcome": "model_unavailable",
+        "error": "The model couldn't be reached, so the outfit and caption steps didn't run. The search worked: 5 listing(s) were found. Check GEMINI_API_KEY in your .env, then run the same query again.\nWhat the service said: The model rejected your API key. Check GEMINI_API_KEY in your .env file, or create a fresh key at aistudio.google.com.",
+        "duration_s": 2.949,
+        "queued": false,
+        "prompt_tokens": 0,
+        "output_tokens": 0,
+        "selected_item_id": "lst_013"
+      }
+    },
+    {
+      "sent": "{\"query\": \"platform sneakers size 8\"}",
+      "status": 200,
+      "client_s": 0.876,
+      "response": {
+        "error": "The model couldn't be reached, so the outfit and caption steps didn't run. The search worked: 3 listing(s) were found. Check GEMINI_API_KEY in your .env, then run the same query again.\nWhat the servic",
+        "fit_card": null,
+        "outfit_suggestion": null
+      },
+      "lines_added": 1,
+      "record": {
+        "timestamp": "2026-11-12T20:20:34.100+00:00",
+        "request_id": "7a02144c73dd",
+        "route": "/ask",
+        "http_status": 200,
+        "query": "platform sneakers size 8",
+        "outcome": "model_unavailable",
+        "error": "The model couldn't be reached, so the outfit and caption steps didn't run. The search worked: 3 listing(s) were found. Check GEMINI_API_KEY in your .env, then run the same query again.\nWhat the service said: The model rejected your API key. Check GEMINI_API_KEY in your .env file, or create a fresh key at aistudio.google.com.",
+        "duration_s": 0.864,
+        "queued": false,
+        "prompt_tokens": 0,
+        "output_tokens": 0,
+        "selected_item_id": "lst_019"
+      }
+    },
+    {
+      "sent": "{\"query\": \"denim jacket under $50\"}",
+      "status": 200,
+      "client_s": 2.227,
+      "response": {
+        "error": "The model couldn't be reached, so the outfit and caption steps didn't run. The search worked: 7 listing(s) were found. Check GEMINI_API_KEY in your .env, then run the same query again.\nWhat the servic",
+        "fit_card": null,
+        "outfit_suggestion": null
+      },
+      "lines_added": 1,
+      "record": {
+        "timestamp": "2026-11-12T20:20:36.335+00:00",
+        "request_id": "85d4317c2248",
+        "route": "/ask",
+        "http_status": 200,
+        "query": "denim jacket under $50",
+        "outcome": "model_unavailable",
+        "error": "The model couldn't be reached, so the outfit and caption steps didn't run. The search worked: 7 listing(s) were found. Check GEMINI_API_KEY in your .env, then run the same query again.\nWhat the service said: The model rejected your API key. Check GEMINI_API_KEY in your .env file, or create a fresh key at aistudio.google.com.",
+        "duration_s": 2.214,
+        "queued": false,
+        "prompt_tokens": 0,
+        "output_tokens": 0,
+        "selected_item_id": "lst_007"
+      }
+    },
+    {
+      "sent": "{\"query\": \"vintage graphic tee under $30\"}",
+      "status": 200,
+      "client_s": 3.136,
+      "response": {
+        "error": "The model couldn't be reached, so the outfit and caption steps didn't run. The search worked: 10 listing(s) were found. Check GEMINI_API_KEY in your .env, then run the same query again.\nWhat the servi",
+        "fit_card": null,
+        "outfit_suggestion": null
+      },
+      "lines_added": 1,
+      "record": {
+        "timestamp": "2026-11-12T20:20:39.478+00:00",
+        "request_id": "f60c08728747",
+        "route": "/ask",
+        "http_status": 200,
+        "query": "vintage graphic tee under $30",
+        "outcome": "model_unavailable",
+        "error": "The model couldn't be reached, so the outfit and caption steps didn't run. The search worked: 10 listing(s) were found. Check GEMINI_API_KEY in your .env, then run the same query again.\nWhat the service said: The model rejected your API key. Check GEMINI_API_KEY in your .env file, or create a fresh key at aistudio.google.com.",
+        "duration_s": 3.115,
+        "queued": false,
+        "prompt_tokens": 0,
+        "output_tokens": 0,
+        "selected_item_id": "lst_002"
+      }
+    },
+    {
+      "sent": "{\"query\": \"90s track jacket in size M\"}",
+      "status": 200,
+      "client_s": 0.973,
+      "response": {
+        "error": "The model couldn't be reached, so the outfit and caption steps didn't run. The search worked: 4 listing(s) were found. Check GEMINI_API_KEY in your .env, then run the same query again.\nWhat the servic",
+        "fit_card": null,
+        "outfit_suggestion": null
+      },
+      "lines_added": 1,
+      "record": {
+        "timestamp": "2026-11-12T20:20:40.459+00:00",
+        "request_id": "d5ce29a78ade",
+        "route": "/ask",
+        "http_status": 200,
+        "query": "90s track jacket in size M",
+        "outcome": "model_unavailable",
+        "error": "The model couldn't be reached, so the outfit and caption steps didn't run. The search worked: 4 listing(s) were found. Check GEMINI_API_KEY in your .env, then run the same query again.\nWhat the service said: The model rejected your API key. Check GEMINI_API_KEY in your .env file, or create a fresh key at aistudio.google.com.",
+        "duration_s": 0.961,
+        "queued": false,
+        "prompt_tokens": 0,
+        "output_tokens": 0,
+        "selected_item_id": "lst_004"
+      }
+    },
+    {
+      "sent": "{\"query\": \"silk slip dress in midi length under $40\"}",
+      "status": 200,
+      "client_s": 2.732,
+      "response": {
+        "error": "The model couldn't be reached, so the outfit and caption steps didn't run. The search worked: 5 listing(s) were found. Check GEMINI_API_KEY in your .env, then run the same query again.\nWhat the servic",
+        "fit_card": null,
+        "outfit_suggestion": null
+      },
+      "lines_added": 1,
+      "record": {
+        "timestamp": "2026-11-12T20:20:43.199+00:00",
+        "request_id": "6bf095290db5",
+        "route": "/ask",
+        "http_status": 200,
+        "query": "silk slip dress in midi length under $40",
+        "outcome": "model_unavailable",
+        "error": "The model couldn't be reached, so the outfit and caption steps didn't run. The search worked: 5 listing(s) were found. Check GEMINI_API_KEY in your .env, then run the same query again.\nWhat the service said: The model rejected your API key. Check GEMINI_API_KEY in your .env file, or create a fresh key at aistudio.google.com.",
+        "duration_s": 2.728,
+        "queued": false,
+        "prompt_tokens": 0,
+        "output_tokens": 0,
+        "selected_item_id": "lst_013"
+      }
+    },
+    {
+      "sent": "{\"query\": \"platform sneakers size 8\"}",
+      "status": 200,
+      "client_s": 3.254,
+      "response": {
+        "error": "The model couldn't be reached, so the outfit and caption steps didn't run. The search worked: 3 listing(s) were found. Check GEMINI_API_KEY in your .env, then run the same query again.\nWhat the servic",
+        "fit_card": null,
+        "outfit_suggestion": null
+      },
+      "lines_added": 1,
+      "record": {
+        "timestamp": "2026-11-12T20:20:46.460+00:00",
+        "request_id": "d542eb6f8e0d",
+        "route": "/ask",
+        "http_status": 200,
+        "query": "platform sneakers size 8",
+        "outcome": "model_unavailable",
+        "error": "The model couldn't be reached, so the outfit and caption steps didn't run. The search worked: 3 listing(s) were found. Check GEMINI_API_KEY in your .env, then run the same query again.\nWhat the service said: The model rejected your API key. Check GEMINI_API_KEY in your .env file, or create a fresh key at aistudio.google.com.",
+        "duration_s": 3.227,
+        "queued": false,
+        "prompt_tokens": 0,
+        "output_tokens": 0,
+        "selected_item_id": "lst_019"
+      }
+    },
+    {
+      "sent": "{\"query\": \"denim jacket under $50\"}",
+      "status": 200,
+      "client_s": 0.903,
+      "response": {
+        "error": "The model couldn't be reached, so the outfit and caption steps didn't run. The search worked: 7 listing(s) were found. Check GEMINI_API_KEY in your .env, then run the same query again.\nWhat the servic",
+        "fit_card": null,
+        "outfit_suggestion": null
+      },
+      "lines_added": 1,
+      "record": {
+        "timestamp": "2026-11-12T20:20:47.370+00:00",
+        "request_id": "ea1b4e9f0982",
+        "route": "/ask",
+        "http_status": 200,
+        "query": "denim jacket under $50",
+        "outcome": "model_unavailable",
+        "error": "The model couldn't be reached, so the outfit and caption steps didn't run. The search worked: 7 listing(s) were found. Check GEMINI_API_KEY in your .env, then run the same query again.\nWhat the service said: The model rejected your API key. Check GEMINI_API_KEY in your .env file, or create a fresh key at aistudio.google.com.",
+        "duration_s": 0.891,
+        "queued": false,
+        "prompt_tokens": 0,
+        "output_tokens": 0,
+        "selected_item_id": "lst_007"
+      }
+    }
+  ]
+}

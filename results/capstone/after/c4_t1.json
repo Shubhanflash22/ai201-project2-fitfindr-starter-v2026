@@ -1,0 +1,711 @@
+{
+  "criterion": 4,
+  "type": null,
+  "trial": 1,
+  "score": 3,
+  "of": 100,
+  "target_met_this_trial": false,
+  "note": "log lines 101 (expected 101); outcome not ok: 38; duration_s min 4.088, median 12.41, max 30.248",
+  "details": [
+    {
+      "i": 1,
+      "status": 200,
+      "client_s": 13.564,
+      "duration_s": 13.543,
+      "outcome": "ok"
+    },
+    {
+      "i": 2,
+      "status": 200,
+      "client_s": 22.935,
+      "duration_s": 22.914,
+      "outcome": "model_unavailable"
+    },
+    {
+      "i": 3,
+      "status": 200,
+      "client_s": 7.135,
+      "duration_s": 7.121,
+      "outcome": "ok"
+    },
+    {
+      "i": 4,
+      "status": 200,
+      "client_s": 22.962,
+      "duration_s": 22.942,
+      "outcome": "model_unavailable"
+    },
+    {
+      "i": 5,
+      "status": 200,
+      "client_s": 9.886,
+      "duration_s": 9.871,
+      "outcome": "ok"
+    },
+    {
+      "i": 6,
+      "status": 200,
+      "client_s": 10.333,
+      "duration_s": 10.308,
+      "outcome": "ok"
+    },
+    {
+      "i": 7,
+      "status": 200,
+      "client_s": 6.297,
+      "duration_s": 6.284,
+      "outcome": "ok"
+    },
+    {
+      "i": 8,
+      "status": 200,
+      "client_s": 5.061,
+      "duration_s": 5.037,
+      "outcome": "ok"
+    },
+    {
+      "i": 9,
+      "status": 200,
+      "client_s": 23.117,
+      "duration_s": 23.101,
+      "outcome": "model_unavailable"
+    },
+    {
+      "i": 10,
+      "status": 200,
+      "client_s": 5.922,
+      "duration_s": 5.918,
+      "outcome": "ok"
+    },
+    {
+      "i": 11,
+      "status": 200,
+      "client_s": 12.71,
+      "duration_s": 12.687,
+      "outcome": "ok"
+    },
+    {
+      "i": 12,
+      "status": 200,
+      "client_s": 4.419,
+      "duration_s": 4.399,
+      "outcome": "ok"
+    },
+    {
+      "i": 13,
+      "status": 200,
+      "client_s": 6.068,
+      "duration_s": 6.051,
+      "outcome": "ok"
+    },
+    {
+      "i": 14,
+      "status": 200,
+      "client_s": 11.282,
+      "duration_s": 11.252,
+      "outcome": "ok"
+    },
+    {
+      "i": 15,
+      "status": 200,
+      "client_s": 21.839,
+      "duration_s": 21.821,
+      "outcome": "model_unavailable"
+    },
+    {
+      "i": 16,
+      "status": 200,
+      "client_s": 7.886,
+      "duration_s": 7.872,
+      "outcome": "ok"
+    },
+    {
+      "i": 17,
+      "status": 200,
+      "client_s": 4.673,
+      "duration_s": 4.652,
+      "outcome": "ok"
+    },
+    {
+      "i": 18,
+      "status": 200,
+      "client_s": 5.476,
+      "duration_s": 5.46,
+      "outcome": "ok"
+    },
+    {
+      "i": 19,
+      "status": 200,
+      "client_s": 12.388,
+      "duration_s": 12.364,
+      "outcome": "ok"
+    },
+    {
+      "i": 20,
+      "status": 200,
+      "client_s": 7.159,
+      "duration_s": 7.143,
+      "outcome": "ok"
+    },
+    {
+      "i": 21,
+      "status": 200,
+      "client_s": 24.056,
+      "duration_s": 24.04,
+      "outcome": "model_unavailable"
+    },
+    {
+      "i": 22,
+      "status": 200,
+      "client_s": 24.249,
+      "duration_s": 24.234,
+      "outcome": "model_unavailable"
+    },
+    {
+      "i": 23,
+      "status": 200,
+      "client_s": 23.025,
+      "duration_s": 23.01,
+      "outcome": "model_unavailable"
+    },
+    {
+      "i": 24,
+      "status": 200,
+      "client_s": 16.784,
+      "duration_s": 16.769,
+      "outcome": "ok"
+    },
+    {
+      "i": 25,
+      "status": 200,
+      "client_s": 6.282,
+      "duration_s": 6.278,
+      "outcome": "ok"
+    },
+    {
+      "i": 26,
+      "status": 200,
+      "client_s": 6.393,
+      "duration_s": 6.389,
+      "outcome": "ok"
+    },
+    {
+      "i": 27,
+      "status": 200,
+      "client_s": 5.334,
+      "duration_s": 5.312,
+      "outcome": "ok"
+    },
+    {
+      "i": 28,
+      "status": 200,
+      "client_s": 5.561,
+      "duration_s": 5.545,
+      "outcome": "ok"
+    },
+    {
+      "i": 29,
+      "status": 200,
+      "client_s": 5.953,
+      "duration_s": 5.934,
+      "outcome": "ok"
+    },
+    {
+      "i": 30,
+      "status": 200,
+      "client_s": 4.091,
+      "duration_s": 4.088,
+      "outcome": "ok"
+    },
+    {
+      "i": 31,
+      "status": 200,
+      "client_s": 6.675,
+      "duration_s": 6.67,
+      "outcome": "ok"
+    },
+    {
+      "i": 32,
+      "status": 200,
+      "client_s": 8.038,
+      "duration_s": 8.016,
+      "outcome": "ok"
+    },
+    {
+      "i": 33,
+      "status": 200,
+      "client_s": 4.984,
+      "duration_s": 4.966,
+      "outcome": "ok"
+    },
+    {
+      "i": 34,
+      "status": 200,
+      "client_s": 7.196,
+      "duration_s": 7.175,
+      "outcome": "ok"
+    },
+    {
+      "i": 35,
+      "status": 200,
+      "client_s": 23.969,
+      "duration_s": 23.964,
+      "outcome": "model_unavailable"
+    },
+    {
+      "i": 36,
+      "status": 200,
+      "client_s": 26.392,
+      "duration_s": 26.379,
+      "outcome": "model_unavailable"
+    },
+    {
+      "i": 37,
+      "status": 200,
+      "client_s": 10.865,
+      "duration_s": 10.861,
+      "outcome": "ok"
+    },
+    {
+      "i": 38,
+      "status": 200,
+      "client_s": 18.896,
+      "duration_s": 18.882,
+      "outcome": "ok"
+    },
+    {
+      "i": 39,
+      "status": 200,
+      "client_s": 7.062,
+      "duration_s": 7.049,
+      "outcome": "ok"
+    },
+    {
+      "i": 40,
+      "status": 200,
+      "client_s": 23.976,
+      "duration_s": 23.961,
+      "outcome": "model_unavailable"
+    },
+    {
+      "i": 41,
+      "status": 200,
+      "client_s": 4.841,
+      "duration_s": 4.827,
+      "outcome": "ok"
+    },
+    {
+      "i": 42,
+      "status": 200,
+      "client_s": 22.977,
+      "duration_s": 22.959,
+      "outcome": "model_unavailable"
+    },
+    {
+      "i": 43,
+      "status": 200,
+      "client_s": 28.352,
+      "duration_s": 28.338,
+      "outcome": "model_unavailable"
+    },
+    {
+      "i": 44,
+      "status": 200,
+      "client_s": 22.972,
+      "duration_s": 22.959,
+      "outcome": "model_unavailable"
+    },
+    {
+      "i": 45,
+      "status": 200,
+      "client_s": 7.876,
+      "duration_s": 7.861,
+      "outcome": "ok"
+    },
+    {
+      "i": 46,
+      "status": 200,
+      "client_s": 17.515,
+      "duration_s": 17.489,
+      "outcome": "ok"
+    },
+    {
+      "i": 47,
+      "status": 200,
+      "client_s": 19.794,
+      "duration_s": 19.77,
+      "outcome": "ok"
+    },
+    {
+      "i": 48,
+      "status": 200,
+      "client_s": 25.477,
+      "duration_s": 25.46,
+      "outcome": "model_unavailable"
+    },
+    {
+      "i": 49,
+      "status": 200,
+      "client_s": 25.669,
+      "duration_s": 25.653,
+      "outcome": "model_unavailable"
+    },
+    {
+      "i": 50,
+      "status": 200,
+      "client_s": 8.388,
+      "duration_s": 8.375,
+      "outcome": "ok"
+    },
+    {
+      "i": 51,
+      "status": 200,
+      "client_s": 8.94,
+      "duration_s": 8.914,
+      "outcome": "ok"
+    },
+    {
+      "i": 52,
+      "status": 200,
+      "client_s": 22.982,
+      "duration_s": 22.967,
+      "outcome": "model_unavailable"
+    },
+    {
+      "i": 53,
+      "status": 200,
+      "client_s": 11.368,
+      "duration_s": 11.356,
+      "outcome": "ok"
+    },
+    {
+      "i": 54,
+      "status": 200,
+      "client_s": 12.467,
+      "duration_s": 12.456,
+      "outcome": "ok"
+    },
+    {
+      "i": 55,
+      "status": 200,
+      "client_s": 11.548,
+      "duration_s": 11.531,
+      "outcome": "ok"
+    },
+    {
+      "i": 56,
+      "status": 200,
+      "client_s": 22.985,
+      "duration_s": 22.969,
+      "outcome": "model_unavailable"
+    },
+    {
+      "i": 57,
+      "status": 200,
+      "client_s": 7.217,
+      "duration_s": 7.204,
+      "outcome": "ok"
+    },
+    {
+      "i": 58,
+      "status": 200,
+      "client_s": 26.386,
+      "duration_s": 26.373,
+      "outcome": "model_unavailable"
+    },
+    {
+      "i": 59,
+      "status": 200,
+      "client_s": 26.315,
+      "duration_s": 26.301,
+      "outcome": "model_unavailable"
+    },
+    {
+      "i": 60,
+      "status": 200,
+      "client_s": 23.003,
+      "duration_s": 22.988,
+      "outcome": "model_unavailable"
+    },
+    {
+      "i": 61,
+      "status": 200,
+      "client_s": 23.257,
+      "duration_s": 23.241,
+      "outcome": "model_unavailable"
+    },
+    {
+      "i": 62,
+      "status": 200,
+      "client_s": 8.284,
+      "duration_s": 8.271,
+      "outcome": "ok"
+    },
+    {
+      "i": 63,
+      "status": 200,
+      "client_s": 6.999,
+      "duration_s": 6.985,
+      "outcome": "ok"
+    },
+    {
+      "i": 64,
+      "status": 200,
+      "client_s": 14.659,
+      "duration_s": 14.642,
+      "outcome": "ok"
+    },
+    {
+      "i": 65,
+      "status": 200,
+      "client_s": 15.684,
+      "duration_s": 15.669,
+      "outcome": "ok"
+    },
+    {
+      "i": 66,
+      "status": 200,
+      "client_s": 6.867,
+      "duration_s": 6.851,
+      "outcome": "model_unavailable"
+    },
+    {
+      "i": 67,
+      "status": 200,
+      "client_s": 22.98,
+      "duration_s": 22.965,
+      "outcome": "model_unavailable"
+    },
+    {
+      "i": 68,
+      "status": 200,
+      "client_s": 13.43,
+      "duration_s": 13.415,
+      "outcome": "ok"
+    },
+    {
+      "i": 69,
+      "status": 200,
+      "client_s": 4.975,
+      "duration_s": 4.955,
+      "outcome": "ok"
+    },
+    {
+      "i": 70,
+      "status": 200,
+      "client_s": 13.042,
+      "duration_s": 13.02,
+      "outcome": "ok"
+    },
+    {
+      "i": 71,
+      "status": 200,
+      "client_s": 7.345,
+      "duration_s": 7.328,
+      "outcome": "ok"
+    },
+    {
+      "i": 72,
+      "status": 200,
+      "client_s": 8.519,
+      "duration_s": 8.5,
+      "outcome": "ok"
+    },
+    {
+      "i": 73,
+      "status": 200,
+      "client_s": 15.251,
+      "duration_s": 15.236,
+      "outcome": "ok"
+    },
+    {
+      "i": 74,
+      "status": 200,
+      "client_s": 25.102,
+      "duration_s": 25.09,
+      "outcome": "model_unavailable"
+    },
+    {
+      "i": 75,
+      "status": 200,
+      "client_s": 7.506,
+      "duration_s": 7.492,
+      "outcome": "ok"
+    },
+    {
+      "i": 76,
+      "status": 200,
+      "client_s": 7.172,
+      "duration_s": 7.149,
+      "outcome": "ok"
+    },
+    {
+      "i": 77,
+      "status": 200,
+      "client_s": 25.246,
+      "duration_s": 25.226,
+      "outcome": "model_unavailable"
+    },
+    {
+      "i": 78,
+      "status": 200,
+      "client_s": 11.112,
+      "duration_s": 11.097,
+      "outcome": "ok"
+    },
+    {
+      "i": 79,
+      "status": 200,
+      "client_s": 22.984,
+      "duration_s": 22.967,
+      "outcome": "model_unavailable"
+    },
+    {
+      "i": 80,
+      "status": 200,
+      "client_s": 6.354,
+      "duration_s": 6.34,
+      "outcome": "ok"
+    },
+    {
+      "i": 81,
+      "status": 200,
+      "client_s": 11.66,
+      "duration_s": 11.64,
+      "outcome": "ok"
+    },
+    {
+      "i": 82,
+      "status": 200,
+      "client_s": 21.909,
+      "duration_s": 21.888,
+      "outcome": "model_unavailable"
+    },
+    {
+      "i": 83,
+      "status": 200,
+      "client_s": 24.099,
+      "duration_s": 24.083,
+      "outcome": "model_unavailable"
+    },
+    {
+      "i": 84,
+      "status": 200,
+      "client_s": 6.717,
+      "duration_s": 6.704,
+      "outcome": "ok"
+    },
+    {
+      "i": 85,
+      "status": 200,
+      "client_s": 22.958,
+      "duration_s": 22.938,
+      "outcome": "model_unavailable"
+    },
+    {
+      "i": 86,
+      "status": 200,
+      "client_s": 23.063,
+      "duration_s": 23.049,
+      "outcome": "model_unavailable"
+    },
+    {
+      "i": 87,
+      "status": 200,
+      "client_s": 9.459,
+      "duration_s": 9.446,
+      "outcome": "model_unavailable"
+    },
+    {
+      "i": 88,
+      "status": 200,
+      "client_s": 23.906,
+      "duration_s": 23.893,
+      "outcome": "model_unavailable"
+    },
+    {
+      "i": 89,
+      "status": 200,
+      "client_s": 14.489,
+      "duration_s": 14.475,
+      "outcome": "ok"
+    },
+    {
+      "i": 90,
+      "status": 200,
+      "client_s": 23.002,
+      "duration_s": 22.989,
+      "outcome": "model_unavailable"
+    },
+    {
+      "i": 91,
+      "status": 200,
+      "client_s": 27.748,
+      "duration_s": 27.733,
+      "outcome": "model_unavailable"
+    },
+    {
+      "i": 92,
+      "status": 200,
+      "client_s": 8.758,
+      "duration_s": 8.745,
+      "outcome": "ok"
+    },
+    {
+      "i": 93,
+      "status": 200,
+      "client_s": 22.941,
+      "duration_s": 22.926,
+      "outcome": "model_unavailable"
+    },
+    {
+      "i": 94,
+      "status": 200,
+      "client_s": 30.314,
+      "duration_s": 30.248,
+      "outcome": "model_unavailable"
+    },
+    {
+      "i": 95,
+      "status": 200,
+      "client_s": 6.879,
+      "duration_s": 6.865,
+      "outcome": "ok"
+    },
+    {
+      "i": 96,
+      "status": 200,
+      "client_s": 5.781,
+      "duration_s": 5.755,
+      "outcome": "ok"
+    },
+    {
+      "i": 97,
+      "status": 200,
+      "client_s": 12.606,
+      "duration_s": 12.579,
+      "outcome": "ok"
+    },
+    {
+      "i": 98,
+      "status": 200,
+      "client_s": 27.83,
+      "duration_s": 27.813,
+      "outcome": "model_unavailable"
+    },
+    {
+      "i": 99,
+      "status": 200,
+      "client_s": 27.566,
+      "duration_s": 27.55,
+      "outcome": "model_unavailable"
+    },
+    {
+      "i": 100,
+      "status": 200,
+      "client_s": 12.062,
+      "duration_s": 12.049,
+      "outcome": "ok"
+    }
+  ]
+}

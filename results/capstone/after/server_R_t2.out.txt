@@ -1,0 +1,243 @@
+
+FitFindr is listening on http://localhost:5000
+It runs one request at a time — a second one waits for the first.
+Ask it something (single quotes, as always):
+
+  curl -X POST http://localhost:5000/ask \
+    -H 'Content-Type: application/json' \
+    -d '{"query": "vintage graphic tee under $30"}'
+
+Ctrl-C to stop.
+
+ * Serving Flask app 'serve'
+ * Debug mode: off
+[1] parse_query
+      in:  designer ballgown under $5
+      out: dict with keys: description, size, max_price
+[2] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: [] (empty)
+      →    0 match(es)
+[3] branch
+      →    search returned []: stopping before suggest_outfit
+[4] parse_query
+      in:  leather jacket under $5
+      out: dict with keys: description, size, max_price
+[5] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: [] (empty)
+      →    0 match(es)
+[6] branch
+      →    search returned []: stopping before suggest_outfit
+[7] parse_query
+      in:  silk scarf under $5
+      out: dict with keys: description, size, max_price
+[8] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: [] (empty)
+      →    0 match(es)
+[9] branch
+      →    search returned []: stopping before suggest_outfit
+[10] parse_query
+      in:  platform boots under $5
+      out: dict with keys: description, size, max_price
+[11] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: [] (empty)
+      →    0 match(es)
+[12] branch
+      →    search returned []: stopping before suggest_outfit
+[13] parse_query
+      in:  denim shorts under $5
+      out: dict with keys: description, size, max_price
+[14] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: [] (empty)
+      →    0 match(es)
+[15] branch
+      →    search returned []: stopping before suggest_outfit
+[16] parse_query
+      in:  wool coat under $5
+      out: dict with keys: description, size, max_price
+[17] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: [] (empty)
+      →    0 match(es)
+[18] branch
+      →    search returned []: stopping before suggest_outfit
+[19] parse_query
+      in:  graphic tee under $5
+      out: dict with keys: description, size, max_price
+[20] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: [] (empty)
+      →    0 match(es)
+[21] branch
+      →    search returned []: stopping before suggest_outfit
+[22] parse_query
+      in:  pleated skirt under $5
+      out: dict with keys: description, size, max_price
+[23] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: [] (empty)
+      →    0 match(es)
+[24] branch
+      →    search returned []: stopping before suggest_outfit
+[25] parse_query
+      in:  cargo pants under $5
+      out: dict with keys: description, size, max_price
+[26] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: [] (empty)
+      →    0 match(es)
+[27] branch
+      →    search returned []: stopping before suggest_outfit
+[28] parse_query
+      in:  knit sweater under $5
+      out: dict with keys: description, size, max_price
+[29] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: [] (empty)
+      →    0 match(es)
+[30] branch
+      →    search returned []: stopping before suggest_outfit
+[31] parse_query
+      in:  designer ballgown under $5
+      out: dict with keys: description, size, max_price
+[32] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: [] (empty)
+      →    0 match(es)
+[33] branch
+      →    search returned []: stopping before suggest_outfit
+[34] parse_query
+      in:  leather jacket under $5
+      out: dict with keys: description, size, max_price
+[35] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: [] (empty)
+      →    0 match(es)
+[36] branch
+      →    search returned []: stopping before suggest_outfit
+[37] parse_query
+      in:  silk scarf under $5
+      out: dict with keys: description, size, max_price
+[38] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: [] (empty)
+      →    0 match(es)
+[39] branch
+      →    search returned []: stopping before suggest_outfit
+[40] parse_query
+      in:  platform boots under $5
+      out: dict with keys: description, size, max_price
+[41] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: [] (empty)
+      →    0 match(es)
+[42] branch
+      →    search returned []: stopping before suggest_outfit
+[43] parse_query
+      in:  denim shorts under $5
+      out: dict with keys: description, size, max_price
+[44] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: [] (empty)
+      →    0 match(es)
+[45] branch
+      →    search returned []: stopping before suggest_outfit
+[46] parse_query
+      in:  wool coat under $5
+      out: dict with keys: description, size, max_price
+[47] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: [] (empty)
+      →    0 match(es)
+[48] branch
+      →    search returned []: stopping before suggest_outfit
+[49] parse_query
+      in:  graphic tee under $5
+      out: dict with keys: description, size, max_price
+[50] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: [] (empty)
+      →    0 match(es)
+[51] branch
+      →    search returned []: stopping before suggest_outfit
+[52] parse_query
+      in:  pleated skirt under $5
+      out: dict with keys: description, size, max_price
+[53] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: [] (empty)
+      →    0 match(es)
+[54] branch
+      →    search returned []: stopping before suggest_outfit
+[55] parse_query
+      in:  cargo pants under $5
+      out: dict with keys: description, size, max_price
+[56] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: [] (empty)
+      →    0 match(es)
+[57] branch
+      →    search returned []: stopping before suggest_outfit
+[58] parse_query
+      in:  knit sweater under $5
+      out: dict with keys: description, size, max_price
+[59] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: [] (empty)
+      →    0 match(es)
+[60] branch
+      →    search returned []: stopping before suggest_outfit
+[61] parse_query
+      in:  vintage graphic tee under $30
+      out: dict with keys: description, size, max_price
+[62] MCP unavailable
+      →    stopping before any search
+[63] parse_query
+      in:  90s track jacket in size M
+      out: dict with keys: description, size, max_price
+[64] MCP unavailable
+      →    stopping before any search
+[65] parse_query
+      in:  silk slip dress in midi length under $40
+      out: dict with keys: description, size, max_price
+[66] MCP unavailable
+      →    stopping before any search
+[67] parse_query
+      in:  platform sneakers size 8
+      out: dict with keys: description, size, max_price
+[68] MCP unavailable
+      →    stopping before any search
+[69] parse_query
+      in:  denim jacket under $50
+      out: dict with keys: description, size, max_price
+[70] MCP unavailable
+      →    stopping before any search
+[71] parse_query
+      in:  vintage graphic tee under $30
+      out: dict with keys: description, size, max_price
+[72] MCP unavailable
+      →    stopping before any search
+[73] parse_query
+      in:  90s track jacket in size M
+      out: dict with keys: description, size, max_price
+[74] MCP unavailable
+      →    stopping before any search
+[75] parse_query
+      in:  silk slip dress in midi length under $40
+      out: dict with keys: description, size, max_price
+[76] MCP unavailable
+      →    stopping before any search
+[77] parse_query
+      in:  platform sneakers size 8
+      out: dict with keys: description, size, max_price
+[78] MCP unavailable
+      →    stopping before any search
+[79] parse_query
+      in:  denim jacket under $50
+      out: dict with keys: description, size, max_price
+[80] MCP unavailable
+      →    stopping before any search

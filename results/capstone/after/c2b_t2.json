@@ -1,0 +1,261 @@
+{
+  "criterion": 2,
+  "type": "b",
+  "trial": 2,
+  "score": 10,
+  "of": 10,
+  "target_met_this_trial": true,
+  "note": "type b: expected outcome=nothing_found, status=200",
+  "details": [
+    {
+      "sent": "{\"query\": \"designer ballgown under $5\"}",
+      "status": 200,
+      "client_s": 1.297,
+      "response": {
+        "error": "Nothing in the listings matched description 'designer ballgown', under $5.\nThings to change: try broader words \u2014 'jacket' finds more than 'cropped corduroy jacket'; raise the price ceiling above $5.",
+        "fit_card": null,
+        "outfit_suggestion": null
+      },
+      "lines_added": 1,
+      "record": {
+        "timestamp": "2026-11-12T20:19:59.637+00:00",
+        "request_id": "de31222d3e84",
+        "route": "/ask",
+        "http_status": 200,
+        "query": "designer ballgown under $5",
+        "outcome": "nothing_found",
+        "error": "Nothing in the listings matched description 'designer ballgown', under $5.\nThings to change: try broader words \u2014 'jacket' finds more than 'cropped corduroy jacket'; raise the price ceiling above $5.",
+        "duration_s": 1.281,
+        "queued": false,
+        "prompt_tokens": 0,
+        "output_tokens": 0,
+        "selected_item_id": null
+      }
+    },
+    {
+      "sent": "{\"query\": \"leather jacket under $5\"}",
+      "status": 200,
+      "client_s": 0.783,
+      "response": {
+        "error": "Nothing in the listings matched description 'leather jacket', under $5.\nThings to change: try broader words \u2014 'jacket' finds more than 'cropped corduroy jacket'; raise the price ceiling above $5.",
+        "fit_card": null,
+        "outfit_suggestion": null
+      },
+      "lines_added": 1,
+      "record": {
+        "timestamp": "2026-11-12T20:20:00.429+00:00",
+        "request_id": "23060b1493fd",
+        "route": "/ask",
+        "http_status": 200,
+        "query": "leather jacket under $5",
+        "outcome": "nothing_found",
+        "error": "Nothing in the listings matched description 'leather jacket', under $5.\nThings to change: try broader words \u2014 'jacket' finds more than 'cropped corduroy jacket'; raise the price ceiling above $5.",
+        "duration_s": 0.765,
+        "queued": false,
+        "prompt_tokens": 0,
+        "output_tokens": 0,
+        "selected_item_id": null
+      }
+    },
+    {
+      "sent": "{\"query\": \"silk scarf under $5\"}",
+      "status": 200,
+      "client_s": 0.774,
+      "response": {
+        "error": "Nothing in the listings matched description 'silk scarf', under $5.\nThings to change: try broader words \u2014 'jacket' finds more than 'cropped corduroy jacket'; raise the price ceiling above $5.",
+        "fit_card": null,
+        "outfit_suggestion": null
+      },
+      "lines_added": 1,
+      "record": {
+        "timestamp": "2026-11-12T20:20:01.211+00:00",
+        "request_id": "14cbca03475f",
+        "route": "/ask",
+        "http_status": 200,
+        "query": "silk scarf under $5",
+        "outcome": "nothing_found",
+        "error": "Nothing in the listings matched description 'silk scarf', under $5.\nThings to change: try broader words \u2014 'jacket' finds more than 'cropped corduroy jacket'; raise the price ceiling above $5.",
+        "duration_s": 0.768,
+        "queued": false,
+        "prompt_tokens": 0,
+        "output_tokens": 0,
+        "selected_item_id": null
+      }
+    },
+    {
+      "sent": "{\"query\": \"platform boots under $5\"}",
+      "status": 200,
+      "client_s": 0.764,
+      "response": {
+        "error": "Nothing in the listings matched description 'platform boots', under $5.\nThings to change: try broader words \u2014 'jacket' finds more than 'cropped corduroy jacket'; raise the price ceiling above $5.",
+        "fit_card": null,
+        "outfit_suggestion": null
+      },
+      "lines_added": 1,
+      "record": {
+        "timestamp": "2026-11-12T20:20:01.983+00:00",
+        "request_id": "74a164419842",
+        "route": "/ask",
+        "http_status": 200,
+        "query": "platform boots under $5",
+        "outcome": "nothing_found",
+        "error": "Nothing in the listings matched description 'platform boots', under $5.\nThings to change: try broader words \u2014 'jacket' finds more than 'cropped corduroy jacket'; raise the price ceiling above $5.",
+        "duration_s": 0.75,
+        "queued": false,
+        "prompt_tokens": 0,
+        "output_tokens": 0,
+        "selected_item_id": null
+      }
+    },
+    {
+      "sent": "{\"query\": \"denim shorts under $5\"}",
+      "status": 200,
+      "client_s": 0.783,
+      "response": {
+        "error": "Nothing in the listings matched description 'denim shorts', under $5.\nThings to change: try broader words \u2014 'jacket' finds more than 'cropped corduroy jacket'; raise the price ceiling above $5.",
+        "fit_card": null,
+        "outfit_suggestion": null
+      },
+      "lines_added": 1,
+      "record": {
+        "timestamp": "2026-11-12T20:20:02.773+00:00",
+        "request_id": "b56d0ed46acc",
+        "route": "/ask",
+        "http_status": 200,
+        "query": "denim shorts under $5",
+        "outcome": "nothing_found",
+        "error": "Nothing in the listings matched description 'denim shorts', under $5.\nThings to change: try broader words \u2014 'jacket' finds more than 'cropped corduroy jacket'; raise the price ceiling above $5.",
+        "duration_s": 0.78,
+        "queued": false,
+        "prompt_tokens": 0,
+        "output_tokens": 0,
+        "selected_item_id": null
+      }
+    },
+    {
+      "sent": "{\"query\": \"wool coat under $5\"}",
+      "status": 200,
+      "client_s": 0.774,
+      "response": {
+        "error": "Nothing in the listings matched description 'wool coat', under $5.\nThings to change: try broader words \u2014 'jacket' finds more than 'cropped corduroy jacket'; raise the price ceiling above $5.",
+        "fit_card": null,
+        "outfit_suggestion": null
+      },
+      "lines_added": 1,
+      "record": {
+        "timestamp": "2026-11-12T20:20:03.554+00:00",
+        "request_id": "6b8251c357d7",
+        "route": "/ask",
+        "http_status": 200,
+        "query": "wool coat under $5",
+        "outcome": "nothing_found",
+        "error": "Nothing in the listings matched description 'wool coat', under $5.\nThings to change: try broader words \u2014 'jacket' finds more than 'cropped corduroy jacket'; raise the price ceiling above $5.",
+        "duration_s": 0.771,
+        "queued": false,
+        "prompt_tokens": 0,
+        "output_tokens": 0,
+        "selected_item_id": null
+      }
+    },
+    {
+      "sent": "{\"query\": \"graphic tee under $5\"}",
+      "status": 200,
+      "client_s": 0.763,
+      "response": {
+        "error": "Nothing in the listings matched description 'graphic tee', under $5.\nThings to change: try broader words \u2014 'jacket' finds more than 'cropped corduroy jacket'; raise the price ceiling above $5.",
+        "fit_card": null,
+        "outfit_suggestion": null
+      },
+      "lines_added": 1,
+      "record": {
+        "timestamp": "2026-11-12T20:20:04.325+00:00",
+        "request_id": "fb15053427b7",
+        "route": "/ask",
+        "http_status": 200,
+        "query": "graphic tee under $5",
+        "outcome": "nothing_found",
+        "error": "Nothing in the listings matched description 'graphic tee', under $5.\nThings to change: try broader words \u2014 'jacket' finds more than 'cropped corduroy jacket'; raise the price ceiling above $5.",
+        "duration_s": 0.751,
+        "queued": false,
+        "prompt_tokens": 0,
+        "output_tokens": 0,
+        "selected_item_id": null
+      }
+    },
+    {
+      "sent": "{\"query\": \"pleated skirt under $5\"}",
+      "status": 200,
+      "client_s": 0.758,
+      "response": {
+        "error": "Nothing in the listings matched description 'pleated skirt', under $5.\nThings to change: try broader words \u2014 'jacket' finds more than 'cropped corduroy jacket'; raise the price ceiling above $5.",
+        "fit_card": null,
+        "outfit_suggestion": null
+      },
+      "lines_added": 1,
+      "record": {
+        "timestamp": "2026-11-12T20:20:05.091+00:00",
+        "request_id": "ea4b6a146491",
+        "route": "/ask",
+        "http_status": 200,
+        "query": "pleated skirt under $5",
+        "outcome": "nothing_found",
+        "error": "Nothing in the listings matched description 'pleated skirt', under $5.\nThings to change: try broader words \u2014 'jacket' finds more than 'cropped corduroy jacket'; raise the price ceiling above $5.",
+        "duration_s": 0.755,
+        "queued": false,
+        "prompt_tokens": 0,
+        "output_tokens": 0,
+        "selected_item_id": null
+      }
+    },
+    {
+      "sent": "{\"query\": \"cargo pants under $5\"}",
+      "status": 200,
+      "client_s": 0.804,
+      "response": {
+        "error": "Nothing in the listings matched description 'cargo pants', under $5.\nThings to change: try broader words \u2014 'jacket' finds more than 'cropped corduroy jacket'; raise the price ceiling above $5.",
+        "fit_card": null,
+        "outfit_suggestion": null
+      },
+      "lines_added": 1,
+      "record": {
+        "timestamp": "2026-11-12T20:20:05.904+00:00",
+        "request_id": "a85afe62afa4",
+        "route": "/ask",
+        "http_status": 200,
+        "query": "cargo pants under $5",
+        "outcome": "nothing_found",
+        "error": "Nothing in the listings matched description 'cargo pants', under $5.\nThings to change: try broader words \u2014 'jacket' finds more than 'cropped corduroy jacket'; raise the price ceiling above $5.",
+        "duration_s": 0.78,
+        "queued": false,
+        "prompt_tokens": 0,
+        "output_tokens": 0,
+        "selected_item_id": null
+      }
+    },
+    {
+      "sent": "{\"query\": \"knit sweater under $5\"}",
+      "status": 200,
+      "client_s": 0.78,
+      "response": {
+        "error": "Nothing in the listings matched description 'knit sweater', under $5.\nThings to change: try broader words \u2014 'jacket' finds more than 'cropped corduroy jacket'; raise the price ceiling above $5.",
+        "fit_card": null,
+        "outfit_suggestion": null
+      },
+      "lines_added": 1,
+      "record": {
+        "timestamp": "2026-11-12T20:20:06.692+00:00",
+        "request_id": "a816c0f4454e",
+        "route": "/ask",
+        "http_status": 200,
+        "query": "knit sweater under $5",
+        "outcome": "nothing_found",
+        "error": "Nothing in the listings matched description 'knit sweater', under $5.\nThings to change: try broader words \u2014 'jacket' finds more than 'cropped corduroy jacket'; raise the price ceiling above $5.",
+        "duration_s": 0.778,
+        "queued": false,
+        "prompt_tokens": 0,
+        "output_tokens": 0,
+        "selected_item_id": null
+      }
+    }
+  ]
+}

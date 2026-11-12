@@ -1,0 +1,121 @@
+{
+  "criterion": 3,
+  "type": null,
+  "trial": 2,
+  "score": 8,
+  "of": 10,
+  "target_met_this_trial": false,
+  "note": "stderr lines saying the log could not be written: 10 (must be 10)",
+  "details": [
+    {
+      "i": 1,
+      "status": 200,
+      "client_s": 25.288,
+      "response": {
+        "error": null,
+        "fit_card": "Scored this butterfly print Y2K baby tee on depop for $18 and I am obsessed with the nostalgic early 2000s energy it gives off. It fits the absolute best and is going to be so easy to style with baggy",
+        "outfit_suggestion": "Outfit 1\n\nPair the Y2K Baby Tee with your baggy straight-leg jeans, dark wash. Layer the vintage black denim jacket over top and finish with the chunky white sneakers and black crossbody bag.\n\nOutfit "
+      },
+      "response_ok": true
+    },
+    {
+      "i": 2,
+      "status": 200,
+      "client_s": 7.784,
+      "response": {
+        "error": null,
+        "fit_card": "Scored this vintage Champion navy and white track jacket on poshmark for only $45 and it instantly fixed my entire wardrobe. The crisp athletic stripes give off the absolute best retro streetwear ener",
+        "outfit_suggestion": "Outfit 1: Retro Streetwear\nLayer the 90s Track Jacket over the white ribbed tank top, paired with the baggy straight-leg jeans in dark wash. Complete the look with the chunky white sneakers and the bl"
+      },
+      "response_ok": true
+    },
+    {
+      "i": 3,
+      "status": 200,
+      "client_s": 9.177,
+      "response": {
+        "error": null,
+        "fit_card": "Scored this 90s silk slip dress on depop for $30 and it has the absolute ultimate Courtney Love grunge romantic energy. Throwing an oversized grey crewneck and combat boots right over it makes the del",
+        "outfit_suggestion": "Outfit 1: Grunge Romantic\nLayer your oversized grey crewneck sweatshirt directly over the 90s silk slip dress to give the delicate floral midi a relaxed, 90s-grunge contrast. Pair the combination with"
+      },
+      "response_ok": true
+    },
+    {
+      "i": 4,
+      "status": 200,
+      "client_s": 9.986,
+      "response": {
+        "error": null,
+        "fit_card": "scored these chunky white platform sneakers on poshmark for only $48 and they have such a cool early-2000s retro sport vibe. i am so excited to style them with baggy trousers and an oversized grey cre",
+        "outfit_suggestion": "Outfit 1: Casual Streetwear\nPair the new platform sneakers with the baggy straight-leg jeans, dark wash and the white ribbed tank top. Layer the black cropped zip hoodie over top, and complete the loo"
+      },
+      "response_ok": true
+    },
+    {
+      "i": 5,
+      "status": 200,
+      "client_s": 5.853,
+      "response": {
+        "error": null,
+        "fit_card": "Scored this vintage cropped Wrangler denim jacket on poshmark for $42 and the wash is the exact 90s indie sleaze shade I have been hunting for. It is giving major effortless off duty model energy when",
+        "outfit_suggestion": "Outfit 1: Casual Streetwear\nPair the light wash cropped denim jacket with the white ribbed tank top tucked into the baggy straight-leg jeans in dark wash. Add the chunky white sneakers and complete th"
+      },
+      "response_ok": true
+    },
+    {
+      "i": 6,
+      "status": 200,
+      "client_s": 24.811,
+      "response": {
+        "error": "The model couldn't be reached, so the outfit and caption steps didn't run. The search worked: 10 listing(s) were found. Check GEMINI_API_KEY in your .env, then run the same query again.\nWhat the servi",
+        "fit_card": null,
+        "outfit_suggestion": "Outfit 1\n\nPair the Y2K Baby Tee with your baggy straight-leg jeans, dark wash, and the black cropped zip hoodie layered over top. Complete the look with your chunky white sneakers and the black crossb"
+      },
+      "response_ok": false
+    },
+    {
+      "i": 7,
+      "status": 200,
+      "client_s": 8.733,
+      "response": {
+        "error": null,
+        "fit_card": "Scored this vintage Champion 90s track jacket on poshmark for $45 and I am so obsessed with it. Throwing it over baggy denim with chunky sneakers gives off the ultimate effortless retro streetwear ene",
+        "outfit_suggestion": "Outfit 1: Sporty Streetwear\nPair the 90s Track Jacket with the white ribbed tank top as your base layer, tucked into the baggy straight-leg jeans, dark wash. Complete the look with the chunky white sn"
+      },
+      "response_ok": true
+    },
+    {
+      "i": 8,
+      "status": 200,
+      "client_s": 20.788,
+      "response": {
+        "error": "The model couldn't be reached, so the outfit and caption steps didn't run. The search worked: 5 listing(s) were found. Check GEMINI_API_KEY in your .env, then run the same query again.\nWhat the servic",
+        "fit_card": null,
+        "outfit_suggestion": null
+      },
+      "response_ok": false
+    },
+    {
+      "i": 9,
+      "status": 200,
+      "client_s": 6.789,
+      "response": {
+        "error": null,
+        "fit_card": "Scored these chunky white sole platform sneakers on poshmark for $48 and they give off the ultimate retro streetwear energy. The height is ridiculous in the best way possible. I cannot wait to style t",
+        "outfit_suggestion": "Outfit 1: Casual Streetwear\nPair the new platform sneakers with the baggy straight-leg jeans in dark wash, the white ribbed tank top, and the black cropped zip hoodie. Add the black crossbody bag to f"
+      },
+      "response_ok": true
+    },
+    {
+      "i": 10,
+      "status": 200,
+      "client_s": 6.619,
+      "response": {
+        "error": null,
+        "fit_card": "Just scored the ultimate 90s streetwear staple on poshmark for only $42. This cropped Wrangler denim jacket has the most perfectly worn-in light wash and looks so good thrown over a hoodie. Can't wait",
+        "outfit_suggestion": "Outfit 1: Casual Streetwear\nPair the light wash cropped denim jacket with the white ribbed tank top, baggy straight-leg dark wash jeans, brown leather belt, and chunky white sneakers. Add your black c"
+      },
+      "response_ok": true
+    }
+  ]
+}

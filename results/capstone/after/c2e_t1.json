@@ -1,0 +1,241 @@
+{
+  "criterion": 2,
+  "type": "e",
+  "trial": 1,
+  "score": 10,
+  "of": 10,
+  "target_met_this_trial": true,
+  "note": "type e: expected outcome=server_error, status=500",
+  "details": [
+    {
+      "sent": "[1]",
+      "status": 500,
+      "client_s": 0.017,
+      "response": {
+        "error": "AttributeError: 'list' object has no attribute 'get'"
+      },
+      "lines_added": 1,
+      "record": {
+        "timestamp": "2026-11-12T19:47:53.490+00:00",
+        "request_id": "111e75acb69b",
+        "route": "/ask",
+        "http_status": 500,
+        "query": null,
+        "outcome": "server_error",
+        "error": "AttributeError: 'list' object has no attribute 'get'",
+        "duration_s": 0.0,
+        "queued": false,
+        "prompt_tokens": null,
+        "output_tokens": null,
+        "selected_item_id": null
+      }
+    },
+    {
+      "sent": "[1]",
+      "status": 500,
+      "client_s": 0.004,
+      "response": {
+        "error": "AttributeError: 'list' object has no attribute 'get'"
+      },
+      "lines_added": 1,
+      "record": {
+        "timestamp": "2026-11-12T19:47:53.503+00:00",
+        "request_id": "1384c3c65578",
+        "route": "/ask",
+        "http_status": 500,
+        "query": null,
+        "outcome": "server_error",
+        "error": "AttributeError: 'list' object has no attribute 'get'",
+        "duration_s": 0.0,
+        "queued": false,
+        "prompt_tokens": null,
+        "output_tokens": null,
+        "selected_item_id": null
+      }
+    },
+    {
+      "sent": "[1]",
+      "status": 500,
+      "client_s": 0.004,
+      "response": {
+        "error": "AttributeError: 'list' object has no attribute 'get'"
+      },
+      "lines_added": 1,
+      "record": {
+        "timestamp": "2026-11-12T19:47:53.518+00:00",
+        "request_id": "193c3a1e73ab",
+        "route": "/ask",
+        "http_status": 500,
+        "query": null,
+        "outcome": "server_error",
+        "error": "AttributeError: 'list' object has no attribute 'get'",
+        "duration_s": 0.0,
+        "queued": false,
+        "prompt_tokens": null,
+        "output_tokens": null,
+        "selected_item_id": null
+      }
+    },
+    {
+      "sent": "[1]",
+      "status": 500,
+      "client_s": 0.027,
+      "response": {
+        "error": "AttributeError: 'list' object has no attribute 'get'"
+      },
+      "lines_added": 1,
+      "record": {
+        "timestamp": "2026-11-12T19:47:53.553+00:00",
+        "request_id": "ff70aa146988",
+        "route": "/ask",
+        "http_status": 500,
+        "query": null,
+        "outcome": "server_error",
+        "error": "AttributeError: 'list' object has no attribute 'get'",
+        "duration_s": 0.0,
+        "queued": false,
+        "prompt_tokens": null,
+        "output_tokens": null,
+        "selected_item_id": null
+      }
+    },
+    {
+      "sent": "[1]",
+      "status": 500,
+      "client_s": 0.019,
+      "response": {
+        "error": "AttributeError: 'list' object has no attribute 'get'"
+      },
+      "lines_added": 1,
+      "record": {
+        "timestamp": "2026-11-12T19:47:53.583+00:00",
+        "request_id": "e587304cf641",
+        "route": "/ask",
+        "http_status": 500,
+        "query": null,
+        "outcome": "server_error",
+        "error": "AttributeError: 'list' object has no attribute 'get'",
+        "duration_s": 0.0,
+        "queued": false,
+        "prompt_tokens": null,
+        "output_tokens": null,
+        "selected_item_id": null
+      }
+    },
+    {
+      "sent": "[1]",
+      "status": 500,
+      "client_s": 0.024,
+      "response": {
+        "error": "AttributeError: 'list' object has no attribute 'get'"
+      },
+      "lines_added": 1,
+      "record": {
+        "timestamp": "2026-11-12T19:47:53.614+00:00",
+        "request_id": "a587927ec5ed",
+        "route": "/ask",
+        "http_status": 500,
+        "query": null,
+        "outcome": "server_error",
+        "error": "AttributeError: 'list' object has no attribute 'get'",
+        "duration_s": 0.0,
+        "queued": false,
+        "prompt_tokens": null,
+        "output_tokens": null,
+        "selected_item_id": null
+      }
+    },
+    {
+      "sent": "[1]",
+      "status": 500,
+      "client_s": 0.022,
+      "response": {
+        "error": "AttributeError: 'list' object has no attribute 'get'"
+      },
+      "lines_added": 1,
+      "record": {
+        "timestamp": "2026-11-12T19:47:53.645+00:00",
+        "request_id": "2762a7724147",
+        "route": "/ask",
+        "http_status": 500,
+        "query": null,
+        "outcome": "server_error",
+        "error": "AttributeError: 'list' object has no attribute 'get'",
+        "duration_s": 0.0,
+        "queued": false,
+        "prompt_tokens": null,
+        "output_tokens": null,
+        "selected_item_id": null
+      }
+    },
+    {
+      "sent": "[1]",
+      "status": 500,
+      "client_s": 0.024,
+      "response": {
+        "error": "AttributeError: 'list' object has no attribute 'get'"
+      },
+      "lines_added": 1,
+      "record": {
+        "timestamp": "2026-11-12T19:47:53.676+00:00",
+        "request_id": "64ddfc3e9051",
+        "route": "/ask",
+        "http_status": 500,
+        "query": null,
+        "outcome": "server_error",
+        "error": "AttributeError: 'list' object has no attribute 'get'",
+        "duration_s": 0.0,
+        "queued": false,
+        "prompt_tokens": null,
+        "output_tokens": null,
+        "selected_item_id": null
+      }
+    },
+    {
+      "sent": "[1]",
+      "status": 500,
+      "client_s": 0.019,
+      "response": {
+        "error": "AttributeError: 'list' object has no attribute 'get'"
+      },
+      "lines_added": 1,
+      "record": {
+        "timestamp": "2026-11-12T19:47:53.707+00:00",
+        "request_id": "056e21691456",
+        "route": "/ask",
+        "http_status": 500,
+        "query": null,
+        "outcome": "server_error",
+        "error": "AttributeError: 'list' object has no attribute 'get'",
+        "duration_s": 0.0,
+        "queued": false,
+        "prompt_tokens": null,
+        "output_tokens": null,
+        "selected_item_id": null
+      }
+    },
+    {
+      "sent": "[1]",
+      "status": 500,
+      "client_s": 0.022,
+      "response": {
+        "error": "AttributeError: 'list' object has no attribute 'get'"
+      },
+      "lines_added": 1,
+      "record": {
+        "timestamp": "2026-11-12T19:47:53.739+00:00",
+        "request_id": "efcf37ca4e46",
+        "route": "/ask",
+        "http_status": 500,
+        "query": null,
+        "outcome": "server_error",
+        "error": "AttributeError: 'list' object has no attribute 'get'",
+        "duration_s": 0.0,
+        "queued": false,
+        "prompt_tokens": null,
+        "output_tokens": null,
+        "selected_item_id": null
+      }
+    }
+  ]
+}

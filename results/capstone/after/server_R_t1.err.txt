@@ -1,0 +1,71 @@
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.89:5000
+Press CTRL+C to quit
+127.0.0.1 - - [12/Nov/2026 11:47:32] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [12/Nov/2026 11:47:33] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [12/Nov/2026 11:47:33] "POST /ask HTTP/1.1" 400 -
+127.0.0.1 - - [12/Nov/2026 11:47:33] "POST /ask HTTP/1.1" 400 -
+127.0.0.1 - - [12/Nov/2026 11:47:33] "POST /ask HTTP/1.1" 400 -
+127.0.0.1 - - [12/Nov/2026 11:47:33] "POST /ask HTTP/1.1" 400 -
+127.0.0.1 - - [12/Nov/2026 11:47:33] "POST /ask HTTP/1.1" 400 -
+127.0.0.1 - - [12/Nov/2026 11:47:33] "POST /ask HTTP/1.1" 400 -
+127.0.0.1 - - [12/Nov/2026 11:47:33] "POST /ask HTTP/1.1" 400 -
+127.0.0.1 - - [12/Nov/2026 11:47:33] "POST /ask HTTP/1.1" 400 -
+127.0.0.1 - - [12/Nov/2026 11:47:33] "POST /ask HTTP/1.1" 400 -
+127.0.0.1 - - [12/Nov/2026 11:47:33] "POST /ask HTTP/1.1" 400 -
+127.0.0.1 - - [12/Nov/2026 11:47:34] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [12/Nov/2026 11:47:39] "POST /ask HTTP/1.1" 200 -
+127.0.0.1 - - [12/Nov/2026 11:47:40] "POST /ask HTTP/1.1" 200 -
+127.0.0.1 - - [12/Nov/2026 11:47:43] "POST /ask HTTP/1.1" 200 -
+127.0.0.1 - - [12/Nov/2026 11:47:46] "POST /ask HTTP/1.1" 200 -
+127.0.0.1 - - [12/Nov/2026 11:47:47] "POST /ask HTTP/1.1" 200 -
+127.0.0.1 - - [12/Nov/2026 11:47:48] "POST /ask HTTP/1.1" 200 -
+127.0.0.1 - - [12/Nov/2026 11:47:49] "POST /ask HTTP/1.1" 200 -
+127.0.0.1 - - [12/Nov/2026 11:47:50] "POST /ask HTTP/1.1" 200 -
+127.0.0.1 - - [12/Nov/2026 11:47:51] "POST /ask HTTP/1.1" 200 -
+127.0.0.1 - - [12/Nov/2026 11:47:52] "POST /ask HTTP/1.1" 200 -
+127.0.0.1 - - [12/Nov/2026 11:47:53] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [12/Nov/2026 11:47:53] "POST /ask HTTP/1.1" 500 -
+127.0.0.1 - - [12/Nov/2026 11:47:53] "POST /ask HTTP/1.1" 500 -
+127.0.0.1 - - [12/Nov/2026 11:47:53] "POST /ask HTTP/1.1" 500 -
+127.0.0.1 - - [12/Nov/2026 11:47:53] "POST /ask HTTP/1.1" 500 -
+127.0.0.1 - - [12/Nov/2026 11:47:53] "POST /ask HTTP/1.1" 500 -
+127.0.0.1 - - [12/Nov/2026 11:47:53] "POST /ask HTTP/1.1" 500 -
+127.0.0.1 - - [12/Nov/2026 11:47:53] "POST /ask HTTP/1.1" 500 -
+127.0.0.1 - - [12/Nov/2026 11:47:53] "POST /ask HTTP/1.1" 500 -
+127.0.0.1 - - [12/Nov/2026 11:47:53] "POST /ask HTTP/1.1" 500 -
+127.0.0.1 - - [12/Nov/2026 11:47:53] "POST /ask HTTP/1.1" 500 -
+127.0.0.1 - - [12/Nov/2026 11:47:54] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [12/Nov/2026 11:47:55] "POST /ask HTTP/1.1" 200 -
+127.0.0.1 - - [12/Nov/2026 11:47:56] "POST /ask HTTP/1.1" 200 -
+127.0.0.1 - - [12/Nov/2026 11:47:57] "POST /ask HTTP/1.1" 200 -
+127.0.0.1 - - [12/Nov/2026 11:47:58] "POST /ask HTTP/1.1" 200 -
+127.0.0.1 - - [12/Nov/2026 11:47:58] "POST /ask HTTP/1.1" 200 -
+127.0.0.1 - - [12/Nov/2026 11:47:59] "POST /ask HTTP/1.1" 200 -
+127.0.0.1 - - [12/Nov/2026 11:48:01] "POST /ask HTTP/1.1" 200 -
+127.0.0.1 - - [12/Nov/2026 11:48:03] "POST /ask HTTP/1.1" 200 -
+127.0.0.1 - - [12/Nov/2026 11:48:03] "POST /ask HTTP/1.1" 200 -
+127.0.0.1 - - [12/Nov/2026 11:48:04] "POST /ask HTTP/1.1" 200 -
+127.0.0.1 - - [12/Nov/2026 11:48:05] "GET /health HTTP/1.1" 200 -
+C:\Users\shubh\Desktop\Hard disk\College(PG)\Academics at UCSD\Y2Q1\Codepath\AI201 Applications of AI Engineering\Projects\ai201-project2-fitfindr-starter-v2026\.venv\Scripts\python.exe: can't open file 'C:\\Users\\shubh\\Desktop\\Hard disk\\College(PG)\\Academics at UCSD\\Y2Q1\\Codepath\\AI201 Applications of AI Engineering\\Projects\\ai201-project2-fitfindr-starter-v2026\\mcp_server.py': [Errno 2] No such file or directory
+127.0.0.1 - - [12/Nov/2026 11:48:05] "POST /ask HTTP/1.1" 200 -
+C:\Users\shubh\Desktop\Hard disk\College(PG)\Academics at UCSD\Y2Q1\Codepath\AI201 Applications of AI Engineering\Projects\ai201-project2-fitfindr-starter-v2026\.venv\Scripts\python.exe: can't open file 'C:\\Users\\shubh\\Desktop\\Hard disk\\College(PG)\\Academics at UCSD\\Y2Q1\\Codepath\\AI201 Applications of AI Engineering\\Projects\\ai201-project2-fitfindr-starter-v2026\\mcp_server.py': [Errno 2] No such file or directory
+127.0.0.1 - - [12/Nov/2026 11:48:05] "POST /ask HTTP/1.1" 200 -
+C:\Users\shubh\Desktop\Hard disk\College(PG)\Academics at UCSD\Y2Q1\Codepath\AI201 Applications of AI Engineering\Projects\ai201-project2-fitfindr-starter-v2026\.venv\Scripts\python.exe: can't open file 'C:\\Users\\shubh\\Desktop\\Hard disk\\College(PG)\\Academics at UCSD\\Y2Q1\\Codepath\\AI201 Applications of AI Engineering\\Projects\\ai201-project2-fitfindr-starter-v2026\\mcp_server.py': [Errno 2] No such file or directory
+127.0.0.1 - - [12/Nov/2026 11:48:05] "POST /ask HTTP/1.1" 200 -
+C:\Users\shubh\Desktop\Hard disk\College(PG)\Academics at UCSD\Y2Q1\Codepath\AI201 Applications of AI Engineering\Projects\ai201-project2-fitfindr-starter-v2026\.venv\Scripts\python.exe: can't open file 'C:\\Users\\shubh\\Desktop\\Hard disk\\College(PG)\\Academics at UCSD\\Y2Q1\\Codepath\\AI201 Applications of AI Engineering\\Projects\\ai201-project2-fitfindr-starter-v2026\\mcp_server.py': [Errno 2] No such file or directory
+127.0.0.1 - - [12/Nov/2026 11:48:05] "POST /ask HTTP/1.1" 200 -
+C:\Users\shubh\Desktop\Hard disk\College(PG)\Academics at UCSD\Y2Q1\Codepath\AI201 Applications of AI Engineering\Projects\ai201-project2-fitfindr-starter-v2026\.venv\Scripts\python.exe: can't open file 'C:\\Users\\shubh\\Desktop\\Hard disk\\College(PG)\\Academics at UCSD\\Y2Q1\\Codepath\\AI201 Applications of AI Engineering\\Projects\\ai201-project2-fitfindr-starter-v2026\\mcp_server.py': [Errno 2] No such file or directory
+127.0.0.1 - - [12/Nov/2026 11:48:05] "POST /ask HTTP/1.1" 200 -
+C:\Users\shubh\Desktop\Hard disk\College(PG)\Academics at UCSD\Y2Q1\Codepath\AI201 Applications of AI Engineering\Projects\ai201-project2-fitfindr-starter-v2026\.venv\Scripts\python.exe: can't open file 'C:\\Users\\shubh\\Desktop\\Hard disk\\College(PG)\\Academics at UCSD\\Y2Q1\\Codepath\\AI201 Applications of AI Engineering\\Projects\\ai201-project2-fitfindr-starter-v2026\\mcp_server.py': [Errno 2] No such file or directory
+127.0.0.1 - - [12/Nov/2026 11:48:05] "POST /ask HTTP/1.1" 200 -
+C:\Users\shubh\Desktop\Hard disk\College(PG)\Academics at UCSD\Y2Q1\Codepath\AI201 Applications of AI Engineering\Projects\ai201-project2-fitfindr-starter-v2026\.venv\Scripts\python.exe: can't open file 'C:\\Users\\shubh\\Desktop\\Hard disk\\College(PG)\\Academics at UCSD\\Y2Q1\\Codepath\\AI201 Applications of AI Engineering\\Projects\\ai201-project2-fitfindr-starter-v2026\\mcp_server.py': [Errno 2] No such file or directory
+127.0.0.1 - - [12/Nov/2026 11:48:05] "POST /ask HTTP/1.1" 200 -
+C:\Users\shubh\Desktop\Hard disk\College(PG)\Academics at UCSD\Y2Q1\Codepath\AI201 Applications of AI Engineering\Projects\ai201-project2-fitfindr-starter-v2026\.venv\Scripts\python.exe: can't open file 'C:\\Users\\shubh\\Desktop\\Hard disk\\College(PG)\\Academics at UCSD\\Y2Q1\\Codepath\\AI201 Applications of AI Engineering\\Projects\\ai201-project2-fitfindr-starter-v2026\\mcp_server.py': [Errno 2] No such file or directory
+127.0.0.1 - - [12/Nov/2026 11:48:05] "POST /ask HTTP/1.1" 200 -
+C:\Users\shubh\Desktop\Hard disk\College(PG)\Academics at UCSD\Y2Q1\Codepath\AI201 Applications of AI Engineering\Projects\ai201-project2-fitfindr-starter-v2026\.venv\Scripts\python.exe: can't open file 'C:\\Users\\shubh\\Desktop\\Hard disk\\College(PG)\\Academics at UCSD\\Y2Q1\\Codepath\\AI201 Applications of AI Engineering\\Projects\\ai201-project2-fitfindr-starter-v2026\\mcp_server.py': [Errno 2] No such file or directory
+127.0.0.1 - - [12/Nov/2026 11:48:06] "POST /ask HTTP/1.1" 200 -
+C:\Users\shubh\Desktop\Hard disk\College(PG)\Academics at UCSD\Y2Q1\Codepath\AI201 Applications of AI Engineering\Projects\ai201-project2-fitfindr-starter-v2026\.venv\Scripts\python.exe: can't open file 'C:\\Users\\shubh\\Desktop\\Hard disk\\College(PG)\\Academics at UCSD\\Y2Q1\\Codepath\\AI201 Applications of AI Engineering\\Projects\\ai201-project2-fitfindr-starter-v2026\\mcp_server.py': [Errno 2] No such file or directory
+127.0.0.1 - - [12/Nov/2026 11:48:06] "POST /ask HTTP/1.1" 200 -

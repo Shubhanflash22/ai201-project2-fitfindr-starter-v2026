@@ -1,0 +1,121 @@
+{
+  "criterion": 3,
+  "type": null,
+  "trial": 3,
+  "score": 8,
+  "of": 10,
+  "target_met_this_trial": false,
+  "note": "stderr lines saying the log could not be written: 10 (must be 10)",
+  "details": [
+    {
+      "i": 1,
+      "status": 200,
+      "client_s": 5.173,
+      "response": {
+        "error": null,
+        "fit_card": "Found this insane butterfly print Y2K baby tee on depop for $18 and I am obsessed. The fit is giving total early 2000s mall rat energy, especially paired with baggy denim and chunky sneakers. Honestly",
+        "outfit_suggestion": "Outfit 1:\nPair the Y2K Baby Tee with the baggy straight-leg jeans, dark wash, and the black cropped zip hoodie. Finish the look with the chunky white sneakers and the black crossbody bag.\n\nOutfit 2:\nP"
+      },
+      "response_ok": true
+    },
+    {
+      "i": 2,
+      "status": 200,
+      "client_s": 21.322,
+      "response": {
+        "error": "The model couldn't be reached, so the outfit and caption steps didn't run. The search worked: 4 listing(s) were found. Check GEMINI_API_KEY in your .env, then run the same query again.\nWhat the servic",
+        "fit_card": null,
+        "outfit_suggestion": null
+      },
+      "response_ok": false
+    },
+    {
+      "i": 3,
+      "status": 200,
+      "client_s": 8.116,
+      "response": {
+        "error": null,
+        "fit_card": "Scored this floral midi slip dress on depop for $30 and I am so obsessed with the moody grunge romantic vibe. Throwing an oversized grey crewneck right over it with combat boots instantly makes it fee",
+        "outfit_suggestion": "Outfit 1: Grunge Romantic\nLayer your oversized grey crewneck sweatshirt directly over the silk slip dress so it looks like a midi skirt, and pair them with your black combat boots and the black crossb"
+      },
+      "response_ok": true
+    },
+    {
+      "i": 4,
+      "status": 200,
+      "client_s": 23.105,
+      "response": {
+        "error": "The model couldn't be reached, so the outfit and caption steps didn't run. The search worked: 3 listing(s) were found. Check GEMINI_API_KEY in your .env, then run the same query again.\nWhat the servic",
+        "fit_card": null,
+        "outfit_suggestion": "Outfit One: Streetwear Chill\nPair the platform sneakers with the baggy straight-leg jeans, the white ribbed tank top, and the vintage black denim jacket. Complete the look with the black crossbody bag"
+      },
+      "response_ok": false
+    },
+    {
+      "i": 5,
+      "status": 200,
+      "client_s": 4.265,
+      "response": {
+        "error": null,
+        "fit_card": "Scored this cropped Wrangler light wash denim jacket on poshmark for $42 and I am already obsessed. It has that perfectly broken-in nineties indie sleaze vibe that makes throwing it over a slouchy swe",
+        "outfit_suggestion": "Outfit One\n\nPair the light wash cropped denim jacket with the white ribbed tank top tucked into the baggy straight-leg dark wash jeans. Add the brown leather belt, black crossbody bag, and chunky whit"
+      },
+      "response_ok": true
+    },
+    {
+      "i": 6,
+      "status": 200,
+      "client_s": 2.974,
+      "response": {
+        "error": null,
+        "fit_card": "Scored this y2k butterfly baby tee on depop for $18 and it has the ultimate nostalgic mall-rat energy. I am obsessed with wearing it tucked into wide leg trousers with a heavy belt for that effortless",
+        "outfit_suggestion": "Outfit 1:\nPair the Y2K Baby Tee with the baggy straight-leg jeans, dark wash, and the black cropped zip hoodie layered on top. Finish the look with the chunky white sneakers and the black crossbody ba"
+      },
+      "response_ok": true
+    },
+    {
+      "i": 7,
+      "status": 200,
+      "client_s": 4.701,
+      "response": {
+        "error": null,
+        "fit_card": "Scored this vintage Champion 90s track jacket on Poshmark for $45 and it brings the ultimate athletic streetwear energy. I am obsessed with the navy and white stripes for throwing over baggy denim or ",
+        "outfit_suggestion": "Outfit 1: Casual Streetwear\nPair the 90s Track Jacket with the white ribbed tank top and baggy straight-leg jeans, dark wash. Accessorize with the black crossbody bag and finish the look with the chun"
+      },
+      "response_ok": true
+    },
+    {
+      "i": 8,
+      "status": 200,
+      "client_s": 6.073,
+      "response": {
+        "error": null,
+        "fit_card": "Found this floral midi silk slip dress on depop for only $30 and the romantic grunge energy is honestly unmatched. I am totally styling it with a chunky sweatshirt and beat-up combat boots for that ef",
+        "outfit_suggestion": "Outfit One: 90s Grunge Contrast\nLayer the 90s Silk Slip Dress over the white ribbed tank top. Throw the oversized grey crewneck sweatshirt on top, letting the floral midi hem peek out the bottom. Fini"
+      },
+      "response_ok": true
+    },
+    {
+      "i": 9,
+      "status": 200,
+      "client_s": 5.896,
+      "response": {
+        "error": null,
+        "fit_card": "Scored these chunky white platform sneakers on poshmark for $48 and I am completely obsessed with the 90s skater vibe. They look so good with baggy khakis and an oversized crewneck for running errands",
+        "outfit_suggestion": "Outfit 1\nPair the white platform sneakers with the white ribbed tank top, baggy straight-leg jeans in dark wash, vintage black denim jacket, and black crossbody bag. This creates a classic Y2K streetw"
+      },
+      "response_ok": true
+    },
+    {
+      "i": 10,
+      "status": 200,
+      "client_s": 7.412,
+      "response": {
+        "error": null,
+        "fit_card": "Finally found the exact 90s Wrangler light wash cropped denim jacket I wanted on Poshmark for $42. The faded wash gives it the ultimate effortless grunge vibe that goes with literally everything in my",
+        "outfit_suggestion": "Outfit 1:\nPair the light wash cropped denim jacket with the white ribbed tank top, baggy straight-leg dark wash jeans, brown leather belt, and chunky white sneakers for a classic double-denim look.\n\nO"
+      },
+      "response_ok": true
+    }
+  ]
+}

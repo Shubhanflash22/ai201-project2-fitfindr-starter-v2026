@@ -1,0 +1,17 @@
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.89:5000
+Press CTRL+C to quit
+127.0.0.1 - - [12/Nov/2026 12:46:20] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [12/Nov/2026 12:46:22] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [12/Nov/2026 12:46:29] "POST /ask HTTP/1.1" 200 -
+127.0.0.1 - - [12/Nov/2026 12:46:32] "POST /ask HTTP/1.1" 200 -
+127.0.0.1 - - [12/Nov/2026 12:46:35] "POST /ask HTTP/1.1" 200 -
+127.0.0.1 - - [12/Nov/2026 12:46:36] "POST /ask HTTP/1.1" 200 -
+127.0.0.1 - - [12/Nov/2026 12:46:41] "POST /ask HTTP/1.1" 200 -
+127.0.0.1 - - [12/Nov/2026 12:46:45] "POST /ask HTTP/1.1" 200 -
+127.0.0.1 - - [12/Nov/2026 12:46:46] "POST /ask HTTP/1.1" 200 -
+127.0.0.1 - - [12/Nov/2026 12:46:47] "POST /ask HTTP/1.1" 200 -
+127.0.0.1 - - [12/Nov/2026 12:46:49] "POST /ask HTTP/1.1" 200 -
+127.0.0.1 - - [12/Nov/2026 12:47:10] "POST /ask HTTP/1.1" 200 -

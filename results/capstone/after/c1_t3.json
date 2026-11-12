@@ -1,0 +1,255 @@
+{
+  "criterion": 1,
+  "type": null,
+  "trial": 3,
+  "score": 10,
+  "of": 10,
+  "target_met_this_trial": true,
+  "note": "lines in log: 10 (must be 10)",
+  "details": [
+    {
+      "sent": "{\"query\": \"vintage graphic tee under $30\"}",
+      "status": 200,
+      "client_s": 7.945,
+      "response": {
+        "error": null,
+        "fit_card": "Found this butterfly print Y2K baby tee on depop for $18 and it has the absolute ultimate early-2000s mallrat energy. I am picturing it layered under an open black zip hoodie with baggy khakis and sto",
+        "outfit_suggestion": "Outfit 1:\nPair the Y2K Baby Tee with your baggy straight-leg jeans, dark wash, layered under your vintage black denim jacket. Accessorize with your black crossbody bag and finish the look with your ch"
+      },
+      "lines_added": 1,
+      "record": {
+        "timestamp": "2026-11-12T20:45:21.647+00:00",
+        "request_id": "21f3e07d694b",
+        "route": "/ask",
+        "http_status": 200,
+        "query": "vintage graphic tee under $30",
+        "outcome": "ok",
+        "error": null,
+        "duration_s": 7.94,
+        "queued": false,
+        "prompt_tokens": 451,
+        "output_tokens": 158,
+        "selected_item_id": "lst_002"
+      }
+    },
+    {
+      "sent": "{\"query\": \"90s track jacket in size M\"}",
+      "status": 200,
+      "client_s": 6.452,
+      "response": {
+        "error": null,
+        "fit_card": "Scored this vintage Champion 90s track jacket on Poshmark for $45 and it has the absolute ultimate retro athletic aesthetic. Throwing it on over wide-leg trousers gives off such an effortless, sporty ",
+        "outfit_suggestion": "Outfit 1: Streetwear Casual\nPair the 90s Track Jacket with your white ribbed tank top as the base, tucked into your baggy straight-leg jeans with the brown leather belt. Finish the look with your chun"
+      },
+      "lines_added": 1,
+      "record": {
+        "timestamp": "2026-11-12T20:45:28.108+00:00",
+        "request_id": "e17f5cdb4a2d",
+        "route": "/ask",
+        "http_status": 200,
+        "query": "90s track jacket in size M",
+        "outcome": "ok",
+        "error": null,
+        "duration_s": 6.444,
+        "queued": false,
+        "prompt_tokens": 479,
+        "output_tokens": 163,
+        "selected_item_id": "lst_004"
+      }
+    },
+    {
+      "sent": "{\"query\": \"silk slip dress in midi length under $40\"}",
+      "status": 200,
+      "client_s": 5.796,
+      "response": {
+        "error": null,
+        "fit_card": "Scored this floral midi silk slip dress on depop for $30 and it has the ultimate 90s alternative energy. Im definitely throwing an oversized grey crewneck right over it and wearing it as a skirt with ",
+        "outfit_suggestion": "Outfit 1: Grunge Romantic\nLayer your oversized grey crewneck sweatshirt right over the silk slip dress so it looks like a midi skirt, and pair them with your black combat boots and the black crossbody"
+      },
+      "lines_added": 1,
+      "record": {
+        "timestamp": "2026-11-12T20:45:33.911+00:00",
+        "request_id": "fa9292e06aef",
+        "route": "/ask",
+        "http_status": 200,
+        "query": "silk slip dress in midi length under $40",
+        "outcome": "ok",
+        "error": null,
+        "duration_s": 5.788,
+        "queued": false,
+        "prompt_tokens": 465,
+        "output_tokens": 146,
+        "selected_item_id": "lst_013"
+      }
+    },
+    {
+      "sent": "{\"query\": \"platform sneakers size 8\"}",
+      "status": 200,
+      "client_s": 4.698,
+      "response": {
+        "error": null,
+        "fit_card": "Scored these white chunky sole platform sneakers on poshmark for only $48 and they completely nail that effortless sporty y2k retro vibe. I am already planning to style them with baggy jeans and a rib",
+        "outfit_suggestion": "Outfit 1: Casual Streetwear\nPair the new platform sneakers with the baggy straight-leg jeans and the white ribbed tank top. Layer the vintage black denim jacket on top and finish the look with the bla"
+      },
+      "lines_added": 1,
+      "record": {
+        "timestamp": "2026-11-12T20:45:38.615+00:00",
+        "request_id": "955d79d30b39",
+        "route": "/ask",
+        "http_status": 200,
+        "query": "platform sneakers size 8",
+        "outcome": "ok",
+        "error": null,
+        "duration_s": 4.694,
+        "queued": false,
+        "prompt_tokens": 446,
+        "output_tokens": 141,
+        "selected_item_id": "lst_019"
+      }
+    },
+    {
+      "sent": "{\"query\": \"designer ballgown under $5\"}",
+      "status": 200,
+      "client_s": 3.306,
+      "response": {
+        "error": "Nothing in the listings matched description 'designer ballgown', under $5.\nThings to change: try broader words \u2014 'jacket' finds more than 'cropped corduroy jacket'; raise the price ceiling above $5.",
+        "fit_card": null,
+        "outfit_suggestion": null
+      },
+      "lines_added": 1,
+      "record": {
+        "timestamp": "2026-11-12T20:45:41.928+00:00",
+        "request_id": "1762736a5b95",
+        "route": "/ask",
+        "http_status": 200,
+        "query": "designer ballgown under $5",
+        "outcome": "nothing_found",
+        "error": "Nothing in the listings matched description 'designer ballgown', under $5.\nThings to change: try broader words \u2014 'jacket' finds more than 'cropped corduroy jacket'; raise the price ceiling above $5.",
+        "duration_s": 3.296,
+        "queued": false,
+        "prompt_tokens": 0,
+        "output_tokens": 0,
+        "selected_item_id": null
+      }
+    },
+    {
+      "sent": "{\"query\": \"leather jacket under $5\"}",
+      "status": 200,
+      "client_s": 0.967,
+      "response": {
+        "error": "Nothing in the listings matched description 'leather jacket', under $5.\nThings to change: try broader words \u2014 'jacket' finds more than 'cropped corduroy jacket'; raise the price ceiling above $5.",
+        "fit_card": null,
+        "outfit_suggestion": null
+      },
+      "lines_added": 1,
+      "record": {
+        "timestamp": "2026-11-12T20:45:42.905+00:00",
+        "request_id": "e20894341740",
+        "route": "/ask",
+        "http_status": 200,
+        "query": "leather jacket under $5",
+        "outcome": "nothing_found",
+        "error": "Nothing in the listings matched description 'leather jacket', under $5.\nThings to change: try broader words \u2014 'jacket' finds more than 'cropped corduroy jacket'; raise the price ceiling above $5.",
+        "duration_s": 0.964,
+        "queued": false,
+        "prompt_tokens": 0,
+        "output_tokens": 0,
+        "selected_item_id": null
+      }
+    },
+    {
+      "sent": "{\"query\": \"silk scarf under $5\"}",
+      "status": 200,
+      "client_s": 1.705,
+      "response": {
+        "error": "Nothing in the listings matched description 'silk scarf', under $5.\nThings to change: try broader words \u2014 'jacket' finds more than 'cropped corduroy jacket'; raise the price ceiling above $5.",
+        "fit_card": null,
+        "outfit_suggestion": null
+      },
+      "lines_added": 1,
+      "record": {
+        "timestamp": "2026-11-12T20:45:44.620+00:00",
+        "request_id": "9673904e6ec6",
+        "route": "/ask",
+        "http_status": 200,
+        "query": "silk scarf under $5",
+        "outcome": "nothing_found",
+        "error": "Nothing in the listings matched description 'silk scarf', under $5.\nThings to change: try broader words \u2014 'jacket' finds more than 'cropped corduroy jacket'; raise the price ceiling above $5.",
+        "duration_s": 1.688,
+        "queued": false,
+        "prompt_tokens": 0,
+        "output_tokens": 0,
+        "selected_item_id": null
+      }
+    },
+    {
+      "sent": "{}",
+      "status": 400,
+      "client_s": 0.004,
+      "response": {
+        "error": "Send JSON with a 'query' field, e.g. {\"query\": \"vintage graphic tee under $30\"}"
+      },
+      "lines_added": 1,
+      "record": {
+        "timestamp": "2026-11-12T20:45:44.631+00:00",
+        "request_id": "6c699039dbbb",
+        "route": "/ask",
+        "http_status": 400,
+        "query": "",
+        "outcome": "bad_request",
+        "error": "missing or empty 'query' field",
+        "duration_s": 0.0,
+        "queued": false,
+        "prompt_tokens": null,
+        "output_tokens": null,
+        "selected_item_id": null
+      }
+    },
+    {
+      "sent": "{}",
+      "status": 400,
+      "client_s": 0.004,
+      "response": {
+        "error": "Send JSON with a 'query' field, e.g. {\"query\": \"vintage graphic tee under $30\"}"
+      },
+      "lines_added": 1,
+      "record": {
+        "timestamp": "2026-11-12T20:45:44.646+00:00",
+        "request_id": "50c3331660f9",
+        "route": "/ask",
+        "http_status": 400,
+        "query": "",
+        "outcome": "bad_request",
+        "error": "missing or empty 'query' field",
+        "duration_s": 0.0,
+        "queued": false,
+        "prompt_tokens": null,
+        "output_tokens": null,
+        "selected_item_id": null
+      }
+    },
+    {
+      "sent": "{}",
+      "status": 400,
+      "client_s": 0.018,
+      "response": {
+        "error": "Send JSON with a 'query' field, e.g. {\"query\": \"vintage graphic tee under $30\"}"
+      },
+      "lines_added": 1,
+      "record": {
+        "timestamp": "2026-11-12T20:45:44.675+00:00",
+        "request_id": "5b28b5cb28d8",
+        "route": "/ask",
+        "http_status": 400,
+        "query": "",
+        "outcome": "bad_request",
+        "error": "missing or empty 'query' field",
+        "duration_s": 0.0,
+        "queued": false,
+        "prompt_tokens": null,
+        "output_tokens": null,
+        "selected_item_id": null
+      }
+    }
+  ]
+}

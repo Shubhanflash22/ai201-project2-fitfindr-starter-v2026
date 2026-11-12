@@ -1,0 +1,241 @@
+{
+  "criterion": 2,
+  "type": "a",
+  "trial": 2,
+  "score": 10,
+  "of": 10,
+  "target_met_this_trial": true,
+  "note": "type a: expected outcome=bad_request, status=400",
+  "details": [
+    {
+      "sent": "{}",
+      "status": 400,
+      "client_s": 0.016,
+      "response": {
+        "error": "Send JSON with a 'query' field, e.g. {\"query\": \"vintage graphic tee under $30\"}"
+      },
+      "lines_added": 1,
+      "record": {
+        "timestamp": "2026-11-12T20:19:57.833+00:00",
+        "request_id": "4d85a28ef480",
+        "route": "/ask",
+        "http_status": 400,
+        "query": "",
+        "outcome": "bad_request",
+        "error": "missing or empty 'query' field",
+        "duration_s": 0.0,
+        "queued": false,
+        "prompt_tokens": null,
+        "output_tokens": null,
+        "selected_item_id": null
+      }
+    },
+    {
+      "sent": "{}",
+      "status": 400,
+      "client_s": 0.004,
+      "response": {
+        "error": "Send JSON with a 'query' field, e.g. {\"query\": \"vintage graphic tee under $30\"}"
+      },
+      "lines_added": 1,
+      "record": {
+        "timestamp": "2026-11-12T20:19:57.843+00:00",
+        "request_id": "aa64c5432f79",
+        "route": "/ask",
+        "http_status": 400,
+        "query": "",
+        "outcome": "bad_request",
+        "error": "missing or empty 'query' field",
+        "duration_s": 0.0,
+        "queued": false,
+        "prompt_tokens": null,
+        "output_tokens": null,
+        "selected_item_id": null
+      }
+    },
+    {
+      "sent": "{}",
+      "status": 400,
+      "client_s": 0.017,
+      "response": {
+        "error": "Send JSON with a 'query' field, e.g. {\"query\": \"vintage graphic tee under $30\"}"
+      },
+      "lines_added": 1,
+      "record": {
+        "timestamp": "2026-11-12T20:19:57.867+00:00",
+        "request_id": "a15894580a16",
+        "route": "/ask",
+        "http_status": 400,
+        "query": "",
+        "outcome": "bad_request",
+        "error": "missing or empty 'query' field",
+        "duration_s": 0.0,
+        "queued": false,
+        "prompt_tokens": null,
+        "output_tokens": null,
+        "selected_item_id": null
+      }
+    },
+    {
+      "sent": "{}",
+      "status": 400,
+      "client_s": 0.013,
+      "response": {
+        "error": "Send JSON with a 'query' field, e.g. {\"query\": \"vintage graphic tee under $30\"}"
+      },
+      "lines_added": 1,
+      "record": {
+        "timestamp": "2026-11-12T20:19:57.886+00:00",
+        "request_id": "bb9353eee5cd",
+        "route": "/ask",
+        "http_status": 400,
+        "query": "",
+        "outcome": "bad_request",
+        "error": "missing or empty 'query' field",
+        "duration_s": 0.0,
+        "queued": false,
+        "prompt_tokens": null,
+        "output_tokens": null,
+        "selected_item_id": null
+      }
+    },
+    {
+      "sent": "{}",
+      "status": 400,
+      "client_s": 0.019,
+      "response": {
+        "error": "Send JSON with a 'query' field, e.g. {\"query\": \"vintage graphic tee under $30\"}"
+      },
+      "lines_added": 1,
+      "record": {
+        "timestamp": "2026-11-12T20:19:57.912+00:00",
+        "request_id": "34d00986d722",
+        "route": "/ask",
+        "http_status": 400,
+        "query": "",
+        "outcome": "bad_request",
+        "error": "missing or empty 'query' field",
+        "duration_s": 0.0,
+        "queued": false,
+        "prompt_tokens": null,
+        "output_tokens": null,
+        "selected_item_id": null
+      }
+    },
+    {
+      "sent": "{}",
+      "status": 400,
+      "client_s": 0.003,
+      "response": {
+        "error": "Send JSON with a 'query' field, e.g. {\"query\": \"vintage graphic tee under $30\"}"
+      },
+      "lines_added": 1,
+      "record": {
+        "timestamp": "2026-11-12T20:19:57.922+00:00",
+        "request_id": "a522989d6446",
+        "route": "/ask",
+        "http_status": 400,
+        "query": "",
+        "outcome": "bad_request",
+        "error": "missing or empty 'query' field",
+        "duration_s": 0.0,
+        "queued": false,
+        "prompt_tokens": null,
+        "output_tokens": null,
+        "selected_item_id": null
+      }
+    },
+    {
+      "sent": "{}",
+      "status": 400,
+      "client_s": 0.003,
+      "response": {
+        "error": "Send JSON with a 'query' field, e.g. {\"query\": \"vintage graphic tee under $30\"}"
+      },
+      "lines_added": 1,
+      "record": {
+        "timestamp": "2026-11-12T20:19:57.932+00:00",
+        "request_id": "74ef4d656ca9",
+        "route": "/ask",
+        "http_status": 400,
+        "query": "",
+        "outcome": "bad_request",
+        "error": "missing or empty 'query' field",
+        "duration_s": 0.0,
+        "queued": false,
+        "prompt_tokens": null,
+        "output_tokens": null,
+        "selected_item_id": null
+      }
+    },
+    {
+      "sent": "{}",
+      "status": 400,
+      "client_s": 0.016,
+      "response": {
+        "error": "Send JSON with a 'query' field, e.g. {\"query\": \"vintage graphic tee under $30\"}"
+      },
+      "lines_added": 1,
+      "record": {
+        "timestamp": "2026-11-12T20:19:57.956+00:00",
+        "request_id": "ae5c77a6d86d",
+        "route": "/ask",
+        "http_status": 400,
+        "query": "",
+        "outcome": "bad_request",
+        "error": "missing or empty 'query' field",
+        "duration_s": 0.0,
+        "queued": false,
+        "prompt_tokens": null,
+        "output_tokens": null,
+        "selected_item_id": null
+      }
+    },
+    {
+      "sent": "{}",
+      "status": 400,
+      "client_s": 0.013,
+      "response": {
+        "error": "Send JSON with a 'query' field, e.g. {\"query\": \"vintage graphic tee under $30\"}"
+      },
+      "lines_added": 1,
+      "record": {
+        "timestamp": "2026-11-12T20:19:57.977+00:00",
+        "request_id": "676ac6e94f64",
+        "route": "/ask",
+        "http_status": 400,
+        "query": "",
+        "outcome": "bad_request",
+        "error": "missing or empty 'query' field",
+        "duration_s": 0.0,
+        "queued": false,
+        "prompt_tokens": null,
+        "output_tokens": null,
+        "selected_item_id": null
+      }
+    },
+    {
+      "sent": "{}",
+      "status": 400,
+      "client_s": 0.003,
+      "response": {
+        "error": "Send JSON with a 'query' field, e.g. {\"query\": \"vintage graphic tee under $30\"}"
+      },
+      "lines_added": 1,
+      "record": {
+        "timestamp": "2026-11-12T20:19:57.992+00:00",
+        "request_id": "dc23afd7c7bb",
+        "route": "/ask",
+        "http_status": 400,
+        "query": "",
+        "outcome": "bad_request",
+        "error": "missing or empty 'query' field",
+        "duration_s": 0.0,
+        "queued": false,
+        "prompt_tokens": null,
+        "output_tokens": null,
+        "selected_item_id": null
+      }
+    }
+  ]
+}

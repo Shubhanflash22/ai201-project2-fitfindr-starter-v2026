@@ -1,0 +1,121 @@
+{
+  "criterion": 3,
+  "type": null,
+  "trial": 1,
+  "score": 7,
+  "of": 10,
+  "target_met_this_trial": false,
+  "note": "stderr lines saying the log could not be written: 10 (must be 10)",
+  "details": [
+    {
+      "i": 1,
+      "status": 200,
+      "client_s": 16.016,
+      "response": {
+        "error": null,
+        "fit_card": "Scored this butterfly print Y2K baby tee on depop for $18 and it has the exact bratty 2000s mall rat energy I was looking for. It is going to look so good with baggy jeans and beat-up sneakers for run",
+        "outfit_suggestion": "Outfit 1:\nPair the Y2K Baby Tee with the baggy straight-leg jeans and chunky white sneakers. Layer the vintage black denim jacket on top and accessorize with the black crossbody bag.\n\nOutfit 2:\nPair t"
+      },
+      "response_ok": true
+    },
+    {
+      "i": 2,
+      "status": 200,
+      "client_s": 7.101,
+      "response": {
+        "error": null,
+        "fit_card": "Scored this Champion 90s track jacket on poshmark for $45 and the sporty streetwear vibe is unreal. The navy and white stripes make it stupid easy to throw on with baggy denim and chunky sneakers. Hon",
+        "outfit_suggestion": "Outfit 1: Streetwear Sporty\nPair the 90s track jacket with the white ribbed tank top and baggy straight-leg jeans, dark wash. Accessorize with the black crossbody bag and finish the look with the chun"
+      },
+      "response_ok": true
+    },
+    {
+      "i": 3,
+      "status": 200,
+      "client_s": 3.825,
+      "response": {
+        "error": null,
+        "fit_card": "Just scored this floral midi silk slip dress on depop for $30 and the grunge romantic vibe is so spot-on. I am completely obsessed with how it looks layered under an oversized crewneck with chunky boo",
+        "outfit_suggestion": "Outfit 1: Grunge Romantic\nLayer your oversized grey crewneck sweatshirt right over the 90s silk slip dress, letting the floral midi hem peek out the bottom. Ground the feminine look with your black co"
+      },
+      "response_ok": true
+    },
+    {
+      "i": 4,
+      "status": 200,
+      "client_s": 22.882,
+      "response": {
+        "error": "The model couldn't be reached, so the outfit and caption steps didn't run. The search worked: 3 listing(s) were found. Check GEMINI_API_KEY in your .env, then run the same query again.\nWhat the servic",
+        "fit_card": null,
+        "outfit_suggestion": "Outfit 1: The Ultimate 90s Streetwear Silhouette\nPair the new Platform Sneakers with the white ribbed tank top, baggy straight-leg dark wash jeans, the vintage black denim jacket, and the black crossb"
+      },
+      "response_ok": false
+    },
+    {
+      "i": 5,
+      "status": 200,
+      "client_s": 11.99,
+      "response": {
+        "error": null,
+        "fit_card": "Scored this vintage Wrangler cropped light wash denim jacket on poshmark for only $42 and the distressed 90s streetwear vibe is immaculate. It is giving off-duty model running errands in the best way ",
+        "outfit_suggestion": "Outfit 1\nPair the new light wash denim jacket with the white ribbed tank top, baggy straight-leg dark wash jeans, brown leather belt, and chunky white sneakers. This creates a classic, high-contrast d"
+      },
+      "response_ok": true
+    },
+    {
+      "i": 6,
+      "status": 200,
+      "client_s": 22.916,
+      "response": {
+        "error": "The model couldn't be reached, so the outfit and caption steps didn't run. The search worked: 10 listing(s) were found. Check GEMINI_API_KEY in your .env, then run the same query again.\nWhat the servi",
+        "fit_card": null,
+        "outfit_suggestion": null
+      },
+      "response_ok": false
+    },
+    {
+      "i": 7,
+      "status": 200,
+      "client_s": 8.173,
+      "response": {
+        "error": null,
+        "fit_card": "Scored this vintage navy and white Champion track jacket on poshmark for only $45 and I am obsessed with how it looks. The oversized athletic fit gives off the best effortless 90s streetwear energy. I",
+        "outfit_suggestion": "Outfit 1: Streetwear Sporty\nPair the 90s Track Jacket with the white ribbed tank top, baggy straight-leg jeans, and chunky white sneakers. Add the black crossbody bag for a casual, effortless look tha"
+      },
+      "response_ok": true
+    },
+    {
+      "i": 8,
+      "status": 200,
+      "client_s": 9.668,
+      "response": {
+        "error": null,
+        "fit_card": "Scored this floral 90s silk slip dress on depop for $30 and I am already obsessed with it. I love how the midi length gives off that messy grunge romantic vibe when you layer it under an oversized swe",
+        "outfit_suggestion": "Outfit 1: Grunge Romantic\nLayer the 90s Silk Slip Dress over the white ribbed tank top. Throw the oversized grey crewneck sweatshirt on top, letting the floral midi hem peek out the bottom. Finish wit"
+      },
+      "response_ok": true
+    },
+    {
+      "i": 9,
+      "status": 200,
+      "client_s": 9.511,
+      "response": {
+        "error": null,
+        "fit_card": "Scored these chunky white platform sneakers on poshmark for only $48 and they immediately unlocked the ultimate 90s off-duty vibe. I am definitely going to live in these with baggy dark jeans and a cr",
+        "outfit_suggestion": "Outfit 1: Casual Streetwear\nPair the new platform sneakers with the baggy straight-leg jeans in dark wash, the white ribbed tank top, and the black cropped zip hoodie. Finish the look with the black c"
+      },
+      "response_ok": true
+    },
+    {
+      "i": 10,
+      "status": 200,
+      "client_s": 9.106,
+      "response": {
+        "error": "The model couldn't be reached, so the outfit and caption steps didn't run. The search worked: 7 listing(s) were found. Check GEMINI_API_KEY in your .env, then run the same query again.\nWhat the servic",
+        "fit_card": null,
+        "outfit_suggestion": null
+      },
+      "response_ok": false
+    }
+  ]
+}

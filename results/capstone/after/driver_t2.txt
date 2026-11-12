@@ -1,0 +1,116 @@
+> 1 2 --log C:\Users\shubh\Desktop\Hard disk\College(PG)\Academics at UCSD\Y2Q1\Codepath\AI201 Applications of AI Engineering\Projects\ai201-project2-fitfindr-starter-v2026\results\capstone\after\log_N_t2.jsonl --phase after
+  {"query": "vintage graphic tee under $30"} -> 200 in 13.246s
+  {"query": "90s track jacket in size M"} -> 200 in 7.625s
+  {"query": "silk slip dress in midi length under $4 -> 200 in 20.793s
+  {"query": "platform sneakers size 8"} -> 200 in 3.341s
+  {"query": "designer ballgown under $5"} -> 200 in 0.809s
+  {"query": "leather jacket under $5"} -> 200 in 0.784s
+  {"query": "silk scarf under $5"} -> 200 in 0.794s
+  {} -> 400 in 0.016s
+  {} -> 400 in 0.025s
+  {} -> 400 in 0.027s
+criterion 1 trial 2: 10/10  target met this trial: yes
+lines in log: 10 (must be 10)
+saved results\capstone\after\c1_t2.json
+> 2 2 --log C:\Users\shubh\Desktop\Hard disk\College(PG)\Academics at UCSD\Y2Q1\Codepath\AI201 Applications of AI Engineering\Projects\ai201-project2-fitfindr-starter-v2026\results\capstone\after\log_R_t2.jsonl --type a --phase after
+  {} -> 400 in 0.016s
+  {} -> 400 in 0.004s
+  {} -> 400 in 0.017s
+  {} -> 400 in 0.013s
+  {} -> 400 in 0.019s
+  {} -> 400 in 0.003s
+  {} -> 400 in 0.003s
+  {} -> 400 in 0.016s
+  {} -> 400 in 0.013s
+  {} -> 400 in 0.003s
+criterion 2 type a trial 2: 10/10  target met this trial: yes
+type a: expected outcome=bad_request, status=400
+saved results\capstone\after\c2a_t2.json
+> 2 2 --log C:\Users\shubh\Desktop\Hard disk\College(PG)\Academics at UCSD\Y2Q1\Codepath\AI201 Applications of AI Engineering\Projects\ai201-project2-fitfindr-starter-v2026\results\capstone\after\log_R_t2.jsonl --type b --phase after
+  {"query": "designer ballgown under $5"} -> 200 in 1.297s
+  {"query": "leather jacket under $5"} -> 200 in 0.783s
+  {"query": "silk scarf under $5"} -> 200 in 0.774s
+  {"query": "platform boots under $5"} -> 200 in 0.764s
+  {"query": "denim shorts under $5"} -> 200 in 0.783s
+  {"query": "wool coat under $5"} -> 200 in 0.774s
+  {"query": "graphic tee under $5"} -> 200 in 0.763s
+  {"query": "pleated skirt under $5"} -> 200 in 0.758s
+  {"query": "cargo pants under $5"} -> 200 in 0.804s
+  {"query": "knit sweater under $5"} -> 200 in 0.78s
+criterion 2 type b trial 2: 10/10  target met this trial: yes
+type b: expected outcome=nothing_found, status=200
+saved results\capstone\after\c2b_t2.json
+> 2 2 --log C:\Users\shubh\Desktop\Hard disk\College(PG)\Academics at UCSD\Y2Q1\Codepath\AI201 Applications of AI Engineering\Projects\ai201-project2-fitfindr-starter-v2026\results\capstone\after\log_R_t2.jsonl --type e --phase after
+  [1] -> 500 in 0.016s
+  [1] -> 500 in 0.031s
+  [1] -> 500 in 0.003s
+  [1] -> 500 in 0.018s
+  [1] -> 500 in 0.025s
+  [1] -> 500 in 0.014s
+  [1] -> 500 in 0.019s
+  [1] -> 500 in 0.018s
+  [1] -> 500 in 0.014s
+  [1] -> 500 in 0.019s
+criterion 2 type e trial 2: 10/10  target met this trial: yes
+type e: expected outcome=server_error, status=500
+saved results\capstone\after\c2e_t2.json
+> 5 2 --log C:\Users\shubh\Desktop\Hard disk\College(PG)\Academics at UCSD\Y2Q1\Codepath\AI201 Applications of AI Engineering\Projects\ai201-project2-fitfindr-starter-v2026\results\capstone\after\log_R_t2.jsonl --phase after
+  {"query": "designer ballgown under $5"} -> 200 in 1.04s
+  {"query": "leather jacket under $5"} -> 200 in 0.854s
+  {"query": "silk scarf under $5"} -> 200 in 0.89s
+  {"query": "platform boots under $5"} -> 200 in 0.857s
+  {"query": "denim shorts under $5"} -> 200 in 0.816s
+  {"query": "wool coat under $5"} -> 200 in 0.771s
+  {"query": "graphic tee under $5"} -> 200 in 0.752s
+  {"query": "pleated skirt under $5"} -> 200 in 0.757s
+  {"query": "cargo pants under $5"} -> 200 in 0.791s
+  {"query": "knit sweater under $5"} -> 200 in 0.833s
+criterion 5 trial 2: 10/10  target met this trial: yes
+no-match queries, price ceiling $5
+saved results\capstone\after\c5_t2.json
+> 2 2 --log C:\Users\shubh\Desktop\Hard disk\College(PG)\Academics at UCSD\Y2Q1\Codepath\AI201 Applications of AI Engineering\Projects\ai201-project2-fitfindr-starter-v2026\results\capstone\after\log_R_t2.jsonl --type d --phase after
+  {"query": "vintage graphic tee under $30"} -> 200 in 0.065s
+  {"query": "90s track jacket in size M"} -> 200 in 0.071s
+  {"query": "silk slip dress in midi length under $4 -> 200 in 0.059s
+  {"query": "platform sneakers size 8"} -> 200 in 0.059s
+  {"query": "denim jacket under $50"} -> 200 in 0.073s
+  {"query": "vintage graphic tee under $30"} -> 200 in 0.075s
+  {"query": "90s track jacket in size M"} -> 200 in 0.064s
+  {"query": "silk slip dress in midi length under $4 -> 200 in 0.071s
+  {"query": "platform sneakers size 8"} -> 200 in 0.07s
+  {"query": "denim jacket under $50"} -> 200 in 0.088s
+criterion 2 type d trial 2: 10/10  target met this trial: yes
+type d: expected outcome=mcp_unavailable, status=200
+saved results\capstone\after\c2d_t2.json
+> 2 2 --log C:\Users\shubh\Desktop\Hard disk\College(PG)\Academics at UCSD\Y2Q1\Codepath\AI201 Applications of AI Engineering\Projects\ai201-project2-fitfindr-starter-v2026\results\capstone\after\log_B_t2.jsonl --type c --phase after
+  {"query": "vintage graphic tee under $30"} -> 200 in 5.375s
+  {"query": "90s track jacket in size M"} -> 200 in 2.468s
+  {"query": "silk slip dress in midi length under $4 -> 200 in 2.969s
+  {"query": "platform sneakers size 8"} -> 200 in 0.876s
+  {"query": "denim jacket under $50"} -> 200 in 2.227s
+  {"query": "vintage graphic tee under $30"} -> 200 in 3.136s
+  {"query": "90s track jacket in size M"} -> 200 in 0.973s
+  {"query": "silk slip dress in midi length under $4 -> 200 in 2.732s
+  {"query": "platform sneakers size 8"} -> 200 in 3.254s
+  {"query": "denim jacket under $50"} -> 200 in 0.903s
+criterion 2 type c trial 2: 10/10  target met this trial: yes
+type c: expected outcome=model_unavailable, status=200
+saved results\capstone\after\c2c_t2.json
+> 3 2 --stderr C:\Users\shubh\Desktop\Hard disk\College(PG)\Academics at UCSD\Y2Q1\Codepath\AI201 Applications of AI Engineering\Projects\ai201-project2-fitfindr-starter-v2026\results\capstone\after\stderr_L_t2.txt --phase after
+criterion 3 trial 2: 8/10  target met this trial: no
+stderr lines saying the log could not be written: 10 (must be 10)
+saved results\capstone\after\c3_t2.json
+> 4 2 --log C:\Users\shubh\Desktop\Hard disk\College(PG)\Academics at UCSD\Y2Q1\Codepath\AI201 Applications of AI Engineering\Projects\ai201-project2-fitfindr-starter-v2026\results\capstone\after\log_T_t2.jsonl --phase after
+  10/100 sent
+  20/100 sent
+  30/100 sent
+  40/100 sent
+  50/100 sent
+  60/100 sent
+  70/100 sent
+  80/100 sent
+  90/100 sent
+  100/100 sent
+criterion 4 trial 2: 4/100  target met this trial: no
+log lines 101 (expected 101); outcome not ok: 23; duration_s min 3.641, median 7.819, max 29.628
+saved results\capstone\after\c4_t2.json

@@ -1,0 +1,261 @@
+{
+  "criterion": 2,
+  "type": "d",
+  "trial": 3,
+  "score": 10,
+  "of": 10,
+  "target_met_this_trial": true,
+  "note": "type d: expected outcome=mcp_unavailable, status=200",
+  "details": [
+    {
+      "sent": "{\"query\": \"vintage graphic tee under $30\"}",
+      "status": 200,
+      "client_s": 0.065,
+      "response": {
+        "error": "The search tool couldn't be reached over MCP, so nothing was searched. Run `python mcp_client.py` to check the server starts, then try again.\nWhat went wrong: Couldn't call 'search_listings' over MCP:",
+        "fit_card": null,
+        "outfit_suggestion": null
+      },
+      "lines_added": 1,
+      "record": {
+        "timestamp": "2026-11-12T20:46:15.674+00:00",
+        "request_id": "d405e21ef528",
+        "route": "/ask",
+        "http_status": 200,
+        "query": "vintage graphic tee under $30",
+        "outcome": "mcp_unavailable",
+        "error": "The search tool couldn't be reached over MCP, so nothing was searched. Run `python mcp_client.py` to check the server starts, then try again.\nWhat went wrong: Couldn't call 'search_listings' over MCP: unhandled errors in a TaskGroup (1 sub-exception)\nCheck that mcp_server.py runs on its own first:\n    python mcp_server.py\nIf it exits immediately with an error, fix that before coming back here.",
+        "duration_s": 0.051,
+        "queued": false,
+        "prompt_tokens": 0,
+        "output_tokens": 0,
+        "selected_item_id": null
+      }
+    },
+    {
+      "sent": "{\"query\": \"90s track jacket in size M\"}",
+      "status": 200,
+      "client_s": 0.072,
+      "response": {
+        "error": "The search tool couldn't be reached over MCP, so nothing was searched. Run `python mcp_client.py` to check the server starts, then try again.\nWhat went wrong: Couldn't call 'search_listings' over MCP:",
+        "fit_card": null,
+        "outfit_suggestion": null
+      },
+      "lines_added": 1,
+      "record": {
+        "timestamp": "2026-11-12T20:46:15.753+00:00",
+        "request_id": "235f1d846fb0",
+        "route": "/ask",
+        "http_status": 200,
+        "query": "90s track jacket in size M",
+        "outcome": "mcp_unavailable",
+        "error": "The search tool couldn't be reached over MCP, so nothing was searched. Run `python mcp_client.py` to check the server starts, then try again.\nWhat went wrong: Couldn't call 'search_listings' over MCP: unhandled errors in a TaskGroup (1 sub-exception)\nCheck that mcp_server.py runs on its own first:\n    python mcp_server.py\nIf it exits immediately with an error, fix that before coming back here.",
+        "duration_s": 0.069,
+        "queued": false,
+        "prompt_tokens": 0,
+        "output_tokens": 0,
+        "selected_item_id": null
+      }
+    },
+    {
+      "sent": "{\"query\": \"silk slip dress in midi length under $40\"}",
+      "status": 200,
+      "client_s": 0.074,
+      "response": {
+        "error": "The search tool couldn't be reached over MCP, so nothing was searched. Run `python mcp_client.py` to check the server starts, then try again.\nWhat went wrong: Couldn't call 'search_listings' over MCP:",
+        "fit_card": null,
+        "outfit_suggestion": null
+      },
+      "lines_added": 1,
+      "record": {
+        "timestamp": "2026-11-12T20:46:15.835+00:00",
+        "request_id": "da86a3936289",
+        "route": "/ask",
+        "http_status": 200,
+        "query": "silk slip dress in midi length under $40",
+        "outcome": "mcp_unavailable",
+        "error": "The search tool couldn't be reached over MCP, so nothing was searched. Run `python mcp_client.py` to check the server starts, then try again.\nWhat went wrong: Couldn't call 'search_listings' over MCP: unhandled errors in a TaskGroup (1 sub-exception)\nCheck that mcp_server.py runs on its own first:\n    python mcp_server.py\nIf it exits immediately with an error, fix that before coming back here.",
+        "duration_s": 0.061,
+        "queued": false,
+        "prompt_tokens": 0,
+        "output_tokens": 0,
+        "selected_item_id": null
+      }
+    },
+    {
+      "sent": "{\"query\": \"platform sneakers size 8\"}",
+      "status": 200,
+      "client_s": 0.071,
+      "response": {
+        "error": "The search tool couldn't be reached over MCP, so nothing was searched. Run `python mcp_client.py` to check the server starts, then try again.\nWhat went wrong: Couldn't call 'search_listings' over MCP:",
+        "fit_card": null,
+        "outfit_suggestion": null
+      },
+      "lines_added": 1,
+      "record": {
+        "timestamp": "2026-11-12T20:46:15.915+00:00",
+        "request_id": "5d3c3263b549",
+        "route": "/ask",
+        "http_status": 200,
+        "query": "platform sneakers size 8",
+        "outcome": "mcp_unavailable",
+        "error": "The search tool couldn't be reached over MCP, so nothing was searched. Run `python mcp_client.py` to check the server starts, then try again.\nWhat went wrong: Couldn't call 'search_listings' over MCP: unhandled errors in a TaskGroup (1 sub-exception)\nCheck that mcp_server.py runs on its own first:\n    python mcp_server.py\nIf it exits immediately with an error, fix that before coming back here.",
+        "duration_s": 0.064,
+        "queued": false,
+        "prompt_tokens": 0,
+        "output_tokens": 0,
+        "selected_item_id": null
+      }
+    },
+    {
+      "sent": "{\"query\": \"denim jacket under $50\"}",
+      "status": 200,
+      "client_s": 0.075,
+      "response": {
+        "error": "The search tool couldn't be reached over MCP, so nothing was searched. Run `python mcp_client.py` to check the server starts, then try again.\nWhat went wrong: Couldn't call 'search_listings' over MCP:",
+        "fit_card": null,
+        "outfit_suggestion": null
+      },
+      "lines_added": 1,
+      "record": {
+        "timestamp": "2026-11-12T20:46:15.997+00:00",
+        "request_id": "691c3fe9a59f",
+        "route": "/ask",
+        "http_status": 200,
+        "query": "denim jacket under $50",
+        "outcome": "mcp_unavailable",
+        "error": "The search tool couldn't be reached over MCP, so nothing was searched. Run `python mcp_client.py` to check the server starts, then try again.\nWhat went wrong: Couldn't call 'search_listings' over MCP: unhandled errors in a TaskGroup (1 sub-exception)\nCheck that mcp_server.py runs on its own first:\n    python mcp_server.py\nIf it exits immediately with an error, fix that before coming back here.",
+        "duration_s": 0.058,
+        "queued": false,
+        "prompt_tokens": 0,
+        "output_tokens": 0,
+        "selected_item_id": null
+      }
+    },
+    {
+      "sent": "{\"query\": \"vintage graphic tee under $30\"}",
+      "status": 200,
+      "client_s": 0.071,
+      "response": {
+        "error": "The search tool couldn't be reached over MCP, so nothing was searched. Run `python mcp_client.py` to check the server starts, then try again.\nWhat went wrong: Couldn't call 'search_listings' over MCP:",
+        "fit_card": null,
+        "outfit_suggestion": null
+      },
+      "lines_added": 1,
+      "record": {
+        "timestamp": "2026-11-12T20:46:16.079+00:00",
+        "request_id": "699e99bc0ec2",
+        "route": "/ask",
+        "http_status": 200,
+        "query": "vintage graphic tee under $30",
+        "outcome": "mcp_unavailable",
+        "error": "The search tool couldn't be reached over MCP, so nothing was searched. Run `python mcp_client.py` to check the server starts, then try again.\nWhat went wrong: Couldn't call 'search_listings' over MCP: unhandled errors in a TaskGroup (1 sub-exception)\nCheck that mcp_server.py runs on its own first:\n    python mcp_server.py\nIf it exits immediately with an error, fix that before coming back here.",
+        "duration_s": 0.068,
+        "queued": false,
+        "prompt_tokens": 0,
+        "output_tokens": 0,
+        "selected_item_id": null
+      }
+    },
+    {
+      "sent": "{\"query\": \"90s track jacket in size M\"}",
+      "status": 200,
+      "client_s": 0.077,
+      "response": {
+        "error": "The search tool couldn't be reached over MCP, so nothing was searched. Run `python mcp_client.py` to check the server starts, then try again.\nWhat went wrong: Couldn't call 'search_listings' over MCP:",
+        "fit_card": null,
+        "outfit_suggestion": null
+      },
+      "lines_added": 1,
+      "record": {
+        "timestamp": "2026-11-12T20:46:16.163+00:00",
+        "request_id": "a2962d31e4bc",
+        "route": "/ask",
+        "http_status": 200,
+        "query": "90s track jacket in size M",
+        "outcome": "mcp_unavailable",
+        "error": "The search tool couldn't be reached over MCP, so nothing was searched. Run `python mcp_client.py` to check the server starts, then try again.\nWhat went wrong: Couldn't call 'search_listings' over MCP: unhandled errors in a TaskGroup (1 sub-exception)\nCheck that mcp_server.py runs on its own first:\n    python mcp_server.py\nIf it exits immediately with an error, fix that before coming back here.",
+        "duration_s": 0.064,
+        "queued": false,
+        "prompt_tokens": 0,
+        "output_tokens": 0,
+        "selected_item_id": null
+      }
+    },
+    {
+      "sent": "{\"query\": \"silk slip dress in midi length under $40\"}",
+      "status": 200,
+      "client_s": 0.1,
+      "response": {
+        "error": "The search tool couldn't be reached over MCP, so nothing was searched. Run `python mcp_client.py` to check the server starts, then try again.\nWhat went wrong: Couldn't call 'search_listings' over MCP:",
+        "fit_card": null,
+        "outfit_suggestion": null
+      },
+      "lines_added": 1,
+      "record": {
+        "timestamp": "2026-11-12T20:46:16.274+00:00",
+        "request_id": "8950339440bc",
+        "route": "/ask",
+        "http_status": 200,
+        "query": "silk slip dress in midi length under $40",
+        "outcome": "mcp_unavailable",
+        "error": "The search tool couldn't be reached over MCP, so nothing was searched. Run `python mcp_client.py` to check the server starts, then try again.\nWhat went wrong: Couldn't call 'search_listings' over MCP: unhandled errors in a TaskGroup (1 sub-exception)\nCheck that mcp_server.py runs on its own first:\n    python mcp_server.py\nIf it exits immediately with an error, fix that before coming back here.",
+        "duration_s": 0.072,
+        "queued": false,
+        "prompt_tokens": 0,
+        "output_tokens": 0,
+        "selected_item_id": null
+      }
+    },
+    {
+      "sent": "{\"query\": \"platform sneakers size 8\"}",
+      "status": 200,
+      "client_s": 0.078,
+      "response": {
+        "error": "The search tool couldn't be reached over MCP, so nothing was searched. Run `python mcp_client.py` to check the server starts, then try again.\nWhat went wrong: Couldn't call 'search_listings' over MCP:",
+        "fit_card": null,
+        "outfit_suggestion": null
+      },
+      "lines_added": 1,
+      "record": {
+        "timestamp": "2026-11-12T20:46:16.363+00:00",
+        "request_id": "28a4a3d7e213",
+        "route": "/ask",
+        "http_status": 200,
+        "query": "platform sneakers size 8",
+        "outcome": "mcp_unavailable",
+        "error": "The search tool couldn't be reached over MCP, so nothing was searched. Run `python mcp_client.py` to check the server starts, then try again.\nWhat went wrong: Couldn't call 'search_listings' over MCP: unhandled errors in a TaskGroup (1 sub-exception)\nCheck that mcp_server.py runs on its own first:\n    python mcp_server.py\nIf it exits immediately with an error, fix that before coming back here.",
+        "duration_s": 0.066,
+        "queued": false,
+        "prompt_tokens": 0,
+        "output_tokens": 0,
+        "selected_item_id": null
+      }
+    },
+    {
+      "sent": "{\"query\": \"denim jacket under $50\"}",
+      "status": 200,
+      "client_s": 0.082,
+      "response": {
+        "error": "The search tool couldn't be reached over MCP, so nothing was searched. Run `python mcp_client.py` to check the server starts, then try again.\nWhat went wrong: Couldn't call 'search_listings' over MCP:",
+        "fit_card": null,
+        "outfit_suggestion": null
+      },
+      "lines_added": 1,
+      "record": {
+        "timestamp": "2026-11-12T20:46:16.455+00:00",
+        "request_id": "76d258166323",
+        "route": "/ask",
+        "http_status": 200,
+        "query": "denim jacket under $50",
+        "outcome": "mcp_unavailable",
+        "error": "The search tool couldn't be reached over MCP, so nothing was searched. Run `python mcp_client.py` to check the server starts, then try again.\nWhat went wrong: Couldn't call 'search_listings' over MCP: unhandled errors in a TaskGroup (1 sub-exception)\nCheck that mcp_server.py runs on its own first:\n    python mcp_server.py\nIf it exits immediately with an error, fix that before coming back here.",
+        "duration_s": 0.068,
+        "queued": false,
+        "prompt_tokens": 0,
+        "output_tokens": 0,
+        "selected_item_id": null
+      }
+    }
+  ]
+}

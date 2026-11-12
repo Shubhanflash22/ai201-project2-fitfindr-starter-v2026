@@ -1,0 +1,1853 @@
+
+FitFindr is listening on http://localhost:5000
+It runs one request at a time — a second one waits for the first.
+Ask it something (single quotes, as always):
+
+  curl -X POST http://localhost:5000/ask \
+    -H 'Content-Type: application/json' \
+    -d '{"query": "vintage graphic tee under $30"}'
+
+Ctrl-C to stop.
+
+ * Serving Flask app 'serve'
+ * Debug mode: off
+[1] parse_query
+      in:  vintage graphic tee under $30
+      out: dict with keys: description, size, max_price
+[2] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 10 items: Y2K Baby Tee — Butterfly Print, Vintage Band Tee — Faded Grey, Graphic Tee — 2003 Tour Bootleg Style … +7 more
+      →    10 match(es)
+[3] select_item
+      out: Y2K Baby Tee — Butterfly Print ($18.0, depop)
+[4] compare_prices
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: dict with keys: category, average, count, difference, verdict
+[5] suggest_outfit
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: Outfit One  Pair the Y2K Baby Tee with your baggy straight-leg jeans, dark wash, and layer the black cropped z…
+      →    10 wardrobe item(s)
+[6] create_fit_card
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: Found this absolute holy grail butterfly print Y2K baby tee on depop for just $18 and I am obsessed. It is giv…
+[7] parse_query
+      in:  vintage graphic tee under $30
+      out: dict with keys: description, size, max_price
+[8] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 10 items: Y2K Baby Tee — Butterfly Print, Vintage Band Tee — Faded Grey, Graphic Tee — 2003 Tour Bootleg Style … +7 more
+      →    10 match(es)
+[9] select_item
+      out: Y2K Baby Tee — Butterfly Print ($18.0, depop)
+[10] compare_prices
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: dict with keys: category, average, count, difference, verdict
+[11] suggest_outfit
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: Outfit One: Y2K Baby Tee — Butterfly Print Baggy straight-leg jeans, dark wash Vintage black denim jacket Chun…
+      →    10 wardrobe item(s)
+[12] create_fit_card
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: Scored this butterfly print Y2K baby tee on depop for just $18 and it is giving peak 2000s mall goth energy. I…
+[13] parse_query
+      in:  90s track jacket in size M
+      out: dict with keys: description, size, max_price
+[14] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 4 items: 90s Track Jacket — Navy/White Stripe, 90s Leather Bomber — Black, 90s Silk Slip Dress — Floral, Midi Length … +1 more
+      →    4 match(es)
+[15] select_item
+      out: 90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+[16] compare_prices
+      in:  90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+      out: dict with keys: category, average, count, difference, verdict
+[17] model unavailable
+      →    stopping, search results kept
+[18] parse_query
+      in:  silk slip dress in midi length under $40
+      out: dict with keys: description, size, max_price
+[19] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 5 items: 90s Silk Slip Dress — Floral, Midi Length, Y2K Baby Tee — Butterfly Print, High-Waisted Denim Shorts — Cutoff … +2 more
+      →    5 match(es)
+[20] select_item
+      out: 90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+[21] compare_prices
+      in:  90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+      out: dict with keys: category, average, count, difference, verdict
+[22] suggest_outfit
+      in:  90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+      out: Outfit 1: Grunge Romantic Layer the 90s Silk Slip Dress over the white ribbed tank top. Add the oversized grey…
+      →    10 wardrobe item(s)
+[23] create_fit_card
+      in:  90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+      out: Scored this dreamy floral midi slip dress on depop for only $30. The fabric feels incredible and it has the ab…
+[24] parse_query
+      in:  platform sneakers size 8
+      out: dict with keys: description, size, max_price
+[25] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 3 items: Platform Sneakers — White Chunky Sole, Low-Top Canvas Sneakers — Off-White, Platform Mary Janes — Black Patent
+      →    3 match(es)
+[26] select_item
+      out: Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+[27] compare_prices
+      in:  Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+      out: dict with keys: category, average, count, difference, verdict
+[28] model unavailable
+      →    stopping, search results kept
+[29] parse_query
+      in:  denim jacket under $50
+      out: dict with keys: description, size, max_price
+[30] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 7 items: Denim Jacket — Light Wash, Cropped, High-Waisted Denim Shorts — Cutoff, Denim Vest — Medium Wash, Studded … +4 more
+      →    7 match(es)
+[31] select_item
+      out: Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+[32] compare_prices
+      in:  Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+      out: dict with keys: category, average, count, difference, verdict
+[33] suggest_outfit
+      in:  Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+      out: Outfit One: Double Denim Contrast Pair the new light wash cropped denim jacket with your white ribbed tank top…
+      →    10 wardrobe item(s)
+[34] model unavailable
+      →    stopping, search results kept
+[35] parse_query
+      in:  vintage graphic tee under $30
+      out: dict with keys: description, size, max_price
+[36] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 10 items: Y2K Baby Tee — Butterfly Print, Vintage Band Tee — Faded Grey, Graphic Tee — 2003 Tour Bootleg Style … +7 more
+      →    10 match(es)
+[37] select_item
+      out: Y2K Baby Tee — Butterfly Print ($18.0, depop)
+[38] compare_prices
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: dict with keys: category, average, count, difference, verdict
+[39] suggest_outfit
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: Outfit 1: Pair the Y2K Baby Tee with your baggy straight-leg jeans, dark wash, black cropped zip hoodie, and c…
+      →    10 wardrobe item(s)
+[40] model unavailable
+      →    stopping, search results kept
+[41] parse_query
+      in:  90s track jacket in size M
+      out: dict with keys: description, size, max_price
+[42] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 4 items: 90s Track Jacket — Navy/White Stripe, 90s Leather Bomber — Black, 90s Silk Slip Dress — Floral, Midi Length … +1 more
+      →    4 match(es)
+[43] select_item
+      out: 90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+[44] compare_prices
+      in:  90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+      out: dict with keys: category, average, count, difference, verdict
+[45] suggest_outfit
+      in:  90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+      out: Outfit One: Sporty Streetwear Pair the 90s track jacket with the white ribbed tank top and baggy straight-leg …
+      →    10 wardrobe item(s)
+[46] create_fit_card
+      in:  90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+      out: Scored this vintage Champion 90s track jacket on Poshmark for $45 and it has the absolute ultimate retro sport…
+[47] parse_query
+      in:  silk slip dress in midi length under $40
+      out: dict with keys: description, size, max_price
+[48] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 5 items: 90s Silk Slip Dress — Floral, Midi Length, Y2K Baby Tee — Butterfly Print, High-Waisted Denim Shorts — Cutoff … +2 more
+      →    5 match(es)
+[49] select_item
+      out: 90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+[50] compare_prices
+      in:  90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+      out: dict with keys: category, average, count, difference, verdict
+[51] suggest_outfit
+      in:  90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+      out: Outfit 1: Grunge Romantic Layer your oversized grey crewneck sweatshirt right over the 90s silk slip dress to …
+      →    10 wardrobe item(s)
+[52] model unavailable
+      →    stopping, search results kept
+[53] parse_query
+      in:  platform sneakers size 8
+      out: dict with keys: description, size, max_price
+[54] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 3 items: Platform Sneakers — White Chunky Sole, Low-Top Canvas Sneakers — Off-White, Platform Mary Janes — Black Patent
+      →    3 match(es)
+[55] select_item
+      out: Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+[56] compare_prices
+      in:  Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+      out: dict with keys: category, average, count, difference, verdict
+[57] suggest_outfit
+      in:  Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+      out: Outfit 1: Casual Streetwear Pair the new platform sneakers with the baggy straight-leg jeans in dark wash, the…
+      →    10 wardrobe item(s)
+[58] create_fit_card
+      in:  Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+      out: Scored these chunky white platform sneakers on poshmark for $48 and they completely nail that early 2000s stre…
+[59] parse_query
+      in:  denim jacket under $50
+      out: dict with keys: description, size, max_price
+[60] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 7 items: Denim Jacket — Light Wash, Cropped, High-Waisted Denim Shorts — Cutoff, Denim Vest — Medium Wash, Studded … +4 more
+      →    7 match(es)
+[61] select_item
+      out: Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+[62] compare_prices
+      in:  Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+      out: dict with keys: category, average, count, difference, verdict
+[63] suggest_outfit
+      in:  Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+      out: Outfit 1: Pair the light wash cropped denim jacket with the white ribbed tank top, baggy straight-leg dark was…
+      →    10 wardrobe item(s)
+[64] create_fit_card
+      in:  Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+      out: Scored this cropped Wrangler denim jacket on poshmark for $42 and it is giving me the exact heavy 90s streetwe…
+[65] parse_query
+      in:  vintage graphic tee under $30
+      out: dict with keys: description, size, max_price
+[66] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 10 items: Y2K Baby Tee — Butterfly Print, Vintage Band Tee — Faded Grey, Graphic Tee — 2003 Tour Bootleg Style … +7 more
+      →    10 match(es)
+[67] select_item
+      out: Y2K Baby Tee — Butterfly Print ($18.0, depop)
+[68] compare_prices
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: dict with keys: category, average, count, difference, verdict
+[69] model unavailable
+      →    stopping, search results kept
+[70] parse_query
+      in:  90s track jacket in size M
+      out: dict with keys: description, size, max_price
+[71] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 4 items: 90s Track Jacket — Navy/White Stripe, 90s Leather Bomber — Black, 90s Silk Slip Dress — Floral, Midi Length … +1 more
+      →    4 match(es)
+[72] select_item
+      out: 90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+[73] compare_prices
+      in:  90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+      out: dict with keys: category, average, count, difference, verdict
+[74] suggest_outfit
+      in:  90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+      out: Outfit 1: Casual Streetwear Pair the 90s track jacket with the white ribbed tank top, baggy straight-leg jeans…
+      →    10 wardrobe item(s)
+[75] create_fit_card
+      in:  90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+      out: Scored this vintage Champion 90s track jacket on Poshmark for $45 and I am so obsessed with the navy and white…
+[76] parse_query
+      in:  silk slip dress in midi length under $40
+      out: dict with keys: description, size, max_price
+[77] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 5 items: 90s Silk Slip Dress — Floral, Midi Length, Y2K Baby Tee — Butterfly Print, High-Waisted Denim Shorts — Cutoff … +2 more
+      →    5 match(es)
+[78] select_item
+      out: 90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+[79] compare_prices
+      in:  90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+      out: dict with keys: category, average, count, difference, verdict
+[80] suggest_outfit
+      in:  90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+      out: Outfit 1: Grunge Romantic Layer the 90s Silk Slip Dress over the white ribbed tank top. Add the oversized grey…
+      →    10 wardrobe item(s)
+[81] create_fit_card
+      in:  90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+      out: Scored this floral midi slip dress on depop for $30 and the moody grunge romantic vibe is honestly unmatched. …
+[82] parse_query
+      in:  platform sneakers size 8
+      out: dict with keys: description, size, max_price
+[83] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 3 items: Platform Sneakers — White Chunky Sole, Low-Top Canvas Sneakers — Off-White, Platform Mary Janes — Black Patent
+      →    3 match(es)
+[84] select_item
+      out: Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+[85] compare_prices
+      in:  Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+      out: dict with keys: category, average, count, difference, verdict
+[86] suggest_outfit
+      in:  Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+      out: Outfit 1 Pair the new platform sneakers with the white ribbed tank top, baggy straight-leg jeans in dark wash,…
+      →    10 wardrobe item(s)
+[87] create_fit_card
+      in:  Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+      out: Scored these white chunky platform sneakers on poshmark for only $48 and they completely nail that effortless …
+[88] parse_query
+      in:  denim jacket under $50
+      out: dict with keys: description, size, max_price
+[89] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 7 items: Denim Jacket — Light Wash, Cropped, High-Waisted Denim Shorts — Cutoff, Denim Vest — Medium Wash, Studded … +4 more
+      →    7 match(es)
+[90] select_item
+      out: Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+[91] compare_prices
+      in:  Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+      out: dict with keys: category, average, count, difference, verdict
+[92] suggest_outfit
+      in:  Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+      out: Outfit One: Double Denim Contrast Pair the new light wash cropped denim jacket with your white ribbed tank top…
+      →    10 wardrobe item(s)
+[93] create_fit_card
+      in:  Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+      out: Scored this cropped Wrangler light wash denim jacket on Poshmark for only $42 and it has the absolute best 90s…
+[94] parse_query
+      in:  vintage graphic tee under $30
+      out: dict with keys: description, size, max_price
+[95] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 10 items: Y2K Baby Tee — Butterfly Print, Vintage Band Tee — Faded Grey, Graphic Tee — 2003 Tour Bootleg Style … +7 more
+      →    10 match(es)
+[96] select_item
+      out: Y2K Baby Tee — Butterfly Print ($18.0, depop)
+[97] compare_prices
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: dict with keys: category, average, count, difference, verdict
+[98] suggest_outfit
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: Outfit 1: Pair the Y2K Baby Tee with your baggy straight-leg jeans, dark wash, layered under your black croppe…
+      →    10 wardrobe item(s)
+[99] create_fit_card
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: Found this unreal butterfly print baby tee on depop for $18 and it totally screams messy early 2000s mall goth…
+[100] parse_query
+      in:  90s track jacket in size M
+      out: dict with keys: description, size, max_price
+[101] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 4 items: 90s Track Jacket — Navy/White Stripe, 90s Leather Bomber — Black, 90s Silk Slip Dress — Floral, Midi Length … +1 more
+      →    4 match(es)
+[102] select_item
+      out: 90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+[103] compare_prices
+      in:  90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+      out: dict with keys: category, average, count, difference, verdict
+[104] suggest_outfit
+      in:  90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+      out: Outfit 1: Retro Streetwear Layer the 90s Track Jacket over the white ribbed tank top, paired with the baggy st…
+      →    10 wardrobe item(s)
+[105] create_fit_card
+      in:  90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+      out: Scored this vintage Champion 90s track jacket on poshmark for only $45 and it completely nails that effortless…
+[106] parse_query
+      in:  silk slip dress in midi length under $40
+      out: dict with keys: description, size, max_price
+[107] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 5 items: 90s Silk Slip Dress — Floral, Midi Length, Y2K Baby Tee — Butterfly Print, High-Waisted Denim Shorts — Cutoff … +2 more
+      →    5 match(es)
+[108] select_item
+      out: 90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+[109] compare_prices
+      in:  90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+      out: dict with keys: category, average, count, difference, verdict
+[110] suggest_outfit
+      in:  90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+      out: Outfit 1: Grunge Romantic Layer your oversized grey crewneck sweatshirt right over the silk slip dress to give…
+      →    10 wardrobe item(s)
+[111] create_fit_card
+      in:  90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+      out: Scored this 90s floral silk midi slip dress on depop for only $30 and I am completely obsessed. The dark moody…
+[112] parse_query
+      in:  platform sneakers size 8
+      out: dict with keys: description, size, max_price
+[113] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 3 items: Platform Sneakers — White Chunky Sole, Low-Top Canvas Sneakers — Off-White, Platform Mary Janes — Black Patent
+      →    3 match(es)
+[114] select_item
+      out: Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+[115] compare_prices
+      in:  Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+      out: dict with keys: category, average, count, difference, verdict
+[116] suggest_outfit
+      in:  Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+      out: Outfit 1 Pair the white platform sneakers with the white ribbed tank top tucked into the baggy straight-leg je…
+      →    10 wardrobe item(s)
+[117] create_fit_card
+      in:  Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+      out: scored these chunky white platform sneakers on poshmark for $48 and they completely nail that effortless Y2K s…
+[118] parse_query
+      in:  denim jacket under $50
+      out: dict with keys: description, size, max_price
+[119] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 7 items: Denim Jacket — Light Wash, Cropped, High-Waisted Denim Shorts — Cutoff, Denim Vest — Medium Wash, Studded … +4 more
+      →    7 match(es)
+[120] select_item
+      out: Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+[121] compare_prices
+      in:  Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+      out: dict with keys: category, average, count, difference, verdict
+[122] suggest_outfit
+      in:  Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+      out: Outfit 1 Pair the new light wash denim jacket with the white ribbed tank top, baggy straight-leg dark wash jea…
+      →    10 wardrobe item(s)
+[123] create_fit_card
+      in:  Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+      out: Scored this cropped Wrangler light wash denim jacket on Poshmark for only $42 and it has the absolute best 90s…
+[124] parse_query
+      in:  vintage graphic tee under $30
+      out: dict with keys: description, size, max_price
+[125] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 10 items: Y2K Baby Tee — Butterfly Print, Vintage Band Tee — Faded Grey, Graphic Tee — 2003 Tour Bootleg Style … +7 more
+      →    10 match(es)
+[126] select_item
+      out: Y2K Baby Tee — Butterfly Print ($18.0, depop)
+[127] compare_prices
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: dict with keys: category, average, count, difference, verdict
+[128] suggest_outfit
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: Outfit 1: Pair the Y2K Baby Tee with the baggy straight-leg jeans, dark wash. Layer the vintage black denim ja…
+      →    10 wardrobe item(s)
+[129] create_fit_card
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: Scored this butterfly print Y2K baby tee on depop for $18 and I am fully leaning into that nostalgic mall rat …
+[130] parse_query
+      in:  90s track jacket in size M
+      out: dict with keys: description, size, max_price
+[131] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 4 items: 90s Track Jacket — Navy/White Stripe, 90s Leather Bomber — Black, 90s Silk Slip Dress — Floral, Midi Length … +1 more
+      →    4 match(es)
+[132] select_item
+      out: 90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+[133] compare_prices
+      in:  90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+      out: dict with keys: category, average, count, difference, verdict
+[134] model unavailable
+      →    stopping, search results kept
+[135] parse_query
+      in:  silk slip dress in midi length under $40
+      out: dict with keys: description, size, max_price
+[136] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 5 items: 90s Silk Slip Dress — Floral, Midi Length, Y2K Baby Tee — Butterfly Print, High-Waisted Denim Shorts — Cutoff … +2 more
+      →    5 match(es)
+[137] select_item
+      out: 90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+[138] compare_prices
+      in:  90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+      out: dict with keys: category, average, count, difference, verdict
+[139] suggest_outfit
+      in:  90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+      out: Outfit One: 90s Grunge Romcom Layer the 90s Silk Slip Dress over the white ribbed tank top. Add the black crop…
+      →    10 wardrobe item(s)
+[140] create_fit_card
+      in:  90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+      out: Scored this floral midi silk slip dress on depop for only $30 and it has the ultimate 90s grunge romcom energy…
+[141] parse_query
+      in:  platform sneakers size 8
+      out: dict with keys: description, size, max_price
+[142] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 3 items: Platform Sneakers — White Chunky Sole, Low-Top Canvas Sneakers — Off-White, Platform Mary Janes — Black Patent
+      →    3 match(es)
+[143] select_item
+      out: Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+[144] compare_prices
+      in:  Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+      out: dict with keys: category, average, count, difference, verdict
+[145] suggest_outfit
+      in:  Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+      out: Outfit One  Pair the Platform Sneakers with the baggy straight-leg jeans, dark wash, the white ribbed tank top…
+      →    10 wardrobe item(s)
+[146] create_fit_card
+      in:  Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+      out: Scored these platform sneakers on poshmark for $48 and they completely nailed the high-contrast Y2K streetwear…
+[147] parse_query
+      in:  denim jacket under $50
+      out: dict with keys: description, size, max_price
+[148] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 7 items: Denim Jacket — Light Wash, Cropped, High-Waisted Denim Shorts — Cutoff, Denim Vest — Medium Wash, Studded … +4 more
+      →    7 match(es)
+[149] select_item
+      out: Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+[150] compare_prices
+      in:  Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+      out: dict with keys: category, average, count, difference, verdict
+[151] suggest_outfit
+      in:  Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+      out: Outfit 1: Pair the light wash cropped denim jacket with the white ribbed tank top, baggy straight-leg dark was…
+      →    10 wardrobe item(s)
+[152] create_fit_card
+      in:  Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+      out: Scored this cropped Wrangler light wash denim jacket on Poshmark for $42 and it has the absolute best 90s off-…
+[153] parse_query
+      in:  vintage graphic tee under $30
+      out: dict with keys: description, size, max_price
+[154] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 10 items: Y2K Baby Tee — Butterfly Print, Vintage Band Tee — Faded Grey, Graphic Tee — 2003 Tour Bootleg Style … +7 more
+      →    10 match(es)
+[155] select_item
+      out: Y2K Baby Tee — Butterfly Print ($18.0, depop)
+[156] compare_prices
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: dict with keys: category, average, count, difference, verdict
+[157] suggest_outfit
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: Outfit 1: Pair the Y2K Baby Tee with your baggy straight-leg jeans, dark wash, layered under your black croppe…
+      →    10 wardrobe item(s)
+[158] create_fit_card
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: Found this little butterfly print baby tee on depop for $18 and I am obsessed with the ultimate 2000s mallrat …
+[159] parse_query
+      in:  90s track jacket in size M
+      out: dict with keys: description, size, max_price
+[160] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 4 items: 90s Track Jacket — Navy/White Stripe, 90s Leather Bomber — Black, 90s Silk Slip Dress — Floral, Midi Length … +1 more
+      →    4 match(es)
+[161] select_item
+      out: 90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+[162] compare_prices
+      in:  90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+      out: dict with keys: category, average, count, difference, verdict
+[163] suggest_outfit
+      in:  90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+      out: Outfit 1: Streetwear Edge Pair the 90s track jacket with the white ribbed tank top as the base, tucked into th…
+      →    10 wardrobe item(s)
+[164] create_fit_card
+      in:  90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+      out: Scored this Champion 90s track jacket on poshmark for $45 and it has the absolute coolest retro contrast vibe.…
+[165] parse_query
+      in:  silk slip dress in midi length under $40
+      out: dict with keys: description, size, max_price
+[166] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 5 items: 90s Silk Slip Dress — Floral, Midi Length, Y2K Baby Tee — Butterfly Print, High-Waisted Denim Shorts — Cutoff … +2 more
+      →    5 match(es)
+[167] select_item
+      out: 90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+[168] compare_prices
+      in:  90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+      out: dict with keys: category, average, count, difference, verdict
+[169] model unavailable
+      →    stopping, search results kept
+[170] parse_query
+      in:  platform sneakers size 8
+      out: dict with keys: description, size, max_price
+[171] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 3 items: Platform Sneakers — White Chunky Sole, Low-Top Canvas Sneakers — Off-White, Platform Mary Janes — Black Patent
+      →    3 match(es)
+[172] select_item
+      out: Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+[173] compare_prices
+      in:  Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+      out: dict with keys: category, average, count, difference, verdict
+[174] model unavailable
+      →    stopping, search results kept
+[175] parse_query
+      in:  denim jacket under $50
+      out: dict with keys: description, size, max_price
+[176] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 7 items: Denim Jacket — Light Wash, Cropped, High-Waisted Denim Shorts — Cutoff, Denim Vest — Medium Wash, Studded … +4 more
+      →    7 match(es)
+[177] select_item
+      out: Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+[178] compare_prices
+      in:  Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+      out: dict with keys: category, average, count, difference, verdict
+[179] suggest_outfit
+      in:  Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+      out: Outfit 1 Pair the new light wash cropped denim jacket with the white ribbed tank top, baggy straight-leg dark …
+      →    10 wardrobe item(s)
+[180] create_fit_card
+      in:  Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+      out: Scored this cropped Wrangler light wash denim jacket on Poshmark for $42 and the nineties indie sleaze vibe is…
+[181] parse_query
+      in:  vintage graphic tee under $30
+      out: dict with keys: description, size, max_price
+[182] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 10 items: Y2K Baby Tee — Butterfly Print, Vintage Band Tee — Faded Grey, Graphic Tee — 2003 Tour Bootleg Style … +7 more
+      →    10 match(es)
+[183] select_item
+      out: Y2K Baby Tee — Butterfly Print ($18.0, depop)
+[184] compare_prices
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: dict with keys: category, average, count, difference, verdict
+[185] suggest_outfit
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: Outfit 1: Pair the Y2K Baby Tee with your baggy straight-leg jeans, dark wash, layered under the vintage black…
+      →    10 wardrobe item(s)
+[186] create_fit_card
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: Scored this cute little butterfly baby tee on depop for $18 and I am obsessed. It has that ultimate early 2000…
+[187] parse_query
+      in:  90s track jacket in size M
+      out: dict with keys: description, size, max_price
+[188] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 4 items: 90s Track Jacket — Navy/White Stripe, 90s Leather Bomber — Black, 90s Silk Slip Dress — Floral, Midi Length … +1 more
+      →    4 match(es)
+[189] select_item
+      out: 90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+[190] compare_prices
+      in:  90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+      out: dict with keys: category, average, count, difference, verdict
+[191] suggest_outfit
+      in:  90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+      out: Outfit One: Retro Streetwear Pair the 90s track jacket with the white ribbed tank top as a base, tucked into t…
+      →    10 wardrobe item(s)
+[192] create_fit_card
+      in:  90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+      out: Scored this vintage Champion 90s track jacket on Poshmark for $45 and it completely nails that effortless spor…
+[193] parse_query
+      in:  silk slip dress in midi length under $40
+      out: dict with keys: description, size, max_price
+[194] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 5 items: 90s Silk Slip Dress — Floral, Midi Length, Y2K Baby Tee — Butterfly Print, High-Waisted Denim Shorts — Cutoff … +2 more
+      →    5 match(es)
+[195] select_item
+      out: 90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+[196] compare_prices
+      in:  90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+      out: dict with keys: category, average, count, difference, verdict
+[197] model unavailable
+      →    stopping, search results kept
+[198] parse_query
+      in:  platform sneakers size 8
+      out: dict with keys: description, size, max_price
+[199] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 3 items: Platform Sneakers — White Chunky Sole, Low-Top Canvas Sneakers — Off-White, Platform Mary Janes — Black Patent
+      →    3 match(es)
+[200] select_item
+      out: Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+[201] compare_prices
+      in:  Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+      out: dict with keys: category, average, count, difference, verdict
+[202] model unavailable
+      →    stopping, search results kept
+[203] parse_query
+      in:  denim jacket under $50
+      out: dict with keys: description, size, max_price
+[204] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 7 items: Denim Jacket — Light Wash, Cropped, High-Waisted Denim Shorts — Cutoff, Denim Vest — Medium Wash, Studded … +4 more
+      →    7 match(es)
+[205] select_item
+      out: Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+[206] compare_prices
+      in:  Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+      out: dict with keys: category, average, count, difference, verdict
+[207] suggest_outfit
+      in:  Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+      out: Outfit 1: Pair the light wash cropped denim jacket with the white ribbed tank top, baggy straight-leg dark was…
+      →    10 wardrobe item(s)
+[208] create_fit_card
+      in:  Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+      out: Scored this vintage Wrangler light wash cropped denim jacket on poshmark for only $42 and it has the absolute …
+[209] parse_query
+      in:  vintage graphic tee under $30
+      out: dict with keys: description, size, max_price
+[210] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 10 items: Y2K Baby Tee — Butterfly Print, Vintage Band Tee — Faded Grey, Graphic Tee — 2003 Tour Bootleg Style … +7 more
+      →    10 match(es)
+[211] select_item
+      out: Y2K Baby Tee — Butterfly Print ($18.0, depop)
+[212] compare_prices
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: dict with keys: category, average, count, difference, verdict
+[213] suggest_outfit
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: Outfit One: Sweet Y2K Street Pair the Y2K Baby Tee with the baggy straight-leg jeans, dark wash. Layer the bla…
+      →    10 wardrobe item(s)
+[214] create_fit_card
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: Scored this butterfly baby tee on depop for $18 and I am fully living out my early 2000s pop star fantasies. I…
+[215] parse_query
+      in:  90s track jacket in size M
+      out: dict with keys: description, size, max_price
+[216] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 4 items: 90s Track Jacket — Navy/White Stripe, 90s Leather Bomber — Black, 90s Silk Slip Dress — Floral, Midi Length … +1 more
+      →    4 match(es)
+[217] select_item
+      out: 90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+[218] compare_prices
+      in:  90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+      out: dict with keys: category, average, count, difference, verdict
+[219] suggest_outfit
+      in:  90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+      out: Outfit 1: Streetwear Casual Pair the 90s Track Jacket with your white ribbed tank top as the base, tucked into…
+      →    10 wardrobe item(s)
+[220] create_fit_card
+      in:  90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+      out: Scored this vintage Champion navy and white track jacket on poshmark for only $45 and I am obsessed. The 90s a…
+[221] parse_query
+      in:  silk slip dress in midi length under $40
+      out: dict with keys: description, size, max_price
+[222] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 5 items: 90s Silk Slip Dress — Floral, Midi Length, Y2K Baby Tee — Butterfly Print, High-Waisted Denim Shorts — Cutoff … +2 more
+      →    5 match(es)
+[223] select_item
+      out: 90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+[224] compare_prices
+      in:  90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+      out: dict with keys: category, average, count, difference, verdict
+[225] suggest_outfit
+      in:  90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+      out: Outfit 1: Grunge Romantic Layer the 90s Silk Slip Dress over the white ribbed tank top to tone down the delica…
+      →    10 wardrobe item(s)
+[226] create_fit_card
+      in:  90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+      out: Scored this dreamy floral midi length 90s silk slip dress on depop for $30 and the grunge romantic vibe is hon…
+[227] parse_query
+      in:  platform sneakers size 8
+      out: dict with keys: description, size, max_price
+[228] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 3 items: Platform Sneakers — White Chunky Sole, Low-Top Canvas Sneakers — Off-White, Platform Mary Janes — Black Patent
+      →    3 match(es)
+[229] select_item
+      out: Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+[230] compare_prices
+      in:  Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+      out: dict with keys: category, average, count, difference, verdict
+[231] suggest_outfit
+      in:  Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+      out: Outfit 1 Pair the platform sneakers with the white ribbed tank top tucked into the baggy straight-leg jeans, l…
+      →    10 wardrobe item(s)
+[232] create_fit_card
+      in:  Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+      out: Scored these white chunky sole platform sneakers on poshmark for only $48 and they are already doing all the h…
+[233] parse_query
+      in:  denim jacket under $50
+      out: dict with keys: description, size, max_price
+[234] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 7 items: Denim Jacket — Light Wash, Cropped, High-Waisted Denim Shorts — Cutoff, Denim Vest — Medium Wash, Studded … +4 more
+      →    7 match(es)
+[235] select_item
+      out: Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+[236] compare_prices
+      in:  Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+      out: dict with keys: category, average, count, difference, verdict
+[237] suggest_outfit
+      in:  Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+      out: Outfit 1: Pair the light wash cropped denim jacket with the white ribbed tank top, baggy straight-leg dark was…
+      →    10 wardrobe item(s)
+[238] create_fit_card
+      in:  Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+      out: Scored this vintage Wrangler light wash cropped denim jacket on Poshmark for $42 and the fit is genuinely unre…
+[239] parse_query
+      in:  vintage graphic tee under $30
+      out: dict with keys: description, size, max_price
+[240] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 10 items: Y2K Baby Tee — Butterfly Print, Vintage Band Tee — Faded Grey, Graphic Tee — 2003 Tour Bootleg Style … +7 more
+      →    10 match(es)
+[241] select_item
+      out: Y2K Baby Tee — Butterfly Print ($18.0, depop)
+[242] compare_prices
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: dict with keys: category, average, count, difference, verdict
+[243] suggest_outfit
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: Outfit One  Y2K Baby Tee — Butterfly Print Baggy straight-leg jeans, dark wash Vintage black denim jacket Chun…
+      →    10 wardrobe item(s)
+[244] create_fit_card
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: Scored this butterfly print baby tee on depop for $18 and it has the absolute ultimate early 2000s mall rat en…
+[245] parse_query
+      in:  90s track jacket in size M
+      out: dict with keys: description, size, max_price
+[246] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 4 items: 90s Track Jacket — Navy/White Stripe, 90s Leather Bomber — Black, 90s Silk Slip Dress — Floral, Midi Length … +1 more
+      →    4 match(es)
+[247] select_item
+      out: 90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+[248] compare_prices
+      in:  90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+      out: dict with keys: category, average, count, difference, verdict
+[249] suggest_outfit
+      in:  90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+      out: Outfit 1: Streetwear Sporty Pair the 90s track jacket with the white ribbed tank top and baggy straight-leg je…
+      →    10 wardrobe item(s)
+[250] model unavailable
+      →    stopping, search results kept
+[251] parse_query
+      in:  silk slip dress in midi length under $40
+      out: dict with keys: description, size, max_price
+[252] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 5 items: 90s Silk Slip Dress — Floral, Midi Length, Y2K Baby Tee — Butterfly Print, High-Waisted Denim Shorts — Cutoff … +2 more
+      →    5 match(es)
+[253] select_item
+      out: 90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+[254] compare_prices
+      in:  90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+      out: dict with keys: category, average, count, difference, verdict
+[255] suggest_outfit
+      in:  90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+      out: Outfit 1: Grunge Romantic Layer your oversized grey crewneck sweatshirt right over the 90s silk slip dress, le…
+      →    10 wardrobe item(s)
+[256] create_fit_card
+      in:  90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+      out: Scored this floral midi slip dress on depop for $30 and it has the absolute best 90s grunge romantic energy. I…
+[257] parse_query
+      in:  platform sneakers size 8
+      out: dict with keys: description, size, max_price
+[258] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 3 items: Platform Sneakers — White Chunky Sole, Low-Top Canvas Sneakers — Off-White, Platform Mary Janes — Black Patent
+      →    3 match(es)
+[259] select_item
+      out: Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+[260] compare_prices
+      in:  Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+      out: dict with keys: category, average, count, difference, verdict
+[261] model unavailable
+      →    stopping, search results kept
+[262] parse_query
+      in:  denim jacket under $50
+      out: dict with keys: description, size, max_price
+[263] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 7 items: Denim Jacket — Light Wash, Cropped, High-Waisted Denim Shorts — Cutoff, Denim Vest — Medium Wash, Studded … +4 more
+      →    7 match(es)
+[264] select_item
+      out: Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+[265] compare_prices
+      in:  Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+      out: dict with keys: category, average, count, difference, verdict
+[266] suggest_outfit
+      in:  Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+      out: Outfit 1 Pair the new light wash cropped denim jacket with the white ribbed tank top, baggy straight-leg dark …
+      →    10 wardrobe item(s)
+[267] model unavailable
+      →    stopping, search results kept
+[268] parse_query
+      in:  vintage graphic tee under $30
+      out: dict with keys: description, size, max_price
+[269] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 10 items: Y2K Baby Tee — Butterfly Print, Vintage Band Tee — Faded Grey, Graphic Tee — 2003 Tour Bootleg Style … +7 more
+      →    10 match(es)
+[270] select_item
+      out: Y2K Baby Tee — Butterfly Print ($18.0, depop)
+[271] compare_prices
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: dict with keys: category, average, count, difference, verdict
+[272] suggest_outfit
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: Outfit 1: Pair the Y2K Baby Tee with your baggy straight-leg jeans, dark wash. Layer the black cropped zip hoo…
+      →    10 wardrobe item(s)
+[273] create_fit_card
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: I cannot believe I actually scored this butterfly print Y2K baby tee on depop for only $18. The little rhinest…
+[274] parse_query
+      in:  90s track jacket in size M
+      out: dict with keys: description, size, max_price
+[275] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 4 items: 90s Track Jacket — Navy/White Stripe, 90s Leather Bomber — Black, 90s Silk Slip Dress — Floral, Midi Length … +1 more
+      →    4 match(es)
+[276] select_item
+      out: 90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+[277] compare_prices
+      in:  90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+      out: dict with keys: category, average, count, difference, verdict
+[278] suggest_outfit
+      in:  90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+      out: Outfit 1: Casual Streetwear Pair the 90s Track Jacket with the white ribbed tank top as your base layer, tucke…
+      →    10 wardrobe item(s)
+[279] create_fit_card
+      in:  90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+      out: Just scored this vintage Champion navy and white stripe track jacket on Poshmark for $45 and the sporty oversi…
+[280] parse_query
+      in:  silk slip dress in midi length under $40
+      out: dict with keys: description, size, max_price
+[281] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 5 items: 90s Silk Slip Dress — Floral, Midi Length, Y2K Baby Tee — Butterfly Print, High-Waisted Denim Shorts — Cutoff … +2 more
+      →    5 match(es)
+[282] select_item
+      out: 90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+[283] compare_prices
+      in:  90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+      out: dict with keys: category, average, count, difference, verdict
+[284] suggest_outfit
+      in:  90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+      out: Outfit 1: Grunge Romantic Layer the 90s Silk Slip Dress over the white ribbed tank top. Throw the oversized gr…
+      →    10 wardrobe item(s)
+[285] create_fit_card
+      in:  90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+      out: scored this floral midi slip dress on depop for just $30 and it has the absolute best 90s grunge romantic vibe…
+[286] parse_query
+      in:  platform sneakers size 8
+      out: dict with keys: description, size, max_price
+[287] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 3 items: Platform Sneakers — White Chunky Sole, Low-Top Canvas Sneakers — Off-White, Platform Mary Janes — Black Patent
+      →    3 match(es)
+[288] select_item
+      out: Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+[289] compare_prices
+      in:  Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+      out: dict with keys: category, average, count, difference, verdict
+[290] suggest_outfit
+      in:  Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+      out: Outfit 1: Casual Streetwear Pair the new platform sneakers with the baggy straight-leg jeans in dark wash, the…
+      →    10 wardrobe item(s)
+[291] create_fit_card
+      in:  Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+      out: Scored these chunky white sole platform sneakers on poshmark for $48 and I am fully leaning into that heavy-fo…
+[292] parse_query
+      in:  denim jacket under $50
+      out: dict with keys: description, size, max_price
+[293] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 7 items: Denim Jacket — Light Wash, Cropped, High-Waisted Denim Shorts — Cutoff, Denim Vest — Medium Wash, Studded … +4 more
+      →    7 match(es)
+[294] select_item
+      out: Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+[295] compare_prices
+      in:  Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+      out: dict with keys: category, average, count, difference, verdict
+[296] suggest_outfit
+      in:  Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+      out: Outfit One: Canadian Tuxedo Contrast Pair the new light wash denim jacket with the white ribbed tank top and b…
+      →    10 wardrobe item(s)
+[297] create_fit_card
+      in:  Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+      out: Scored this cropped Wrangler denim jacket on Poshmark for $42 and I am obsessed with the vintage streetwear vi…
+[298] parse_query
+      in:  vintage graphic tee under $30
+      out: dict with keys: description, size, max_price
+[299] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 10 items: Y2K Baby Tee — Butterfly Print, Vintage Band Tee — Faded Grey, Graphic Tee — 2003 Tour Bootleg Style … +7 more
+      →    10 match(es)
+[300] select_item
+      out: Y2K Baby Tee — Butterfly Print ($18.0, depop)
+[301] compare_prices
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: dict with keys: category, average, count, difference, verdict
+[302] suggest_outfit
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: Outfit 1: Pair the Y2K Baby Tee with the baggy straight-leg jeans, dark wash, and layer the black cropped zip …
+      →    10 wardrobe item(s)
+[303] create_fit_card
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: Scored this butterfly print Y2K baby tee on depop for $18 and it is giving major early 2000s mall goth energy.…
+[304] parse_query
+      in:  90s track jacket in size M
+      out: dict with keys: description, size, max_price
+[305] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 4 items: 90s Track Jacket — Navy/White Stripe, 90s Leather Bomber — Black, 90s Silk Slip Dress — Floral, Midi Length … +1 more
+      →    4 match(es)
+[306] select_item
+      out: 90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+[307] compare_prices
+      in:  90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+      out: dict with keys: category, average, count, difference, verdict
+[308] suggest_outfit
+      in:  90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+      out: Outfit 1: Streetwear Edge Pair the 90s track jacket with the white ribbed tank top, baggy straight-leg jeans, …
+      →    10 wardrobe item(s)
+[309] model unavailable
+      →    stopping, search results kept
+[310] parse_query
+      in:  silk slip dress in midi length under $40
+      out: dict with keys: description, size, max_price
+[311] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 5 items: 90s Silk Slip Dress — Floral, Midi Length, Y2K Baby Tee — Butterfly Print, High-Waisted Denim Shorts — Cutoff … +2 more
+      →    5 match(es)
+[312] select_item
+      out: 90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+[313] compare_prices
+      in:  90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+      out: dict with keys: category, average, count, difference, verdict
+[314] suggest_outfit
+      in:  90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+      out: Outfit 1: Grunge Romantic Layer your oversized grey crewneck sweatshirt right over the silk slip dress so it l…
+      →    10 wardrobe item(s)
+[315] create_fit_card
+      in:  90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+      out: Scored this floral 90s silk slip dress on depop for only $30 and the grunge romantic vibe is honestly unmatche…
+[316] parse_query
+      in:  platform sneakers size 8
+      out: dict with keys: description, size, max_price
+[317] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 3 items: Platform Sneakers — White Chunky Sole, Low-Top Canvas Sneakers — Off-White, Platform Mary Janes — Black Patent
+      →    3 match(es)
+[318] select_item
+      out: Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+[319] compare_prices
+      in:  Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+      out: dict with keys: category, average, count, difference, verdict
+[320] suggest_outfit
+      in:  Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+      out: Outfit 1: Casual Streetwear Pair the new platform sneakers with the baggy straight-leg jeans in dark wash, the…
+      →    10 wardrobe item(s)
+[321] create_fit_card
+      in:  Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+      out: Scored these white chunky sole platform sneakers on poshmark for only $48 and they completely nail that early …
+[322] parse_query
+      in:  denim jacket under $50
+      out: dict with keys: description, size, max_price
+[323] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 7 items: Denim Jacket — Light Wash, Cropped, High-Waisted Denim Shorts — Cutoff, Denim Vest — Medium Wash, Studded … +4 more
+      →    7 match(es)
+[324] select_item
+      out: Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+[325] compare_prices
+      in:  Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+      out: dict with keys: category, average, count, difference, verdict
+[326] suggest_outfit
+      in:  Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+      out: Outfit 1: Pair the light wash cropped denim jacket with the white ribbed tank top, baggy straight-leg dark was…
+      →    10 wardrobe item(s)
+[327] create_fit_card
+      in:  Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+      out: Scored this Wrangler light wash cropped denim jacket on poshmark for only $42 and the 90s streetwear vibe is s…
+[328] parse_query
+      in:  vintage graphic tee under $30
+      out: dict with keys: description, size, max_price
+[329] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 10 items: Y2K Baby Tee — Butterfly Print, Vintage Band Tee — Faded Grey, Graphic Tee — 2003 Tour Bootleg Style … +7 more
+      →    10 match(es)
+[330] select_item
+      out: Y2K Baby Tee — Butterfly Print ($18.0, depop)
+[331] compare_prices
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: dict with keys: category, average, count, difference, verdict
+[332] suggest_outfit
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: Outfit One: Y2K Baby Tee — Butterfly Print paired with Baggy straight-leg jeans, dark wash, Vintage black deni…
+      →    10 wardrobe item(s)
+[333] create_fit_card
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: Found this butterfly print Y2K baby tee on depop for $18 and I am obsessed with the nostalgic early 2000s mall…
+[334] parse_query
+      in:  90s track jacket in size M
+      out: dict with keys: description, size, max_price
+[335] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 4 items: 90s Track Jacket — Navy/White Stripe, 90s Leather Bomber — Black, 90s Silk Slip Dress — Floral, Midi Length … +1 more
+      →    4 match(es)
+[336] select_item
+      out: 90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+[337] compare_prices
+      in:  90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+      out: dict with keys: category, average, count, difference, verdict
+[338] suggest_outfit
+      in:  90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+      out: Outfit One: Retro Streetwear Pair the 90s track jacket with the white ribbed tank top as a base, worn tucked i…
+      →    10 wardrobe item(s)
+[339] create_fit_card
+      in:  90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+      out: Scored this vintage Champion 90s track jacket on poshmark for $45 and I am so obsessed with the navy and white…
+[340] parse_query
+      in:  silk slip dress in midi length under $40
+      out: dict with keys: description, size, max_price
+[341] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 5 items: 90s Silk Slip Dress — Floral, Midi Length, Y2K Baby Tee — Butterfly Print, High-Waisted Denim Shorts — Cutoff … +2 more
+      →    5 match(es)
+[342] select_item
+      out: 90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+[343] compare_prices
+      in:  90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+      out: dict with keys: category, average, count, difference, verdict
+[344] suggest_outfit
+      in:  90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+      out: Outfit 1: Grunge Romantic Layer the 90s Silk Slip Dress over the white ribbed tank top. Add the black cropped …
+      →    10 wardrobe item(s)
+[345] model unavailable
+      →    stopping, search results kept
+[346] parse_query
+      in:  platform sneakers size 8
+      out: dict with keys: description, size, max_price
+[347] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 3 items: Platform Sneakers — White Chunky Sole, Low-Top Canvas Sneakers — Off-White, Platform Mary Janes — Black Patent
+      →    3 match(es)
+[348] select_item
+      out: Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+[349] compare_prices
+      in:  Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+      out: dict with keys: category, average, count, difference, verdict
+[350] suggest_outfit
+      in:  Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+      out: Outfit One Pair the Platform Sneakers with the baggy straight-leg jeans, dark wash and the white ribbed tank t…
+      →    10 wardrobe item(s)
+[351] create_fit_card
+      in:  Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+      out: Scored these chunky white platform sneakers on Poshmark for $48 and they immediately fixed my entire aesthetic…
+[352] parse_query
+      in:  denim jacket under $50
+      out: dict with keys: description, size, max_price
+[353] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 7 items: Denim Jacket — Light Wash, Cropped, High-Waisted Denim Shorts — Cutoff, Denim Vest — Medium Wash, Studded … +4 more
+      →    7 match(es)
+[354] select_item
+      out: Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+[355] compare_prices
+      in:  Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+      out: dict with keys: category, average, count, difference, verdict
+[356] model unavailable
+      →    stopping, search results kept
+[357] parse_query
+      in:  vintage graphic tee under $30
+      out: dict with keys: description, size, max_price
+[358] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 10 items: Y2K Baby Tee — Butterfly Print, Vintage Band Tee — Faded Grey, Graphic Tee — 2003 Tour Bootleg Style … +7 more
+      →    10 match(es)
+[359] select_item
+      out: Y2K Baby Tee — Butterfly Print ($18.0, depop)
+[360] compare_prices
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: dict with keys: category, average, count, difference, verdict
+[361] model unavailable
+      →    stopping, search results kept
+[362] parse_query
+      in:  90s track jacket in size M
+      out: dict with keys: description, size, max_price
+[363] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 4 items: 90s Track Jacket — Navy/White Stripe, 90s Leather Bomber — Black, 90s Silk Slip Dress — Floral, Midi Length … +1 more
+      →    4 match(es)
+[364] select_item
+      out: 90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+[365] compare_prices
+      in:  90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+      out: dict with keys: category, average, count, difference, verdict
+[366] suggest_outfit
+      in:  90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+      out: Outfit 1: Streetwear Sporty Pair the 90s track jacket with the white ribbed tank top and baggy straight-leg je…
+      →    10 wardrobe item(s)
+[367] create_fit_card
+      in:  90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+      out: Scored this vintage Champion 90s track jacket on Poshmark for $45 and it brings all the effortless retro contr…
+[368] parse_query
+      in:  silk slip dress in midi length under $40
+      out: dict with keys: description, size, max_price
+[369] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 5 items: 90s Silk Slip Dress — Floral, Midi Length, Y2K Baby Tee — Butterfly Print, High-Waisted Denim Shorts — Cutoff … +2 more
+      →    5 match(es)
+[370] select_item
+      out: 90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+[371] compare_prices
+      in:  90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+      out: dict with keys: category, average, count, difference, verdict
+[372] suggest_outfit
+      in:  90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+      out: Outfit One: Layer the 90s Silk Slip Dress over the white ribbed tank top, pairing it with the vintage black de…
+      →    10 wardrobe item(s)
+[373] create_fit_card
+      in:  90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+      out: Scored this grungy floral 90s silk slip dress for only $30 on depop. I love throwing it on with a chunky grey …
+[374] parse_query
+      in:  platform sneakers size 8
+      out: dict with keys: description, size, max_price
+[375] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 3 items: Platform Sneakers — White Chunky Sole, Low-Top Canvas Sneakers — Off-White, Platform Mary Janes — Black Patent
+      →    3 match(es)
+[376] select_item
+      out: Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+[377] compare_prices
+      in:  Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+      out: dict with keys: category, average, count, difference, verdict
+[378] model unavailable
+      →    stopping, search results kept
+[379] parse_query
+      in:  denim jacket under $50
+      out: dict with keys: description, size, max_price
+[380] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 7 items: Denim Jacket — Light Wash, Cropped, High-Waisted Denim Shorts — Cutoff, Denim Vest — Medium Wash, Studded … +4 more
+      →    7 match(es)
+[381] select_item
+      out: Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+[382] compare_prices
+      in:  Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+      out: dict with keys: category, average, count, difference, verdict
+[383] suggest_outfit
+      in:  Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+      out: Outfit 1 Pair the new light wash cropped denim jacket with the white ribbed tank top, baggy straight-leg jeans…
+      →    10 wardrobe item(s)
+[384] create_fit_card
+      in:  Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+      out: Scored this Wrangler light wash cropped denim jacket on poshmark for only $42 and it has the absolute best 90s…
+[385] parse_query
+      in:  vintage graphic tee under $30
+      out: dict with keys: description, size, max_price
+[386] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 10 items: Y2K Baby Tee — Butterfly Print, Vintage Band Tee — Faded Grey, Graphic Tee — 2003 Tour Bootleg Style … +7 more
+      →    10 match(es)
+[387] select_item
+      out: Y2K Baby Tee — Butterfly Print ($18.0, depop)
+[388] compare_prices
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: dict with keys: category, average, count, difference, verdict
+[389] suggest_outfit
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: Outfit 1: Pair the Y2K Baby Tee with the baggy straight-leg jeans in dark wash, the vintage black denim jacket…
+      →    10 wardrobe item(s)
+[390] create_fit_card
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: Scored this Y2K butterfly baby tee on depop for $18 and I am obsessed with the nostalgic, early-2000s mall-got…
+[391] parse_query
+      in:  90s track jacket in size M
+      out: dict with keys: description, size, max_price
+[392] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 4 items: 90s Track Jacket — Navy/White Stripe, 90s Leather Bomber — Black, 90s Silk Slip Dress — Floral, Midi Length … +1 more
+      →    4 match(es)
+[393] select_item
+      out: 90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+[394] compare_prices
+      in:  90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+      out: dict with keys: category, average, count, difference, verdict
+[395] suggest_outfit
+      in:  90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+      out: Outfit 1: Casual Streetwear Pair the 90s Track Jacket with the white ribbed tank top, baggy straight-leg jeans…
+      →    10 wardrobe item(s)
+[396] create_fit_card
+      in:  90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+      out: Scored this vintage Champion 90s track jacket on Poshmark for $45 and it has the absolute best early morning c…
+[397] parse_query
+      in:  silk slip dress in midi length under $40
+      out: dict with keys: description, size, max_price
+[398] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 5 items: 90s Silk Slip Dress — Floral, Midi Length, Y2K Baby Tee — Butterfly Print, High-Waisted Denim Shorts — Cutoff … +2 more
+      →    5 match(es)
+[399] select_item
+      out: 90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+[400] compare_prices
+      in:  90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+      out: dict with keys: category, average, count, difference, verdict
+[401] suggest_outfit
+      in:  90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+      out: Outfit 1: Grunge Romantic Layer the 90s Silk Slip Dress over the white ribbed tank top. Add the black cropped …
+      →    10 wardrobe item(s)
+[402] create_fit_card
+      in:  90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+      out: Scored this 90s silk slip dress on depop for $30 and the moody floral print gives off the ultimate grunge roma…
+[403] parse_query
+      in:  platform sneakers size 8
+      out: dict with keys: description, size, max_price
+[404] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 3 items: Platform Sneakers — White Chunky Sole, Low-Top Canvas Sneakers — Off-White, Platform Mary Janes — Black Patent
+      →    3 match(es)
+[405] select_item
+      out: Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+[406] compare_prices
+      in:  Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+      out: dict with keys: category, average, count, difference, verdict
+[407] suggest_outfit
+      in:  Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+      out: Outfit 1: Casual Streetwear Pair the new white chunky sole platform sneakers with the baggy straight-leg jeans…
+      →    10 wardrobe item(s)
+[408] create_fit_card
+      in:  Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+      out: Scored these white chunky sole platform sneakers on Poshmark for $48 and I am completely obsessed with the 90s…
+[409] parse_query
+      in:  denim jacket under $50
+      out: dict with keys: description, size, max_price
+[410] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 7 items: Denim Jacket — Light Wash, Cropped, High-Waisted Denim Shorts — Cutoff, Denim Vest — Medium Wash, Studded … +4 more
+      →    7 match(es)
+[411] select_item
+      out: Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+[412] compare_prices
+      in:  Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+      out: dict with keys: category, average, count, difference, verdict
+[413] suggest_outfit
+      in:  Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+      out: Outfit 1: Casual Streetwear Pair the light wash cropped denim jacket with the white ribbed tank top, baggy dar…
+      →    10 wardrobe item(s)
+[414] create_fit_card
+      in:  Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+      out: Scored this cropped Wrangler denim jacket on Poshmark for $42 and the light wash has such a cool 90s skater vi…
+[415] parse_query
+      in:  vintage graphic tee under $30
+      out: dict with keys: description, size, max_price
+[416] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 10 items: Y2K Baby Tee — Butterfly Print, Vintage Band Tee — Faded Grey, Graphic Tee — 2003 Tour Bootleg Style … +7 more
+      →    10 match(es)
+[417] select_item
+      out: Y2K Baby Tee — Butterfly Print ($18.0, depop)
+[418] compare_prices
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: dict with keys: category, average, count, difference, verdict
+[419] suggest_outfit
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: Outfit 1: Pair the Y2K Baby Tee with your baggy straight-leg jeans, dark wash and black combat boots. Layer th…
+      →    10 wardrobe item(s)
+[420] create_fit_card
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: Scored this Y2K butterfly baby tee on depop for $18 and I am obsessed with the grunge angel vibe. It goes with…
+[421] parse_query
+      in:  90s track jacket in size M
+      out: dict with keys: description, size, max_price
+[422] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 4 items: 90s Track Jacket — Navy/White Stripe, 90s Leather Bomber — Black, 90s Silk Slip Dress — Floral, Midi Length … +1 more
+      →    4 match(es)
+[423] select_item
+      out: 90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+[424] compare_prices
+      in:  90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+      out: dict with keys: category, average, count, difference, verdict
+[425] suggest_outfit
+      in:  90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+      out: Outfit 1: Casual Streetwear Pair the 90s Track Jacket with the white ribbed tank top as the base, tucked into …
+      →    10 wardrobe item(s)
+[426] create_fit_card
+      in:  90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+      out: Scored this Champion 90s track jacket on Poshmark for $45 and I am obsessed with how heavy the retro-athletic …
+[427] parse_query
+      in:  silk slip dress in midi length under $40
+      out: dict with keys: description, size, max_price
+[428] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 5 items: 90s Silk Slip Dress — Floral, Midi Length, Y2K Baby Tee — Butterfly Print, High-Waisted Denim Shorts — Cutoff … +2 more
+      →    5 match(es)
+[429] select_item
+      out: 90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+[430] compare_prices
+      in:  90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+      out: dict with keys: category, average, count, difference, verdict
+[431] suggest_outfit
+      in:  90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+      out: Outfit 1: Grunge Romantic Layer the 90s Silk Slip Dress over the white ribbed tank top, and throw the oversize…
+      →    10 wardrobe item(s)
+[432] create_fit_card
+      in:  90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+      out: Found this floral midi silk slip dress on depop for $30 and it has the absolute ultimate 90s grunge romantic v…
+[433] parse_query
+      in:  platform sneakers size 8
+      out: dict with keys: description, size, max_price
+[434] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 3 items: Platform Sneakers — White Chunky Sole, Low-Top Canvas Sneakers — Off-White, Platform Mary Janes — Black Patent
+      →    3 match(es)
+[435] select_item
+      out: Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+[436] compare_prices
+      in:  Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+      out: dict with keys: category, average, count, difference, verdict
+[437] suggest_outfit
+      in:  Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+      out: Outfit 1: Platform Sneakers, Baggy straight-leg jeans, dark wash, White ribbed tank top, Vintage black denim j…
+      →    10 wardrobe item(s)
+[438] model unavailable
+      →    stopping, search results kept
+[439] parse_query
+      in:  denim jacket under $50
+      out: dict with keys: description, size, max_price
+[440] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 7 items: Denim Jacket — Light Wash, Cropped, High-Waisted Denim Shorts — Cutoff, Denim Vest — Medium Wash, Studded … +4 more
+      →    7 match(es)
+[441] select_item
+      out: Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+[442] compare_prices
+      in:  Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+      out: dict with keys: category, average, count, difference, verdict
+[443] suggest_outfit
+      in:  Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+      out: Outfit One: Denim on Denim Pair the light wash cropped denim jacket with the white ribbed tank top tucked into…
+      →    10 wardrobe item(s)
+[444] create_fit_card
+      in:  Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+      out: Scored this cropped Wrangler denim jacket on Poshmark for $42 and it has the absolute best faded vintage stree…
+[445] parse_query
+      in:  vintage graphic tee under $30
+      out: dict with keys: description, size, max_price
+[446] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 10 items: Y2K Baby Tee — Butterfly Print, Vintage Band Tee — Faded Grey, Graphic Tee — 2003 Tour Bootleg Style … +7 more
+      →    10 match(es)
+[447] select_item
+      out: Y2K Baby Tee — Butterfly Print ($18.0, depop)
+[448] compare_prices
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: dict with keys: category, average, count, difference, verdict
+[449] model unavailable
+      →    stopping, search results kept
+[450] parse_query
+      in:  90s track jacket in size M
+      out: dict with keys: description, size, max_price
+[451] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 4 items: 90s Track Jacket — Navy/White Stripe, 90s Leather Bomber — Black, 90s Silk Slip Dress — Floral, Midi Length … +1 more
+      →    4 match(es)
+[452] select_item
+      out: 90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+[453] compare_prices
+      in:  90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+      out: dict with keys: category, average, count, difference, verdict
+[454] suggest_outfit
+      in:  90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+      out: Outfit 1: Streetwear Casual Pair the 90s Track Jacket with your white ribbed tank top, baggy straight-leg jean…
+      →    10 wardrobe item(s)
+[455] create_fit_card
+      in:  90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+      out: Scored this vintage Champion 90s track jacket on poshmark for only $45 and the navy and white stripes have the…
+[456] parse_query
+      in:  silk slip dress in midi length under $40
+      out: dict with keys: description, size, max_price
+[457] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 5 items: 90s Silk Slip Dress — Floral, Midi Length, Y2K Baby Tee — Butterfly Print, High-Waisted Denim Shorts — Cutoff … +2 more
+      →    5 match(es)
+[458] select_item
+      out: 90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+[459] compare_prices
+      in:  90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+      out: dict with keys: category, average, count, difference, verdict
+[460] suggest_outfit
+      in:  90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+      out: Outfit 1: Layer the 90s Silk Slip Dress over the white ribbed tank top, and pair with the black combat boots a…
+      →    10 wardrobe item(s)
+[461] create_fit_card
+      in:  90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+      out: Scored this floral 90s silk slip dress on depop for $30 and I am already picturing it thrown under an oversize…
+[462] parse_query
+      in:  platform sneakers size 8
+      out: dict with keys: description, size, max_price
+[463] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 3 items: Platform Sneakers — White Chunky Sole, Low-Top Canvas Sneakers — Off-White, Platform Mary Janes — Black Patent
+      →    3 match(es)
+[464] select_item
+      out: Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+[465] compare_prices
+      in:  Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+      out: dict with keys: category, average, count, difference, verdict
+[466] suggest_outfit
+      in:  Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+      out: Outfit One: Y2K Off-Duty Pair the new platform sneakers with the baggy straight-leg jeans, dark wash, the whit…
+      →    10 wardrobe item(s)
+[467] create_fit_card
+      in:  Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+      out: I finally found the chunky white platform sneakers of my Y2K off-duty dreams on Poshmark. They somehow only co…
+[468] parse_query
+      in:  denim jacket under $50
+      out: dict with keys: description, size, max_price
+[469] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 7 items: Denim Jacket — Light Wash, Cropped, High-Waisted Denim Shorts — Cutoff, Denim Vest — Medium Wash, Studded … +4 more
+      →    7 match(es)
+[470] select_item
+      out: Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+[471] compare_prices
+      in:  Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+      out: dict with keys: category, average, count, difference, verdict
+[472] suggest_outfit
+      in:  Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+      out: Outfit 1: Casual Streetwear Pair the light wash cropped denim jacket with the white ribbed tank top, baggy dar…
+      →    10 wardrobe item(s)
+[473] create_fit_card
+      in:  Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+      out: Scored this vintage Wrangler light wash cropped denim jacket on Poshmark for $42 and the casual streetwear vib…
+[474] parse_query
+      in:  vintage graphic tee under $30
+      out: dict with keys: description, size, max_price
+[475] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 10 items: Y2K Baby Tee — Butterfly Print, Vintage Band Tee — Faded Grey, Graphic Tee — 2003 Tour Bootleg Style … +7 more
+      →    10 match(es)
+[476] select_item
+      out: Y2K Baby Tee — Butterfly Print ($18.0, depop)
+[477] compare_prices
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: dict with keys: category, average, count, difference, verdict
+[478] suggest_outfit
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: Outfit 1 Pair the Y2K baby tee with your baggy straight-leg jeans, dark wash, and the black cropped zip hoodie…
+      →    10 wardrobe item(s)
+[479] create_fit_card
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: Scored this butterfly baby tee on depop for $18 and it has the absolute best early 2000s mall rat energy. I am…
+[480] parse_query
+      in:  90s track jacket in size M
+      out: dict with keys: description, size, max_price
+[481] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 4 items: 90s Track Jacket — Navy/White Stripe, 90s Leather Bomber — Black, 90s Silk Slip Dress — Floral, Midi Length … +1 more
+      →    4 match(es)
+[482] select_item
+      out: 90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+[483] compare_prices
+      in:  90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+      out: dict with keys: category, average, count, difference, verdict
+[484] suggest_outfit
+      in:  90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+      out: Outfit One: Casual Streetwear Pair the 90s track jacket with the white ribbed tank top and baggy straight-leg …
+      →    10 wardrobe item(s)
+[485] create_fit_card
+      in:  90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+      out: Scored this vintage Champion 90s track jacket on Poshmark for $45 and it has the absolute best retro athletic …
+[486] parse_query
+      in:  silk slip dress in midi length under $40
+      out: dict with keys: description, size, max_price
+[487] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 5 items: 90s Silk Slip Dress — Floral, Midi Length, Y2K Baby Tee — Butterfly Print, High-Waisted Denim Shorts — Cutoff … +2 more
+      →    5 match(es)
+[488] select_item
+      out: 90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+[489] compare_prices
+      in:  90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+      out: dict with keys: category, average, count, difference, verdict
+[490] suggest_outfit
+      in:  90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+      out: Outfit One: Layer the 90s Silk Slip Dress over the white ribbed tank top, paired with the vintage black denim …
+      →    10 wardrobe item(s)
+[491] create_fit_card
+      in:  90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+      out: Scored this floral midi 90s silk slip dress on depop for $30 and the grunge energy is so real. I am totally st…
+[492] parse_query
+      in:  platform sneakers size 8
+      out: dict with keys: description, size, max_price
+[493] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 3 items: Platform Sneakers — White Chunky Sole, Low-Top Canvas Sneakers — Off-White, Platform Mary Janes — Black Patent
+      →    3 match(es)
+[494] select_item
+      out: Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+[495] compare_prices
+      in:  Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+      out: dict with keys: category, average, count, difference, verdict
+[496] suggest_outfit
+      in:  Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+      out: Outfit 1: Casual Streetwear Pair the new platform sneakers with the baggy straight-leg jeans in dark wash, the…
+      →    10 wardrobe item(s)
+[497] create_fit_card
+      in:  Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+      out: Scored these chunky white platform sneakers on Poshmark for $48 and they completely nail that effortless Y2K c…
+[498] parse_query
+      in:  denim jacket under $50
+      out: dict with keys: description, size, max_price
+[499] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 7 items: Denim Jacket — Light Wash, Cropped, High-Waisted Denim Shorts — Cutoff, Denim Vest — Medium Wash, Studded … +4 more
+      →    7 match(es)
+[500] select_item
+      out: Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+[501] compare_prices
+      in:  Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+      out: dict with keys: category, average, count, difference, verdict
+[502] suggest_outfit
+      in:  Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+      out: Outfit 1 Pair the new light wash cropped denim jacket with the white ribbed tank top and baggy straight-leg da…
+      →    10 wardrobe item(s)
+[503] create_fit_card
+      in:  Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+      out: Score on poshmark with this vintage-washed cropped Wrangler denim jacket for only $42. The boxy cut gives off …
+[504] parse_query
+      in:  vintage graphic tee under $30
+      out: dict with keys: description, size, max_price
+[505] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 10 items: Y2K Baby Tee — Butterfly Print, Vintage Band Tee — Faded Grey, Graphic Tee — 2003 Tour Bootleg Style … +7 more
+      →    10 match(es)
+[506] select_item
+      out: Y2K Baby Tee — Butterfly Print ($18.0, depop)
+[507] compare_prices
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: dict with keys: category, average, count, difference, verdict
+[508] suggest_outfit
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: Outfit 1  Pair the Y2K Baby Tee with your baggy straight-leg jeans, dark wash and black combat boots. Layer th…
+      →    10 wardrobe item(s)
+[509] create_fit_card
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: Scored this butterfly print Y2K baby tee on depop for $18 and I am obsessed with the nostalgic mall-rat energy…
+[510] parse_query
+      in:  90s track jacket in size M
+      out: dict with keys: description, size, max_price
+[511] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 4 items: 90s Track Jacket — Navy/White Stripe, 90s Leather Bomber — Black, 90s Silk Slip Dress — Floral, Midi Length … +1 more
+      →    4 match(es)
+[512] select_item
+      out: 90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+[513] compare_prices
+      in:  90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+      out: dict with keys: category, average, count, difference, verdict
+[514] model unavailable
+      →    stopping, search results kept
+[515] parse_query
+      in:  silk slip dress in midi length under $40
+      out: dict with keys: description, size, max_price
+[516] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 5 items: 90s Silk Slip Dress — Floral, Midi Length, Y2K Baby Tee — Butterfly Print, High-Waisted Denim Shorts — Cutoff … +2 more
+      →    5 match(es)
+[517] select_item
+      out: 90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+[518] compare_prices
+      in:  90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+      out: dict with keys: category, average, count, difference, verdict
+[519] suggest_outfit
+      in:  90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+      out: Outfit 1: Layer the 90s silk slip dress over the white ribbed tank top, and pair it with the black combat boot…
+      →    10 wardrobe item(s)
+[520] create_fit_card
+      in:  90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+      out: Found this floral midi silk slip dress on depop for $30 and it has the absolute ultimate 90s grunge-meets-femi…
+[521] parse_query
+      in:  platform sneakers size 8
+      out: dict with keys: description, size, max_price
+[522] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 3 items: Platform Sneakers — White Chunky Sole, Low-Top Canvas Sneakers — Off-White, Platform Mary Janes — Black Patent
+      →    3 match(es)
+[523] select_item
+      out: Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+[524] compare_prices
+      in:  Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+      out: dict with keys: category, average, count, difference, verdict
+[525] suggest_outfit
+      in:  Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+      out: Outfit One: Streetwear Chill Pair the platform sneakers with the baggy straight-leg jeans, the white ribbed ta…
+      →    10 wardrobe item(s)
+[526] create_fit_card
+      in:  Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+      out: Scored these chunky white platform sneakers on poshmark for $48 and they have the ultimate early 2000s mallrat…
+[527] parse_query
+      in:  denim jacket under $50
+      out: dict with keys: description, size, max_price
+[528] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 7 items: Denim Jacket — Light Wash, Cropped, High-Waisted Denim Shorts — Cutoff, Denim Vest — Medium Wash, Studded … +4 more
+      →    7 match(es)
+[529] select_item
+      out: Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+[530] compare_prices
+      in:  Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+      out: dict with keys: category, average, count, difference, verdict
+[531] suggest_outfit
+      in:  Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+      out: Outfit One Pair the new light wash cropped denim jacket with the white ribbed tank top, baggy straight-leg dar…
+      →    10 wardrobe item(s)
+[532] create_fit_card
+      in:  Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+      out: Scored this cropped Wrangler denim jacket on Poshmark for $42 and the light wash is honestly so good. It has t…
+[533] parse_query
+      in:  vintage graphic tee under $30
+      out: dict with keys: description, size, max_price
+[534] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 10 items: Y2K Baby Tee — Butterfly Print, Vintage Band Tee — Faded Grey, Graphic Tee — 2003 Tour Bootleg Style … +7 more
+      →    10 match(es)
+[535] select_item
+      out: Y2K Baby Tee — Butterfly Print ($18.0, depop)
+[536] compare_prices
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: dict with keys: category, average, count, difference, verdict
+[537] suggest_outfit
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: Outfit 1: Pair the Y2K Baby Tee with the baggy straight-leg jeans, dark wash, and layer the black cropped zip …
+      →    10 wardrobe item(s)
+[538] create_fit_card
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: Found this butterfly print Y2K baby tee on depop for $18 and it has the absolute ultimate early 2000s mall rat…
+[539] parse_query
+      in:  90s track jacket in size M
+      out: dict with keys: description, size, max_price
+[540] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 4 items: 90s Track Jacket — Navy/White Stripe, 90s Leather Bomber — Black, 90s Silk Slip Dress — Floral, Midi Length … +1 more
+      →    4 match(es)
+[541] select_item
+      out: 90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+[542] compare_prices
+      in:  90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+      out: dict with keys: category, average, count, difference, verdict
+[543] suggest_outfit
+      in:  90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+      out: Outfit One: Sporty Streetwear Pair the 90s track jacket with the white ribbed tank top as your base layer, tuc…
+      →    10 wardrobe item(s)
+[544] create_fit_card
+      in:  90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+      out: Found this vintage Champion 90s track jacket on Poshmark for $45 and it completely nails that effortless retro…
+[545] parse_query
+      in:  silk slip dress in midi length under $40
+      out: dict with keys: description, size, max_price
+[546] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 5 items: 90s Silk Slip Dress — Floral, Midi Length, Y2K Baby Tee — Butterfly Print, High-Waisted Denim Shorts — Cutoff … +2 more
+      →    5 match(es)
+[547] select_item
+      out: 90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+[548] compare_prices
+      in:  90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+      out: dict with keys: category, average, count, difference, verdict
+[549] suggest_outfit
+      in:  90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+      out: Outfit One: Grunge Contrast Layer the 90s Silk Slip Dress over the white ribbed tank top and pair it with the …
+      →    10 wardrobe item(s)
+[550] create_fit_card
+      in:  90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+      out: Scored this 90s floral midi silk slip dress on depop for $30 and it has the absolute ultimate Courtney Love gr…
+[551] parse_query
+      in:  platform sneakers size 8
+      out: dict with keys: description, size, max_price
+[552] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 3 items: Platform Sneakers — White Chunky Sole, Low-Top Canvas Sneakers — Off-White, Platform Mary Janes — Black Patent
+      →    3 match(es)
+[553] select_item
+      out: Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+[554] compare_prices
+      in:  Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+      out: dict with keys: category, average, count, difference, verdict
+[555] suggest_outfit
+      in:  Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+      out: Outfit 1: Casual Streetwear Pair the Platform Sneakers with the baggy straight-leg jeans, the white ribbed tan…
+      →    10 wardrobe item(s)
+[556] create_fit_card
+      in:  Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+      out: Finally tracked down these white chunky platform sneakers on poshmark for $48 and my 90s streetwear rotation i…
+[557] parse_query
+      in:  denim jacket under $50
+      out: dict with keys: description, size, max_price
+[558] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 7 items: Denim Jacket — Light Wash, Cropped, High-Waisted Denim Shorts — Cutoff, Denim Vest — Medium Wash, Studded … +4 more
+      →    7 match(es)
+[559] select_item
+      out: Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+[560] compare_prices
+      in:  Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+      out: dict with keys: category, average, count, difference, verdict
+[561] suggest_outfit
+      in:  Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+      out: Outfit 1: Pair the light wash cropped denim jacket with the white ribbed tank top, baggy straight-leg dark was…
+      →    10 wardrobe item(s)
+[562] create_fit_card
+      in:  Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+      out: Scored this vintage cropped Wrangler denim jacket on poshmark for $42 and I am obsessed with the boxy 90s fit.…
+[563] parse_query
+      in:  vintage graphic tee under $30
+      out: dict with keys: description, size, max_price
+[564] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 10 items: Y2K Baby Tee — Butterfly Print, Vintage Band Tee — Faded Grey, Graphic Tee — 2003 Tour Bootleg Style … +7 more
+      →    10 match(es)
+[565] select_item
+      out: Y2K Baby Tee — Butterfly Print ($18.0, depop)
+[566] compare_prices
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: dict with keys: category, average, count, difference, verdict
+[567] suggest_outfit
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: Outfit One: Y2K Baby Tee — Butterfly Print Baggy straight-leg jeans, dark wash Black cropped zip hoodie Chunky…
+      →    10 wardrobe item(s)
+[568] create_fit_card
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: Scored this butterfly print Y2K baby tee on depop for $18 and it has the ultimate early 2000s mallrat energy. …
+[569] parse_query
+      in:  90s track jacket in size M
+      out: dict with keys: description, size, max_price
+[570] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 4 items: 90s Track Jacket — Navy/White Stripe, 90s Leather Bomber — Black, 90s Silk Slip Dress — Floral, Midi Length … +1 more
+      →    4 match(es)
+[571] select_item
+      out: 90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+[572] compare_prices
+      in:  90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+      out: dict with keys: category, average, count, difference, verdict
+[573] suggest_outfit
+      in:  90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+      out: Outfit 1: Retro Streetwear Layer the 90s Track Jacket over the white ribbed tank top, paired with the baggy st…
+      →    10 wardrobe item(s)
+[574] create_fit_card
+      in:  90s Track Jacket — Navy/White Stripe ($45.0, poshmark)
+      out: Scored this vintage Champion track jacket on Poshmark for $45 and it gives off the best effortless, sporty str…
+[575] parse_query
+      in:  silk slip dress in midi length under $40
+      out: dict with keys: description, size, max_price
+[576] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 5 items: 90s Silk Slip Dress — Floral, Midi Length, Y2K Baby Tee — Butterfly Print, High-Waisted Denim Shorts — Cutoff … +2 more
+      →    5 match(es)
+[577] select_item
+      out: 90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+[578] compare_prices
+      in:  90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+      out: dict with keys: category, average, count, difference, verdict
+[579] suggest_outfit
+      in:  90s Silk Slip Dress — Floral, Midi Length ($30.0, depop)
+      out: Outfit 1: Grunge Romantic Layer the 90s Silk Slip Dress over the white ribbed tank top. Add the black cropped …
+      →    10 wardrobe item(s)
+[580] model unavailable
+      →    stopping, search results kept
+[581] parse_query
+      in:  platform sneakers size 8
+      out: dict with keys: description, size, max_price
+[582] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 3 items: Platform Sneakers — White Chunky Sole, Low-Top Canvas Sneakers — Off-White, Platform Mary Janes — Black Patent
+      →    3 match(es)
+[583] select_item
+      out: Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+[584] compare_prices
+      in:  Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+      out: dict with keys: category, average, count, difference, verdict
+[585] suggest_outfit
+      in:  Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+      out: Outfit 1: Casual Streetwear Pair the new white chunky sole platform sneakers with the baggy straight-leg dark …
+      →    10 wardrobe item(s)
+[586] create_fit_card
+      in:  Platform Sneakers — White Chunky Sole ($48.0, poshmark)
+      out: Scored these white chunky sole platform sneakers on Poshmark for $48 and I am obsessed with the heavy Y2K cont…
+[587] parse_query
+      in:  denim jacket under $50
+      out: dict with keys: description, size, max_price
+[588] search_listings (via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 7 items: Denim Jacket — Light Wash, Cropped, High-Waisted Denim Shorts — Cutoff, Denim Vest — Medium Wash, Studded … +4 more
+      →    7 match(es)
+[589] select_item
+      out: Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+[590] compare_prices
+      in:  Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+      out: dict with keys: category, average, count, difference, verdict
+[591] suggest_outfit
+      in:  Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+      out: Outfit 1: The New Light-Wash Cropped Denim Jacket paired with the White ribbed tank top, Baggy straight-leg je…
+      →    10 wardrobe item(s)
+[592] create_fit_card
+      in:  Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+      out: Scored this cropped Wrangler denim jacket on poshmark for $42 and I am obsessed with the vintage 90s skater vi…
