@@ -339,7 +339,7 @@ Out of scope, decided before building:
 
 - No changes to search ranking or `parse_query`. If the measurements later point there, the one improvement in Milestone 6 may touch it, and only then.
 - No replacement of the per-call MCP process spawn.
-- No new tools and no changes to `generate.py`; it is only read.
+- No new tools. The logging layer only reads `generate.py`. The one improvement later changed it, because the diagnosis pointed there (see The Improvement).
 - No hosting (this is Path B, local with logs) and no UI.
 
 ## Running It
@@ -388,16 +388,6 @@ Measured over those 10 runs (all `ok`, cache off): a mean of 460.9 prompt tokens
 For a hundred runs a day: 100 x 616.6 = 61,660 tokens (46,090 prompt, 15,570 output), and about 100 x 2.67 s = 267 s of serving time.
 
 In dollars, at the published rate for gemini-3.5-flash-lite ($0.30 per 1M input tokens, $2.50 per 1M output tokens): 460.9 x 0.30 / 1,000,000 + 155.7 x 2.50 / 1,000,000 = $0.000138 + $0.000389 = about $0.00053 per run. A hundred a day is about $0.053 a day, or about $1.58 over 30 days. The token counts are measured; the rate is the list price, so the dollar figure is that price times my measurement. On the free tier I am on, my actual spend is $0. The counter reads `candidates_token_count`, so any thinking tokens the service bills separately may not be included.
-
-## The Improvement
-
-**Change:** a 20 s timeout on every model call (`config.MODEL_TIMEOUT_S`, applied in `generate.py`). Diagnosis: the model call had no upper bound, so one stalled call held the server's lock forever (criteria 1, 3 and 4).
-
-**Predictions, written before the re-run:**
-- Criterion 1: a stalled request now ends within about 20 s with outcome model_unavailable and leaves a record, so I expect 10/10.
-- Criterion 3: a stalled request now returns an error and no fit_card, so a trial that hits a stall will still miss. The timeout stops the hang, it doesn't stop the stall.
-- Criterion 4: all 100 requests now finish, so I get a real distribution. I expect it to still miss: the timeout does nothing about requests that are slow without stalling, and a stalled one costs about 20 s.
-- Criteria 2 and 5: no change, 10/10. These are my regression check.
 
 ## Run Log and Verdicts
 
@@ -470,6 +460,16 @@ Criterion 4 has a second, separate miss: slowness. Of the 98 requests that compl
 
 Criterion 2 passed in every trial. One finding along the way: a request body that is valid JSON but not an object, such as `[1]`, returns a 500 and is logged as `server_error`. That matches my criterion, but a 400 would be the better answer.
 
+## The Improvement
+
+**Change:** a 20 s timeout on every model call (`config.MODEL_TIMEOUT_S`, applied in `generate.py`). Diagnosis: the model call had no upper bound, so one stalled call held the server's lock forever (criteria 1, 3 and 4).
+
+**Predictions, written before the re-run:**
+- Criterion 1: a stalled request now ends within about 20 s with outcome model_unavailable and leaves a record, so I expect 10/10.
+- Criterion 3: a stalled request now returns an error and no fit_card, so a trial that hits a stall will still miss. The timeout stops the hang, it doesn't stop the stall.
+- Criterion 4: all 100 requests now finish, so I get a real distribution. I expect it to still miss: the timeout does nothing about requests that are slow without stalling, and a stalled one costs about 20 s.
+- Criteria 2 and 5: no change, 10/10. These are my regression check.
+
 Re-run in the same format, written to `results/capstone/after/`:
 
 | Criterion | Target | Run 1 | Run 2 | Run 3 | Verdict (before to after) |
@@ -516,3 +516,25 @@ Trial 3's hang, the end of `server_T_t3.out.txt`:
 Two caveats on the comparison. The before and after runs were hours apart, and the failure rate swung from 36 timeouts in 100 requests (trial 1) to 16 (trial 2) with identical code, so the service itself was varying and this is not a clean A/B test. And criterion 4, trial 3 still hung at request 26 even with the timeout: the server output stops after `[160] suggest_outfit`. My hypothesis is that the stall was somewhere an HTTP read timeout does not cover, but I did not verify that.
 
 **Against my predictions:** criterion 1 at 10/10 was right. Criterion 3 still missing was right, but I called stalls rare and they were not. Criteria 2 and 5 unchanged was right. Criterion 4 still missing was right, but "all 100 requests finish" was wrong for trial 3.
+
+## What's Still Broken
+
+Two criteria are still missed after the improvement. I made the one improvement the unit asks for, and my data says the next fix is a different change.
+
+**Criterion 3 (a failed log write does not change the response): 7, 8 and 8 of 10.** The property the criterion is about held, since all 10 log-write failures were absorbed in every trial. The misses are model calls that timed out or got a "high demand" error from the service, which `generate.py` does not retry. I would retry a timed-out or UNAVAILABLE call once, and fix the error text, which still tells the user to check GEMINI_API_KEY when the cause is a timeout. I stopped because the failure rate swung a lot between sessions (36, 16 and 2 timeouts in the three criterion 4 trials), and I want to measure a retry in a calmer period before claiming it helps.
+
+**Criterion 4 (95 of 100 warm requests at or under 4.7 s): 3, 4 and 13 of 100.** There are two causes. First, the 20 s timeout does not bound everything: one trial still hung at request 26, so I would wrap each model call in a hard wall-clock deadline and not rely on the client's read timeout. Second, the model calls are slow even when they succeed, with medians of 4.1 to 7.9 s against 2.4 to 2.8 s when I set the target. My log has one duration per request, so I cannot say which stage is slow, and I would add per-stage timings. I left the target as it is: it was measurable and I missed it, which the assignment says is not a reason to revise it.
+
+Smaller things I know about:
+- The log cannot see a request that never finishes, because the record is written at the end. A "request started" line would show it.
+- A request body that is valid JSON but not an object, such as `[1]`, returns 500 where 400 would be the right answer.
+- When the driver aborts on a hang it saves 0/10, even if some requests completed (criterion 3, run 3 completed 2).
+- `queued` copies the lock state at the start, so it can miss two requests arriving together.
+
+**If I had another unit:** I would put a hard deadline and one retry around every model call and re-run criteria 1, 3 and 4. That one change addresses the cause behind three of my five criteria, which no other change does.
+
+## How I Used AI
+
+**1. Drafting the criteria.** I asked Claude to write the five criteria with the targets left as placeholders, and to explain how to choose each number. It gave me full draft statements (a record for every request, each failure type, a failed log write, warm latency, and the no-match regression check) and a rule for each number, such as setting the request spacing above the 8 s that the 15-a-minute limit allows. I then chose the numbers myself: 10 of 10 for the checks that do not depend on the model, and 95 of 100 at 4.7 s with 10 s spacing for latency, based on my Milestone 3 warm runs of 2.4 to 2.8 s. 
+
+**2. Diagnosing the hangs.** Several of my trials froze and my driver gave up after 120 s. I pasted the server output and the logs, and Claude pointed out that every stuck request stopped inside a model step and that `generate.py` called the model with no timeout. I did not take that on trust: I searched the stderr files for a rate-limit wait (none appeared in the hung sessions), and I tested the timeout with a 0.05 s value before the real re-run. Claude suggested the predictions I committed before the re-run, and its expectation that stalls would be rare was wrong: 7 of 30 criterion 3 requests failed after the change. The comparison in The Improvement says where the predictions were wrong.
