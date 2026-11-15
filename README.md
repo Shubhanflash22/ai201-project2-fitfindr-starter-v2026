@@ -389,6 +389,12 @@ For a hundred runs a day: 100 x 616.6 = 61,660 tokens (46,090 prompt, 15,570 out
 
 In dollars, at the published rate for gemini-3.5-flash-lite ($0.30 per 1M input tokens, $2.50 per 1M output tokens): 460.9 x 0.30 / 1,000,000 + 155.7 x 2.50 / 1,000,000 = $0.000138 + $0.000389 = about $0.00053 per run. A hundred a day is about $0.053 a day, or about $1.58 over 30 days. The token counts are measured; the rate is the list price, so the dollar figure is that price times my measurement. On the free tier I am on, my actual spend is $0. The counter reads `candidates_token_count`, so any thinking tokens the service bills separately may not be included.
 
+Cross-check on a larger sample. The six latency logs (`results/capstone/*/log_T_t*.jsonl`) hold 329 requests with the cache off, of which 266 were `ok`. I averaged the token fields over those (a one-line script over the logs): 462.6 prompt tokens and 162.2 output tokens, 624.8 in total, which is close to the first 10 runs (616.6), so the token cost per run is stable. The time is not: the median successful request took 5.92 s, not the 2.67 s from my first 10 runs, so the 267 s a day above is too low. At 5.92 s, a hundred runs a day is 100 x 5.92 = 592 s, about 10 minutes of serving time.
+
+Redone in dollars at the same list rate: 462.6 x 0.30 / 1,000,000 + 162.2 x 2.50 / 1,000,000 = $0.000139 + $0.000406 = about $0.00054 per run, so about $0.054 a day and about $1.63 over 30 days. On the free tier I am on, my actual spend is $0.
+
+Failures cost very little: the 63 failed requests (all in the runs with the 20 s timeout) used a mean of 90.7 prompt tokens each, about $0.00003 each, because a request that fails on its first model call spends nothing. The cost of the failures is to the user, not to my bill.
+
 ## Run Log and Verdicts
 
 Before the improvement (no model-call timeout). Three trials each, nothing changed between them. Raw files are in `results/capstone/before/`.
