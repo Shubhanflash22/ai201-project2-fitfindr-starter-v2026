@@ -398,3 +398,121 @@ In dollars, at the published rate for gemini-3.5-flash-lite ($0.30 per 1M input 
 - Criterion 3: a stalled request now returns an error and no fit_card, so a trial that hits a stall will still miss. The timeout stops the hang, it doesn't stop the stall.
 - Criterion 4: all 100 requests now finish, so I get a real distribution. I expect it to still miss: the timeout does nothing about requests that are slow without stalling, and a stalled one costs about 20 s.
 - Criteria 2 and 5: no change, 10/10. These are my regression check.
+
+## Run Log and Verdicts
+
+Before the improvement (no model-call timeout). Three trials each, nothing changed between them. Raw files are in `results/capstone/before/`.
+
+| Criterion | Target | Run 1 | Run 2 | Run 3 | Verdict |
+|---|---|---|---|---|---|
+| 1. Every /ask request leaves one complete record | 10/10 | 10/10 | 0/10 (first request hung, trial aborted) | 10/10 | MISSED |
+| 2. Each failure type logged with the right outcome and status | 10/10 for each of 5 types | 50/50 | 50/50 | 50/50 | MET |
+| 3. A failed log write does not change the response | 10/10 | 10/10 | 10/10 | 2 completed, hung at request 3 (driver recorded 0/10) | MISSED |
+| 4. Warm requests at or under 4.7 s | 95/100 | 16/100 (hung at #28, 16 of 27 completed on time) | 22/100 (hung at #46, 22 of 45) | 9/100 (hung at #27, 9 of 26) | MISSED |
+| 5. No-match query stops before suggest_outfit | 10/10 | 10/10 | 10/10 | 10/10 | MET |
+
+Notes on the table:
+- Criterion 1, run 1 is the second attempt at that session. The first attempt hung on its second request, and I discarded it. It is an extra example of the same failure.
+- In trial 2, criteria 2b, 5 and 2d were run again on a fresh server, because the hang in criterion 1 had locked the first one. None of those three paths calls the model.
+- Criterion 1, run 2 has no result file, because the driver crashed on the hang before I added hang handling. The evidence is `driver_t2.txt` and `server_N_t2.out.txt`. The scores for criterion 3, runs 1 and 2 are in `c3_t1.json` and `c3_t2.json`.
+
+Real output. The log records are written by `request_log.write()`, called from `serve.ask()`. The scores and driver lines come from `capstone_run.py` (`run_c1` to `run_c5`).
+
+**Criterion 1**, `log_N_t1.jsonl`:
+```
+{"timestamp": "2026-11-12T01:34:04.806+00:00", "request_id": "e4ef98a7f9a2", "route": "/ask", "http_status": 200, "query": "vintage graphic tee under $30", "outcome": "ok", "error": null, "duration_s": 5.082, "queued": false, "prompt_tokens": 459, "output_tokens": 149, "selected_item_id": "lst_002"}
+```
+Run 2, the hang. The driver printed `TimeoutError: timed out` (`driver_t2.txt`), and `server_N_t2.out.txt` ends here, with no `[6] create_fit_card`:
+```
+[5] suggest_outfit
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: Outfit 1: Casual Streetwear Pair the Y2K Baby Tee with the baggy straight-leg jeans (dark wash, indigo), layer…
+      →    10 wardrobe item(s)
+```
+
+**Criterion 2**, one record per outcome, from `log_N_t1.jsonl` and `log_B_t1.jsonl`:
+```
+{"timestamp": "2026-11-12T01:34:23.179+00:00", "request_id": "10af5ea663c2", "route": "/ask", "http_status": 400, "query": "", "outcome": "bad_request", "error": "missing or empty 'query' field", "duration_s": 0.0, "queued": false, "prompt_tokens": null, "output_tokens": null, "selected_item_id": null}
+{"timestamp": "2026-11-12T01:34:17.704+00:00", "request_id": "bf8b1ae08c45", "route": "/ask", "http_status": 200, "query": "designer ballgown under $5", "outcome": "nothing_found", "error": "Nothing in the listings matched description 'designer ballgown', under $5.\nThings to change: try broader words — 'jacket' finds more than 'cropped corduroy jacket'; raise the price ceiling above $5.", "duration_s": 1.976, "queued": false, "prompt_tokens": 0, "output_tokens": 0, "selected_item_id": null}
+{"timestamp": "2026-11-12T01:34:44.734+00:00", "request_id": "f84ee5eb3654", "route": "/ask", "http_status": 500, "query": null, "outcome": "server_error", "error": "AttributeError: 'list' object has no attribute 'get'", "duration_s": 0.0, "queued": false, "prompt_tokens": null, "output_tokens": null, "selected_item_id": null}
+{"timestamp": "2026-11-12T01:38:51.106+00:00", "request_id": "6e5694bdc08c", "route": "/ask", "http_status": 200, "query": "vintage graphic tee under $30", "outcome": "mcp_unavailable", "error": "The search tool couldn't be reached over MCP, so nothing was searched. Run `python mcp_client.py` to check the server starts, then try again.\nWhat went wrong: Couldn't call 'search_listings' over MCP: unhandled errors in a TaskGroup (1 sub-exception)\nCheck that mcp_server.py runs on its own first:\n    python mcp_server.py\nIf it exits immediately with an error, fix that before coming back here.", "duration_s": 3.72, "queued": false, "prompt_tokens": 0, "output_tokens": 0, "selected_item_id": null}
+{"timestamp": "2026-11-12T01:40:21.131+00:00", "request_id": "72428ebe491f", "route": "/ask", "http_status": 200, "query": "vintage graphic tee under $30", "outcome": "model_unavailable", "error": "The model couldn't be reached, so the outfit and caption steps didn't run. The search worked: 10 listing(s) were found. Check GEMINI_API_KEY in your .env, then run the same query again.\nWhat the service said: The model rejected your API key. Check GEMINI_API_KEY in your .env file, or create a fresh key at aistudio.google.com.", "duration_s": 4.271, "queued": false, "prompt_tokens": 0, "output_tokens": 0, "selected_item_id": "lst_002"}
+```
+
+**Criterion 3**, `driver_t3.txt` and `stderr_L_t1.txt`:
+```
+criterion 3 trial 3: 0/10  target met this trial: no
+ABORTED: the server hung (no reply after 120 s); the trial stopped here
+  [request_log] could not write the log: [Errno 13] Permission denied: 'results\\capstone\\before'
+  [request_log] could not write the log: [Errno 13] Permission denied: 'results\\capstone\\before'
+```
+
+**Criterion 4**, driver output for the three trials:
+```
+criterion 4 trial 1: 16/100  target met this trial: no
+log lines 28 (expected 101); outcome not ok: 0; request 28 hung (no reply after 120 s); trial stopped, remaining requests count as not on time; duration_s min 3.563, median 4.096, max 8.243
+criterion 4 trial 2: 22/100  target met this trial: no
+log lines 46 (expected 101); outcome not ok: 0; request 46 hung (no reply after 120 s); trial stopped, remaining requests count as not on time; duration_s min 3.457, median 4.716, max 13.344
+criterion 4 trial 3: 9/100  target met this trial: no
+log lines 27 (expected 101); outcome not ok: 0; request 27 hung (no reply after 120 s); trial stopped, remaining requests count as not on time; duration_s min 3.589, median 5.17, max 8.765
+```
+
+**Criterion 5**, `log_R_t2.jsonl` (tokens 0 means no model call):
+```
+{"timestamp": "2026-11-12T02:08:57.316+00:00", "request_id": "2e6761a1f50c", "route": "/ask", "http_status": 200, "query": "leather jacket under $5", "outcome": "nothing_found", "error": "Nothing in the listings matched description 'leather jacket', under $5.\nThings to change: try broader words — 'jacket' finds more than 'cropped corduroy jacket'; raise the price ceiling above $5.", "duration_s": 0.993, "queued": false, "prompt_tokens": 0, "output_tokens": 0, "selected_item_id": null}
+```
+
+### Diagnoses
+
+Criteria 1, 3 and 4 share one cause, so this is one problem with three symptoms. The stage is the model call in `generate.generate()`, which `suggest_outfit` and `create_fit_card` use. The mechanism is that `generate_content` was called with no timeout. When a call stalled, it never returned. `serve.py` handles one request at a time behind a lock, so that one request held the lock forever and everything behind it waited. A stuck request also left no log record, because `request_log.write()` runs when a request ends. That is a limit of my own instrumentation: it cannot see a request that never finishes. The evidence is the server output stopping after a model step (above), the driver's 120 s timeouts, and no log line for the stuck request. No stall coincided with a `[rate limit]` wait in stderr, so none of them was a backoff sleep. There were six hangs in total, all in sessions that call the model.
+
+Criterion 4 has a second, separate miss: slowness. Of the 98 requests that completed, 47 were at or under 4.7 s, with medians of 4.10, 4.72 and 5.17 s per trial, against 2.4 to 2.8 s in my Milestone 3 log. It is not output length: the correlation between `duration_s` and `output_tokens` is between -0.02 and 0.25 (`analyze_logs.py`). It is not the search stage either: requests that stop after the search have a median of 1.10 s. So the time is in the model calls, whose latency varied between sessions. That is outside my code. The per-call MCP spawn is a fixed cost of about 1 s per run, a fifth of the 4.7 s budget, but it did not vary.
+
+Criterion 2 passed in every trial. One finding along the way: a request body that is valid JSON but not an object, such as `[1]`, returns a 500 and is logged as `server_error`. That matches my criterion, but a 400 would be the better answer.
+
+Re-run in the same format, written to `results/capstone/after/`:
+
+| Criterion | Target | Run 1 | Run 2 | Run 3 | Verdict (before to after) |
+|---|---|---|---|---|---|
+| 1 | 10/10 | 10/10 | 10/10 | 10/10 | MISSED to MET |
+| 2 | 10/10 per type | 50/50 | 50/50 | 50/50 | MET to MET |
+| 3 | 10/10 | 7/10 | 8/10 | 8/10 | MISSED to MISSED |
+| 4 | 95/100 | 3/100 (all 100 ran) | 4/100 (all 100 ran) | 13/100 (hung at #26, 13 of 25) | MISSED to MISSED |
+| 5 | 10/10 | 10/10 | 10/10 | 10/10 | MET to MET |
+
+Real output from `results/capstone/after/`. First, a stalled call now ends in a record (`log_N_t*.jsonl`). The 254 prompt tokens show the first model call finished and the second timed out:
+```
+{"timestamp": "2026-11-12T19:47:15.166+00:00", "request_id": "880ebe14d30e", "route": "/ask", "http_status": 200, "query": "silk slip dress in midi length under $40", "outcome": "model_unavailable", "error": "The model couldn't be reached, so the outfit and caption steps didn't run. The search worked: 5 listing(s) were found. Check GEMINI_API_KEY in your .env, then run the same query again.\nWhat the service said: Couldn't reach the model: The read operation timed out", "duration_s": 23.986, "queued": false, "prompt_tokens": 254, "output_tokens": 102, "selected_item_id": "lst_013"}
+```
+Criterion 3 (`driver_t1.txt` to `driver_t3.txt`):
+```
+criterion 3 trial 1: 7/10  target met this trial: no
+stderr lines saying the log could not be written: 10 (must be 10)
+criterion 3 trial 2: 8/10  target met this trial: no
+stderr lines saying the log could not be written: 10 (must be 10)
+criterion 3 trial 3: 8/10  target met this trial: no
+stderr lines saying the log could not be written: 10 (must be 10)
+```
+Criterion 4 (driver output, and a timeout record from `log_T_t*.jsonl`):
+```
+criterion 4 trial 1: 3/100  target met this trial: no
+log lines 101 (expected 101); outcome not ok: 38; duration_s min 4.088, median 12.41, max 30.248
+criterion 4 trial 2: 4/100  target met this trial: no
+log lines 101 (expected 101); outcome not ok: 23; duration_s min 3.641, median 7.819, max 29.628
+criterion 4 trial 3: 13/100  target met this trial: no
+log lines 26 (expected 101); outcome not ok: 2; request 26 hung (no reply after 120 s); trial stopped, remaining requests count as not on time; duration_s min 3.302, median 4.668, max 22.15
+{"timestamp": "2026-11-12T19:52:44.220+00:00", "request_id": "a1d490d01751", "route": "/ask", "http_status": 200, "query": "90s track jacket in size M", "outcome": "model_unavailable", "error": "The model couldn't be reached, so the outfit and caption steps didn't run. The search worked: 4 listing(s) were found. Check GEMINI_API_KEY in your .env, then run the same query again.\nWhat the service said: Couldn't reach the model: The read operation timed out", "duration_s": 22.914, "queued": false, "prompt_tokens": 0, "output_tokens": 0, "selected_item_id": "lst_004"}
+```
+Trial 3's hang, the end of `server_T_t3.out.txt`:
+```
+[160] suggest_outfit
+      in:  Y2K Baby Tee — Butterfly Print ($18.0, depop)
+      out: Outfit 1: Pair the Y2K Baby Tee with your baggy straight-leg jeans, dark wash, layered under the vintage black…
+      →    10 wardrobe item(s)
+```
+
+**Did it help?** Partly. It fixed what it was aimed at: criterion 1 went from a miss to 10/10 in all three trials, because a stalled call now ends in a logged `model_unavailable` record instead of freezing the server. Criterion 4 also completed all 100 requests in two of three trials, where every trial had aborted before. It did not make the system pleasant to use. Of the 225 warm requests across the three "after" criterion 4 trials, 63 failed: 54 were the 20 s timeout firing, 8 were the service answering "high demand, UNAVAILABLE", and 1 was a connection error (`analyze_logs.py` and the `error` fields in the logs). Criterion 3 missed in every trial for the same reason: 7 of the 30 requests came back as model-unavailable errors with no fit card. The property that criterion is about still held, since all 10 log-write failures were absorbed in every trial. Timeouts are also a trade-off. Requests that succeeded took up to 19.8 s in one trial, so in a slow period a 20 s limit may cut off calls that would have finished.
+
+Two caveats on the comparison. The before and after runs were hours apart, and the failure rate swung from 36 timeouts in 100 requests (trial 1) to 16 (trial 2) with identical code, so the service itself was varying and this is not a clean A/B test. And criterion 4, trial 3 still hung at request 26 even with the timeout: the server output stops after `[160] suggest_outfit`. My hypothesis is that the stall was somewhere an HTTP read timeout does not cover, but I did not verify that.
+
+**Against my predictions:** criterion 1 at 10/10 was right. Criterion 3 still missing was right, but I called stalls rare and they were not. Criteria 2 and 5 unchanged was right. Criterion 4 still missing was right, but "all 100 requests finish" was wrong for trial 3.
