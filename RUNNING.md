@@ -1,5 +1,16 @@
 # Running FitFindr
 
+## Get the code
+
+```bash
+git clone -b Capstone https://github.com/Shubhanflash22/ai201-project2-fitfindr-starter-v2026
+cd ai201-project2-fitfindr-starter-v2026
+```
+
+The `-b Capstone` matters: the request log lives on that branch, not on `main`.
+
+You need your own free Gemini key (YOUR_API_KEY below). Get one at https://aistudio.google.com: sign in with a Google account, create a project when prompted, and make a key inside it. Never paste a real key into a file that gets committed.
+
 ## Setup
 
 **macOS / Linux**
@@ -25,6 +36,14 @@ python test.py
 Setup is done when `python test.py` passes. Activate the virtual environment
 every time a new terminal is opened; `(.venv)` should appear at the start of the
 prompt.
+
+Quick check with no server: `python app.py ask 'vintage graphic tee under $30'`.
+
+To call the running service from Windows PowerShell, use `curl.exe` (plain `curl` is a different command there):
+
+```powershell
+curl.exe -X POST http://127.0.0.1:5000/ask -H "Content-Type: application/json" -d '{\"query\": \"denim jacket under $50\"}'
+```
 
 ## First run
 
